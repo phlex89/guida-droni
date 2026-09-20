@@ -42,41 +42,59 @@
   <rect x="280" y="92" width="280" height="42" rx="8" fill="#1B4965"/>
   <text class="cat-head" x="296" y="120">Sì, ha la marcatura</text>
 
-  <rect class="cat-box" x="280" y="144" width="280" height="58" rx="8"/>
-  <rect x="294" y="157" width="54" height="32" rx="6" fill="#3E8E63"/>
-  <text class="cat-chip" x="321" y="180" text-anchor="middle">C0</text>
-  <text class="cat-lab" x="362" y="181">sotto 250 g</text>
+  <g id="cat-c0">
 
-  <rect class="cat-box" x="280" y="212" width="280" height="58" rx="8"/>
-  <rect x="294" y="225" width="54" height="32" rx="6" fill="#5FA8D3"/>
-  <text class="cat-chip" x="321" y="248" text-anchor="middle">C1</text>
-  <text class="cat-lab" x="362" y="249">sotto 900 g</text>
+    <rect class="cat-box" x="280" y="144" width="280" height="58" rx="8"/>
+    <rect x="294" y="157" width="54" height="32" rx="6" fill="#3E8E63"/>
+    <text class="cat-chip" x="321" y="180" text-anchor="middle">C0</text>
+    <text class="cat-lab" x="362" y="181">sotto 250 g</text>
+  </g>
 
-  <rect class="cat-box" x="280" y="280" width="280" height="58" rx="8"/>
-  <rect x="294" y="293" width="54" height="32" rx="6" fill="#1B4965"/>
-  <text class="cat-chip" x="321" y="316" text-anchor="middle">C2</text>
-  <text class="cat-lab" x="362" y="317">sotto 4 kg</text>
+  <g id="cat-c1">
 
-  <rect class="cat-box" x="280" y="348" width="280" height="58" rx="8"/>
-  <rect x="294" y="361" width="54" height="32" rx="6" fill="#6B5B95"/>
-  <text class="cat-chip" x="321" y="384" text-anchor="middle">C3</text>
-  <text class="cat-lab" x="362" y="385">sotto 25 kg</text>
+    <rect class="cat-box" x="280" y="212" width="280" height="58" rx="8"/>
+    <rect x="294" y="225" width="54" height="32" rx="6" fill="#5FA8D3"/>
+    <text class="cat-chip" x="321" y="248" text-anchor="middle">C1</text>
+    <text class="cat-lab" x="362" y="249">sotto 900 g</text>
+  </g>
 
-  <rect class="cat-box" x="280" y="416" width="280" height="72" rx="8"/>
-  <rect x="294" y="436" width="54" height="32" rx="6" fill="#7A7F87"/>
-  <text class="cat-chip" x="321" y="459" text-anchor="middle">C4</text>
-  <text class="cat-lab" x="362" y="445">sotto 25 kg,</text>
-  <text class="cat-lab" x="362" y="471">senza automatismi</text>
+  <g id="cat-c2">
 
-  <rect x="280" y="502" width="280" height="64" rx="8" fill="#7A7F87"/>
-  <text class="cat-head" x="296" y="530">No: senza marcatura</text>
-  <text class="cat-head" x="296" y="556">o autocostruito</text>
+    <rect class="cat-box" x="280" y="280" width="280" height="58" rx="8"/>
+    <rect x="294" y="293" width="54" height="32" rx="6" fill="#1B4965"/>
+    <text class="cat-chip" x="321" y="316" text-anchor="middle">C2</text>
+    <text class="cat-lab" x="362" y="317">sotto 4 kg</text>
+  </g>
 
-  <rect class="cat-box" x="280" y="576" width="280" height="58" rx="8"/>
-  <text class="cat-lab" x="296" y="613">sotto 250 g</text>
+  <g id="cat-c3">
 
-  <rect class="cat-box" x="280" y="644" width="280" height="58" rx="8"/>
-  <text class="cat-lab" x="296" y="681">250 g o più</text>
+    <rect class="cat-box" x="280" y="348" width="280" height="58" rx="8"/>
+    <rect x="294" y="361" width="54" height="32" rx="6" fill="#6B5B95"/>
+    <text class="cat-chip" x="321" y="384" text-anchor="middle">C3</text>
+    <text class="cat-lab" x="362" y="385">sotto 25 kg</text>
+  </g>
+
+  <g id="cat-c4">
+
+    <rect class="cat-box" x="280" y="416" width="280" height="72" rx="8"/>
+    <rect x="294" y="436" width="54" height="32" rx="6" fill="#7A7F87"/>
+    <text class="cat-chip" x="321" y="459" text-anchor="middle">C4</text>
+    <text class="cat-lab" x="362" y="445">sotto 25 kg,</text>
+    <text class="cat-lab" x="362" y="471">senza automatismi</text>
+  </g>
+
+  <g id="cat-senza">
+
+    <rect x="280" y="502" width="280" height="64" rx="8" fill="#7A7F87"/>
+    <text class="cat-head" x="296" y="530">No: senza marcatura</text>
+    <text class="cat-head" x="296" y="556">o autocostruito</text>
+
+    <rect class="cat-box" x="280" y="576" width="280" height="58" rx="8"/>
+    <text class="cat-lab" x="296" y="613">sotto 250 g</text>
+
+    <rect class="cat-box" x="280" y="644" width="280" height="58" rx="8"/>
+    <text class="cat-lab" x="296" y="681">250 g o più</text>
+  </g>
 
   <path class="cat-l cat-lg" d="M560,173 H582 V150 H664" marker-end="url(#cat-fr-g)"/>
   <path class="cat-l cat-lg" d="M560,241 H592 V190 H664" marker-end="url(#cat-fr-g)"/>
@@ -86,32 +104,41 @@
   <path class="cat-l cat-lg" d="M560,605 H572 V250 H664" marker-end="url(#cat-fr-g)"/>
   <path class="cat-l cat-lr" d="M560,673 H640 V660 H664" marker-end="url(#cat-fr-r)"/>
 
-  <rect x="668" y="92" width="312" height="196" rx="12" fill="#E3F2E9" stroke="#3E8E63" stroke-width="2.5"/>
-  <rect x="686" y="106" width="54" height="34" rx="6" fill="#3E8E63"/>
-  <text class="cat-chip" x="713" y="131" text-anchor="middle">A1</text>
-  <text class="cat-esito" x="686" y="176">Vicino alle persone.</text>
-  <text class="cat-esito" x="686" y="202">Con C1 mai sorvolare</text>
-  <text class="cat-esito" x="686" y="228">intenzionalmente persone</text>
-  <text class="cat-esito" x="686" y="254">non coinvolte; mai</text>
-  <text class="cat-esito" x="686" y="280">sorvolare assembramenti</text>
+  <g id="cat-a1">
 
-  <rect x="668" y="299" width="312" height="222" rx="12" fill="#FCEEDC" stroke="#E0851F" stroke-width="2.5"/>
-  <rect x="686" y="313" width="54" height="34" rx="6" fill="#E0851F"/>
-  <text class="cat-chip" x="713" y="338" text-anchor="middle">A2</text>
-  <text class="cat-esito" x="686" y="383">Almeno 30 m dalle</text>
-  <text class="cat-esito" x="686" y="409">persone non coinvolte</text>
-  <text class="cat-esito" x="686" y="435">(5 m in modalità a bassa</text>
-  <text class="cat-esito" x="686" y="461">velocità). Serve il</text>
-  <text class="cat-esito" x="686" y="487">certificato A2</text>
-  <text class="cat-tenue" x="686" y="513">Con C2 anche in A3.</text>
+    <rect x="668" y="92" width="312" height="196" rx="12" fill="#E3F2E9" stroke="#3E8E63" stroke-width="2.5"/>
+    <rect x="686" y="106" width="54" height="34" rx="6" fill="#3E8E63"/>
+    <text class="cat-chip" x="713" y="131" text-anchor="middle">A1</text>
+    <text class="cat-esito" x="686" y="176">Vicino alle persone.</text>
+    <text class="cat-esito" x="686" y="202">Con C1 mai sorvolare</text>
+    <text class="cat-esito" x="686" y="228">intenzionalmente persone</text>
+    <text class="cat-esito" x="686" y="254">non coinvolte; mai</text>
+    <text class="cat-esito" x="686" y="280">sorvolare assembramenti</text>
+  </g>
 
-  <rect x="668" y="532" width="312" height="170" rx="12" fill="#F6E2E2" stroke="#B23A3A" stroke-width="2.5"/>
-  <rect x="686" y="546" width="54" height="34" rx="6" fill="#B23A3A"/>
-  <text class="cat-chip" x="713" y="571" text-anchor="middle">A3</text>
-  <text class="cat-esito" x="686" y="616">Lontano dalle persone.</text>
-  <text class="cat-esito" x="686" y="642">Almeno 150 m da aree</text>
-  <text class="cat-esito" x="686" y="668">residenziali, commerciali,</text>
-  <text class="cat-esito" x="686" y="694">industriali o ricreative</text>
+  <g id="cat-a2">
+
+    <rect x="668" y="299" width="312" height="222" rx="12" fill="#FCEEDC" stroke="#E0851F" stroke-width="2.5"/>
+    <rect x="686" y="313" width="54" height="34" rx="6" fill="#E0851F"/>
+    <text class="cat-chip" x="713" y="338" text-anchor="middle">A2</text>
+    <text class="cat-esito" x="686" y="383">Almeno 30 m dalle</text>
+    <text class="cat-esito" x="686" y="409">persone non coinvolte</text>
+    <text class="cat-esito" x="686" y="435">(5 m in modalità a bassa</text>
+    <text class="cat-esito" x="686" y="461">velocità). Serve il</text>
+    <text class="cat-esito" x="686" y="487">certificato A2</text>
+    <text class="cat-tenue" x="686" y="513">Con C2 anche in A3.</text>
+  </g>
+
+  <g id="cat-a3">
+
+    <rect x="668" y="532" width="312" height="170" rx="12" fill="#F6E2E2" stroke="#B23A3A" stroke-width="2.5"/>
+    <rect x="686" y="546" width="54" height="34" rx="6" fill="#B23A3A"/>
+    <text class="cat-chip" x="713" y="571" text-anchor="middle">A3</text>
+    <text class="cat-esito" x="686" y="616">Lontano dalle persone.</text>
+    <text class="cat-esito" x="686" y="642">Almeno 150 m da aree</text>
+    <text class="cat-esito" x="686" y="668">residenziali, commerciali,</text>
+    <text class="cat-esito" x="686" y="694">industriali o ricreative</text>
+  </g>
 
   <text class="cat-tenue" x="24" y="738">In tutti i casi: massimo 120 m dal suolo, sempre in vista (VLOS),</text>
   <text class="cat-tenue" x="24" y="766">operatore registrato, attestato A1/A3 (salvo C0 senza camera).</text>

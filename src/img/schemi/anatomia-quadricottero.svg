@@ -40,60 +40,78 @@
     <line class="anq-dir" x1="500" y1="142" x2="500" y2="112" marker-end="url(#anq-ar-blu)"/>
 
     <!-- bracci -->
-    <line class="anq-arm" x1="500" y1="420" x2="300" y2="220"/>
-    <line class="anq-arm" x1="500" y1="420" x2="700" y2="220"/>
-    <line class="anq-arm" x1="500" y1="420" x2="300" y2="620"/>
-    <line class="anq-arm" x1="500" y1="420" x2="700" y2="620"/>
+    <g id="anq-braccio">
+      <line class="anq-arm" x1="500" y1="420" x2="300" y2="220"/>
+      <line class="anq-arm" x1="500" y1="420" x2="700" y2="220"/>
+      <line class="anq-arm" x1="500" y1="420" x2="300" y2="620"/>
+      <line class="anq-arm" x1="500" y1="420" x2="700" y2="620"/>
+    </g>
 
     <!-- ESC sui bracci -->
-    <rect class="anq-esc" x="382" y="309" width="36" height="22" rx="5" transform="rotate(45 400 320)"/>
-    <rect class="anq-esc" x="582" y="309" width="36" height="22" rx="5" transform="rotate(-45 600 320)"/>
-    <rect class="anq-esc" x="382" y="509" width="36" height="22" rx="5" transform="rotate(-45 400 520)"/>
-    <rect class="anq-esc" x="582" y="509" width="36" height="22" rx="5" transform="rotate(45 600 520)"/>
+    <g id="anq-esc">
+      <rect class="anq-esc" x="382" y="309" width="36" height="22" rx="5" transform="rotate(45 400 320)"/>
+      <rect class="anq-esc" x="582" y="309" width="36" height="22" rx="5" transform="rotate(-45 600 320)"/>
+      <rect class="anq-esc" x="382" y="509" width="36" height="22" rx="5" transform="rotate(-45 400 520)"/>
+      <rect class="anq-esc" x="582" y="509" width="36" height="22" rx="5" transform="rotate(45 600 520)"/>
+    </g>
 
     <!-- LED posteriori -->
-    <circle cx="365" cy="555" r="9" fill="#B23A3A"/>
-    <circle cx="635" cy="555" r="9" fill="#B23A3A"/>
+    <g id="anq-led">
+      <circle cx="365" cy="555" r="9" fill="#B23A3A"/>
+      <circle cx="635" cy="555" r="9" fill="#B23A3A"/>
+    </g>
 
-    <!-- eliche -->
-    <g>
+    <!-- eliche: dischi e pale -->
+    <g id="anq-elica">
       <circle class="anq-disc" cx="300" cy="220" r="58"/>
-      <ellipse class="anq-blade" cx="300" cy="220" rx="48" ry="7" transform="rotate(-30 300 220)"/>
-      <circle class="anq-motor" cx="300" cy="220" r="18"/>
-      <path class="anq-spin" d="M282 251.2 A 36 36 0 1 1 318 251.2" marker-end="url(#anq-ar-ora)"/>
-    </g>
-    <g>
       <circle class="anq-disc" cx="700" cy="220" r="58"/>
-      <ellipse class="anq-blade" cx="700" cy="220" rx="48" ry="7" transform="rotate(30 700 220)"/>
-      <circle class="anq-motor" cx="700" cy="220" r="18"/>
-      <path class="anq-spin" d="M718 251.2 A 36 36 0 1 0 682 251.2" marker-end="url(#anq-ar-ora)"/>
-    </g>
-    <g>
       <circle class="anq-disc" cx="300" cy="620" r="58"/>
-      <ellipse class="anq-blade" cx="300" cy="620" rx="48" ry="7" transform="rotate(30 300 620)"/>
-      <circle class="anq-motor" cx="300" cy="620" r="18"/>
-      <path class="anq-spin" d="M318 651.2 A 36 36 0 1 0 282 651.2" marker-end="url(#anq-ar-ora)"/>
-    </g>
-    <g>
       <circle class="anq-disc" cx="700" cy="620" r="58"/>
+      <ellipse class="anq-blade" cx="300" cy="220" rx="48" ry="7" transform="rotate(-30 300 220)"/>
+      <ellipse class="anq-blade" cx="700" cy="220" rx="48" ry="7" transform="rotate(30 700 220)"/>
+      <ellipse class="anq-blade" cx="300" cy="620" rx="48" ry="7" transform="rotate(30 300 620)"/>
       <ellipse class="anq-blade" cx="700" cy="620" rx="48" ry="7" transform="rotate(-30 700 620)"/>
+    </g>
+    <!-- motori -->
+    <g id="anq-motore">
+      <circle class="anq-motor" cx="300" cy="220" r="18"/>
+      <circle class="anq-motor" cx="700" cy="220" r="18"/>
+      <circle class="anq-motor" cx="300" cy="620" r="18"/>
       <circle class="anq-motor" cx="700" cy="620" r="18"/>
+    </g>
+    <!-- versi di rotazione -->
+    <g id="anq-rotazione">
+      <path class="anq-spin" d="M282 251.2 A 36 36 0 1 1 318 251.2" marker-end="url(#anq-ar-ora)"/>
+      <path class="anq-spin" d="M718 251.2 A 36 36 0 1 0 682 251.2" marker-end="url(#anq-ar-ora)"/>
+      <path class="anq-spin" d="M318 651.2 A 36 36 0 1 0 282 651.2" marker-end="url(#anq-ar-ora)"/>
       <path class="anq-spin" d="M682 651.2 A 36 36 0 1 1 718 651.2" marker-end="url(#anq-ar-ora)"/>
     </g>
 
     <!-- corpo -->
-    <rect class="anq-plate" x="424" y="340" width="152" height="160" rx="16"/>
-    <rect class="anq-cam" x="462" y="334" width="76" height="12" rx="6"/>
-    <rect class="anq-cam" x="474" y="300" width="52" height="38" rx="8"/>
-    <circle cx="500" cy="318" r="11" fill="#E0851F"/>
-    <rect class="anq-gnss" x="440" y="352" width="120" height="38" rx="8"/>
-    <rect x="528" y="358" width="24" height="24" rx="4" fill="#3E8E63"/>
-    <rect class="anq-fc" x="440" y="400" width="120" height="52" rx="8"/>
-    <rect x="520" y="413" width="26" height="26" rx="4" fill="#6B5B95"/>
-    <rect class="anq-batt" x="440" y="462" width="120" height="32" rx="8"/>
-    <rect class="anq-rx" x="452" y="508" width="96" height="34" rx="8"/>
-    <line class="anq-ant" x1="462" y1="542" x2="430" y2="592"/>
-    <line class="anq-ant" x1="538" y1="542" x2="570" y2="592"/>
+    <g id="anq-piastra">
+      <rect class="anq-plate" x="424" y="340" width="152" height="160" rx="16"/>
+    </g>
+    <g id="anq-camera">
+      <rect class="anq-cam" x="462" y="334" width="76" height="12" rx="6"/>
+      <rect class="anq-cam" x="474" y="300" width="52" height="38" rx="8"/>
+      <circle cx="500" cy="318" r="11" fill="#E0851F"/>
+    </g>
+    <g id="anq-gnss">
+      <rect class="anq-gnss" x="440" y="352" width="120" height="38" rx="8"/>
+      <rect x="528" y="358" width="24" height="24" rx="4" fill="#3E8E63"/>
+    </g>
+    <g id="anq-fc">
+      <rect class="anq-fc" x="440" y="400" width="120" height="52" rx="8"/>
+      <rect x="520" y="413" width="26" height="26" rx="4" fill="#6B5B95"/>
+    </g>
+    <g id="anq-batteria">
+      <rect class="anq-batt" x="440" y="462" width="120" height="32" rx="8"/>
+    </g>
+    <g id="anq-ricevitore">
+      <rect class="anq-rx" x="452" y="508" width="96" height="34" rx="8"/>
+      <line class="anq-ant" x1="462" y1="542" x2="430" y2="592"/>
+      <line class="anq-ant" x1="538" y1="542" x2="570" y2="592"/>
+    </g>
 
     <!-- etichette: colonna sinistra -->
     <text class="anq-lab" x="234" y="140" text-anchor="end">Elica</text>

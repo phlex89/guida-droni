@@ -17,48 +17,58 @@
     <rect x="0" y="0" width="1000" height="486" fill="#FFFFFF"/>
     <text class="spe-h" x="500" y="42" text-anchor="middle">Le bande usate dai droni in Europa</text>
     <text class="spe-sub" x="500" y="76" text-anchor="middle">(apparati a corto raggio)</text>
-    <rect x="18" y="100" width="186" height="210" rx="12" fill="#E3F2E9" stroke="#3E8E63" stroke-width="2.5"/>
-    <text class="spe-name" x="111" y="132" text-anchor="middle" fill="#2B2D31">433 MHz</text>
-    <line x1="36" y1="150" x2="186" y2="150" stroke="#3E8E63" stroke-width="1.5"/>
-    <text class="spe-use" x="111" y="180" text-anchor="middle">telemetria e</text>
-    <text class="spe-use" x="111" y="205" text-anchor="middle">comando a</text>
-    <text class="spe-use" x="111" y="230" text-anchor="middle">lungo raggio</text>
-    <text class="spe-pw" x="111" y="262" text-anchor="middle">10 mW e.r.p.</text>
-    <path class="spe-lead" d="M111 310 L111 326 L85.8 344 L85.8 354" stroke="#3E8E63"/>
-    <rect x="212" y="100" width="186" height="210" rx="12" fill="#DCEEF8" stroke="#5FA8D3" stroke-width="2.5"/>
-    <text class="spe-name" x="305" y="132" text-anchor="middle" fill="#2B2D31">863-870 MHz</text>
-    <line x1="230" y1="150" x2="380" y2="150" stroke="#5FA8D3" stroke-width="1.5"/>
-    <text class="spe-use" x="305" y="180" text-anchor="middle">comando a lungo</text>
-    <text class="spe-use" x="305" y="205" text-anchor="middle">raggio (LoRa)</text>
-    <text class="spe-pw" x="305" y="237" text-anchor="middle">25 mW e.r.p.,</text>
-    <text class="spe-pw" x="305" y="262" text-anchor="middle">duty cycle</text>
-    <text class="spe-pw" x="305" y="287" text-anchor="middle">limitato</text>
-    <path class="spe-lead" d="M305 310 L305 326 L311.2 344 L311.2 354" stroke="#5FA8D3"/>
-    <rect x="406" y="100" width="186" height="210" rx="12" fill="#FCEEDC" stroke="#E0851F" stroke-width="2.5"/>
-    <text class="spe-name" x="499" y="132" text-anchor="middle" fill="#2B2D31">2,4 GHz</text>
-    <line x1="424" y1="150" x2="574" y2="150" stroke="#E0851F" stroke-width="1.5"/>
-    <text class="spe-use" x="499" y="180" text-anchor="middle">radiocomando,</text>
-    <text class="spe-use" x="499" y="205" text-anchor="middle">video digitale,</text>
-    <text class="spe-use" x="499" y="230" text-anchor="middle">Wi-Fi</text>
-    <text class="spe-pw" x="499" y="262" text-anchor="middle">100 mW e.i.r.p.</text>
-    <path class="spe-lead" d="M499 310 L499 326 L647.8 344 L647.8 354" stroke="#E0851F"/>
-    <rect x="600" y="100" width="186" height="210" rx="12" fill="#ECE8F4" stroke="#6B5B95" stroke-width="2.5"/>
-    <text class="spe-name" x="693" y="132" text-anchor="middle" fill="#2B2D31">5,15-5,35 e</text>
-    <text class="spe-name" x="693" y="158" text-anchor="middle" fill="#2B2D31">5,47-5,725 GHz</text>
-    <line x1="618" y1="168" x2="768" y2="168" stroke="#6B5B95" stroke-width="1.5"/>
-    <text class="spe-use" x="693" y="198" text-anchor="middle">video digitale</text>
-    <text class="spe-use" x="693" y="223" text-anchor="middle">su Wi-Fi 5</text>
-    <text class="spe-pw" x="693" y="255" text-anchor="middle">limiti e vincoli</text>
-    <text class="spe-pw" x="693" y="280" text-anchor="middle">variabili</text>
-    <path class="spe-lead" d="M693 310 L693 326 L907.6 344 L907.6 354" stroke="#6B5B95"/>
-    <rect x="794" y="100" width="186" height="210" rx="12" fill="#F2F4F7" stroke="#12354A" stroke-width="2.5"/>
-    <text class="spe-name" x="887" y="132" text-anchor="middle" fill="#2B2D31">5,725-5,875 GHz</text>
-    <line x1="812" y1="150" x2="962" y2="150" stroke="#12354A" stroke-width="1.5"/>
-    <text class="spe-use" x="887" y="180" text-anchor="middle">video FPV</text>
-    <text class="spe-use" x="887" y="205" text-anchor="middle">analogico</text>
-    <text class="spe-use" x="887" y="230" text-anchor="middle">e digitale</text>
-    <text class="spe-pw" x="887" y="262" text-anchor="middle">25 mW e.i.r.p.</text>
-    <path class="spe-lead" d="M887 310 L887 326 L929.0 344 L929.0 354" stroke="#12354A"/>
+    <g id="spe-b433">
+      <rect x="18" y="100" width="186" height="210" rx="12" fill="#E3F2E9" stroke="#3E8E63" stroke-width="2.5"/>
+      <text class="spe-name" x="111" y="132" text-anchor="middle" fill="#2B2D31">433 MHz</text>
+      <line x1="36" y1="150" x2="186" y2="150" stroke="#3E8E63" stroke-width="1.5"/>
+      <text class="spe-use" x="111" y="180" text-anchor="middle">telemetria e</text>
+      <text class="spe-use" x="111" y="205" text-anchor="middle">comando a</text>
+      <text class="spe-use" x="111" y="230" text-anchor="middle">lungo raggio</text>
+      <text class="spe-pw" x="111" y="262" text-anchor="middle">10 mW e.r.p.</text>
+      <path class="spe-lead" d="M111 310 L111 326 L85.8 344 L85.8 354" stroke="#3E8E63"/>
+    </g>
+    <g id="spe-b868">
+      <rect x="212" y="100" width="186" height="210" rx="12" fill="#DCEEF8" stroke="#5FA8D3" stroke-width="2.5"/>
+      <text class="spe-name" x="305" y="132" text-anchor="middle" fill="#2B2D31">863-870 MHz</text>
+      <line x1="230" y1="150" x2="380" y2="150" stroke="#5FA8D3" stroke-width="1.5"/>
+      <text class="spe-use" x="305" y="180" text-anchor="middle">comando a lungo</text>
+      <text class="spe-use" x="305" y="205" text-anchor="middle">raggio (LoRa)</text>
+      <text class="spe-pw" x="305" y="237" text-anchor="middle">25 mW e.r.p.,</text>
+      <text class="spe-pw" x="305" y="262" text-anchor="middle">duty cycle</text>
+      <text class="spe-pw" x="305" y="287" text-anchor="middle">limitato</text>
+      <path class="spe-lead" d="M305 310 L305 326 L311.2 344 L311.2 354" stroke="#5FA8D3"/>
+    </g>
+    <g id="spe-b24">
+      <rect x="406" y="100" width="186" height="210" rx="12" fill="#FCEEDC" stroke="#E0851F" stroke-width="2.5"/>
+      <text class="spe-name" x="499" y="132" text-anchor="middle" fill="#2B2D31">2,4 GHz</text>
+      <line x1="424" y1="150" x2="574" y2="150" stroke="#E0851F" stroke-width="1.5"/>
+      <text class="spe-use" x="499" y="180" text-anchor="middle">radiocomando,</text>
+      <text class="spe-use" x="499" y="205" text-anchor="middle">video digitale,</text>
+      <text class="spe-use" x="499" y="230" text-anchor="middle">Wi-Fi</text>
+      <text class="spe-pw" x="499" y="262" text-anchor="middle">100 mW e.i.r.p.</text>
+      <path class="spe-lead" d="M499 310 L499 326 L647.8 344 L647.8 354" stroke="#E0851F"/>
+    </g>
+    <g id="spe-b5">
+      <rect x="600" y="100" width="186" height="210" rx="12" fill="#ECE8F4" stroke="#6B5B95" stroke-width="2.5"/>
+      <text class="spe-name" x="693" y="132" text-anchor="middle" fill="#2B2D31">5,15-5,35 e</text>
+      <text class="spe-name" x="693" y="158" text-anchor="middle" fill="#2B2D31">5,47-5,725 GHz</text>
+      <line x1="618" y1="168" x2="768" y2="168" stroke="#6B5B95" stroke-width="1.5"/>
+      <text class="spe-use" x="693" y="198" text-anchor="middle">video digitale</text>
+      <text class="spe-use" x="693" y="223" text-anchor="middle">su Wi-Fi 5</text>
+      <text class="spe-pw" x="693" y="255" text-anchor="middle">limiti e vincoli</text>
+      <text class="spe-pw" x="693" y="280" text-anchor="middle">variabili</text>
+      <path class="spe-lead" d="M693 310 L693 326 L907.6 344 L907.6 354" stroke="#6B5B95"/>
+    </g>
+    <g id="spe-b58">
+      <rect x="794" y="100" width="186" height="210" rx="12" fill="#F2F4F7" stroke="#12354A" stroke-width="2.5"/>
+      <text class="spe-name" x="887" y="132" text-anchor="middle" fill="#2B2D31">5,725-5,875 GHz</text>
+      <line x1="812" y1="150" x2="962" y2="150" stroke="#12354A" stroke-width="1.5"/>
+      <text class="spe-use" x="887" y="180" text-anchor="middle">video FPV</text>
+      <text class="spe-use" x="887" y="205" text-anchor="middle">analogico</text>
+      <text class="spe-use" x="887" y="230" text-anchor="middle">e digitale</text>
+      <text class="spe-pw" x="887" y="262" text-anchor="middle">25 mW e.i.r.p.</text>
+      <path class="spe-lead" d="M887 310 L887 326 L929.0 344 L929.0 354" stroke="#12354A"/>
+    </g>
     <line class="spe-axis" x1="40" y1="358" x2="964" y2="358"/>
     <line class="spe-axis" x1="60.0" y1="358" x2="60.0" y2="369"/>
     <text class="spe-tick" x="60.0" y="396" text-anchor="middle">400 MHz</text>

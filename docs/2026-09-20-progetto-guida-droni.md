@@ -53,7 +53,8 @@ Totale indicativo: 67 pagine.
 
 - `build/build.mjs` con Node e puppeteer-core, usando Google Chrome installato.
 - `node build/build.mjs pdf` genera i PDF in `pdf/`.
-- `node build/build.mjs html` genera `html/index.html` con tutti i capitoli e una barra di navigazione.
+- `node build/build.mjs html` genera `html/index.html` con tutti i capitoli e una barra di navigazione, che sotto i 900 px diventa un menu a scomparsa.
+- La sola versione HTML ha due parti interattive: le sigle marcate con `<abbr>` aprono la definizione presa dal glossario, e tre schemi (anatomia del quadricottero, spettro radio, categorie della Open) hanno parti toccabili con la spiegazione in `src/img/schemi/spiegazioni.json`. I PDF non cambiano.
 - `node build/build.mjs preview <pdf>` produce PNG delle pagine per il controllo visivo.
 
 ## Fasi di lavoro

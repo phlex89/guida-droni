@@ -5,10 +5,12 @@ Questo repository contiene i sorgenti di una guida introduttiva ai droni in ital
 ## Struttura
 
 - `src/capitoli/NN-slug.html` — un capitolo per file, HTML completo con `lang="it"`.
-- `src/css/guida.css` — foglio di stile della guida.
+- `src/css/guida.css` — foglio di stile del documento, usato sia dai PDF sia dal sito.
+- `src/css/pagina.css` e `src/js/pagina.js` — stile e comportamento della sola pagina HTML unica: menu, dimensione del testo, definizioni delle sigle e schemi esplorabili. I PDF non li caricano.
 - `src/css/fonts.css` e `src/css/fonts/` — dichiarazioni `@font-face` e file dei font, scaricati localmente una volta sola (nessuna dipendenza da Google Fonts in fase di build).
 - `src/img/foto/` — fotografie con licenza libera; i crediti sono in `src/img/foto/crediti.json` e vanno riportati in didascalia.
 - `src/img/schemi/` — schemi vettoriali (SVG) disegnati ad hoc.
+- `src/img/schemi/spiegazioni.json` — testi delle parti toccabili degli schemi (vedi «Schemi esplorabili»).
 - `build/` — script di build (Node), script Python per l'anteprima e `applica-crediti.py` per i crediti delle foto.
 - `docs/` — documento di progetto, guida di stile editoriale, template di capitolo e fact sheet di ricerca (`docs/ricerca/`) con le fonti verificate.
 - `pdf/` — PDF generati, uno per capitolo (non modificare a mano, è output dello script).
@@ -53,6 +55,34 @@ node build/build.mjs html
 Unisce tutti i capitoli in `html/index.html`, con barra di navigazione laterale e stile per la lettura a schermo. Il file si apre direttamente in un browser, senza bisogno di un server. Sotto i 900 px di larghezza (tablet e smartphone) la barra laterale diventa un menu a scomparsa: una barra fissa in alto mostra il capitolo in lettura e il pulsante che apre l'indice; il menu si chiude toccando fuori, con Esc o scegliendo un capitolo. Sotto i 640 px le griglie passano a una colonna e le tabelle larghe e gli schemi si scorrono in orizzontale.
 
 A schermo il corpo del testo usa il font Literata a 20 px con interlinea 1,65, pensato per la lettura prolungata; nella barra laterale tre pulsanti «A» cambiano la dimensione del testo (17, 20 o 23 px; su smartphone 15,5, 17 o 19 px) e la scelta viene ricordata dal browser. I PDF mantengono Source Serif 4 a 10,75 pt per restare entro le 90 pagine.
+
+#### Glossario attivo
+
+Nel sito ogni `<abbr>` dei capitoli diventa toccabile e apre un riquadro con la definizione. Il testo viene cercato prima fra le voci dei `dl.glossario` presenti nella guida, confrontando la sigla e il termine; se non c'è corrispondenza si usa l'attributo `title` dell'`<abbr>` stesso. Non serve marcare altro nei capitoli: basta che la sigla sia dentro un `<abbr>` con il suo `title`. Sopra ogni glossario con almeno dieci voci compare anche un campo che filtra le voci mentre si scrive. Tutto questo esiste solo a schermo: i PDF restano identici.
+
+#### Schemi esplorabili
+
+Alcuni schemi hanno parti toccabili che aprono una spiegazione sotto il disegno. Servono due cose:
+
+1. nell'SVG, un `<g id="...">` che avvolge gli elementi di quella parte;
+2. in `src/img/schemi/spiegazioni.json`, una voce con lo stesso identificativo.
+
+Il file è organizzato per nome dello schema, senza estensione:
+
+```json
+{
+  "anatomia-quadricottero": {
+    "suggerimento": "Tocca una parte del disegno per sapere che cosa fa.",
+    "punti": [
+      { "id": "anq-motore", "etichetta": "Motore brushless", "testo": "..." }
+    ]
+  }
+}
+```
+
+Gli identificativi usano il prefisso già adottato dalle classi dello schema (`anq-`, `spe-`, `cat-`), così non collidono fra schemi diversi nella pagina unica. Alla generazione lo script confronta le due parti e avvisa in console se un identificativo dichiarato nel JSON non esiste nell'SVG, o se lo schema non compare in nessun capitolo.
+
+Gli attributi aggiunti agli SVG sono inerti in stampa: dopo aver raggruppato le parti, i PDF dei capitoli interessati sono stati rigenerati e confrontati pagina per pagina con i precedenti, senza differenze di resa.
 
 ### Generare un'anteprima PNG di un PDF
 

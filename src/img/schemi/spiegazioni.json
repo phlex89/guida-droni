@@ -1,0 +1,147 @@
+{
+  "anatomia-quadricottero": {
+    "suggerimento": "Tocca una parte del disegno per sapere che cosa fa.",
+    "punti": [
+      {
+        "id": "anq-elica",
+        "etichetta": "Elica",
+        "testo": "L'elica trasforma la rotazione del motore in spinta. Il cerchio azzurro è il disco spazzato: è quello lo spazio che devi considerare occupato, non l'ingombro della pala ferma. Diametro e passo decidono quanta spinta ottieni a parità di giri e vanno scelti insieme al motore, non separatamente."
+      },
+      {
+        "id": "anq-motore",
+        "etichetta": "Motore brushless",
+        "testo": "È un motore sincrono a magneti permanenti di tipo outrunner: lo statore avvolto sta fermo al centro, la campana esterna con i magneti gira e porta direttamente l'elica. La costante KV dice quanti giri al minuto si ottengono per ogni volt, e va nella direzione opposta alla coppia: KV alto significa molti giri e poca coppia per ampere."
+      },
+      {
+        "id": "anq-rotazione",
+        "etichetta": "Verso di rotazione",
+        "testo": "Due eliche girano in senso orario e due in senso antiorario, e quelle uguali stanno in diagonale fra loro. Così le coppie di reazione si annullano e la macchina non ruota su sé stessa. L'imbardata si ottiene sbilanciando di proposito questo equilibrio, accelerando una coppia e rallentando l'altra."
+      },
+      {
+        "id": "anq-braccio",
+        "etichetta": "Braccio",
+        "testo": "I bracci tengono i motori a distanza fissa dal baricentro. Più sono lunghi, più leva hanno i motori: la macchina diventa stabile ma meno pronta. La fibra di carbonio vince per rigidezza e leggerezza, ma è conduttiva, quindi attenua i segnali radio e fa ombra al ricevitore satellitare."
+      },
+      {
+        "id": "anq-esc",
+        "etichetta": "ESC, il regolatore di velocità",
+        "testo": "Un ESC è un inverter trifase in miniatura: sei transistor di potenza in tre semiponti sintetizzano le tre fasi che fanno girare il motore, modulando la tensione media con la larghezza degli impulsi. Ce n'è uno per motore e, insieme al gruppo motore ed elica, è l'unico organo di comando del drone."
+      },
+      {
+        "id": "anq-piastra",
+        "etichetta": "Piastra centrale, il telaio",
+        "testo": "La piastra tiene insieme i bracci e porta quasi tutta l'elettronica: controllo, navigazione, radio e alimentazione. Deve essere leggera e rigida insieme, perché ogni flessione si traduce in vibrazioni che arrivano ai sensori."
+      },
+      {
+        "id": "anq-camera",
+        "etichetta": "Camera e gimbal",
+        "testo": "Il gimbal è una sospensione motorizzata che tiene la camera puntata mentre il drone si inclina: senza, ogni correzione d'assetto finirebbe dentro l'immagine. La camera pesa anche sul piano normativo, perché un drone capace di raccogliere dati personali obbliga l'operatore a registrarsi anche sotto i 250 grammi."
+      },
+      {
+        "id": "anq-gnss",
+        "etichetta": "Modulo GNSS",
+        "testo": "Il ricevitore satellitare dà al drone posizione e velocità. Si monta fuori dalle piastre perché la fibra di carbonio lo scherma e l'elettronica di potenza lo disturba. Senza satelliti il drone vola ancora, ma non tiene la posizione da solo e non torna a casa automaticamente."
+      },
+      {
+        "id": "anq-fc",
+        "etichetta": "Flight controller con IMU",
+        "testo": "È il microcontrollore che stabilizza la macchina, di solito un ARM Cortex-M a 32 bit. Non gli serve potenza di calcolo, gli serve determinismo: qualche centinaio di microsecondi di ritardo conta più di qualche megahertz. L'unità inerziale, giroscopio e accelerometro MEMS a tre assi, gli dice come è messo nello spazio migliaia di volte al secondo."
+      },
+      {
+        "id": "anq-batteria",
+        "etichetta": "Batteria LiPo",
+        "testo": "Le celle ai polimeri di litio hanno resistenza interna bassissima e reggono correnti enormi rispetto alla loro capacità: servono perché il decollo chiede potenza istantanea. Le celle agli ioni di litio immagazzinano circa il doppio di energia per chilogrammo, ma non erogano la stessa corrente."
+      },
+      {
+        "id": "anq-ricevitore",
+        "etichetta": "Ricevitore radio e antenne",
+        "testo": "Riceve i comandi dal radiocomando e, nei sistemi bidirezionali, rimanda indietro la telemetria. Le antenne escono dal telaio e si montano in posizioni diverse fra loro, così che almeno una resti bene orientata qualunque sia l'assetto del drone."
+      },
+      {
+        "id": "anq-led",
+        "etichetta": "LED di navigazione",
+        "testo": "Servono a capire come è orientata la macchina quando è lontana. I droni di classe C1, C2 e C3 devono avere anche una luce verde lampeggiante, che li distingue dagli aeromobili con equipaggio. Di notte vedere il drone significa vederne le luci, e la distanza utile si riduce parecchio."
+      }
+    ]
+  },
+  "spettro-radio": {
+    "suggerimento": "Tocca una banda per leggere a che cosa serve e che limite ha.",
+    "punti": [
+      {
+        "id": "spe-b433",
+        "etichetta": "433 MHz",
+        "testo": "La banda della telemetria a lungo raggio. In Europa il limite è 10 mW e.r.p. con un ciclo di trasmissione non superiore al 10 per cento del tempo, oppure 1 mW senza quel vincolo. Poca potenza, ma a questa frequenza il segnale aggira gli ostacoli molto meglio che nelle bande alte."
+      },
+      {
+        "id": "spe-b868",
+        "etichetta": "863-870 MHz",
+        "testo": "La banda del comando a lungo raggio con modulazioni LoRa. Il limite è 25 mW e.r.p. nelle sottobande principali, con un ciclo di trasmissione fra lo 0,1 e l'1 per cento: puoi occupare il canale solo per una frazione del tempo. Negli Stati Uniti l'equivalente sta sui 900 MHz e arriva a 1 W, e in Europa quella banda semplicemente non è disponibile."
+      },
+      {
+        "id": "spe-b24",
+        "etichetta": "2,4 GHz",
+        "testo": "La banda del radiocomando, del video digitale e del Wi-Fi, con 100 mW e.i.r.p. È affollata proprio perché va bene per tutto: il prezzo della portata è la convivenza con ogni altro apparato nei dintorni."
+      },
+      {
+        "id": "spe-b5",
+        "etichetta": "5,15-5,35 e 5,47-5,725 GHz",
+        "testo": "Le bande del Wi-Fi a 5 GHz, usate dal video digitale dei droni consumer. I vincoli cambiano da sottobanda a sottobanda, fra uso consentito solo al chiuso e obbligo di selezione dinamica della frequenza. Dal 2022 esiste anche una porzione dedicata ai droni fra 5,17 e 5,25 GHz, con 200 mW e.i.r.p."
+      },
+      {
+        "id": "spe-b58",
+        "etichetta": "5,725-5,875 GHz",
+        "testo": "La banda storica del video in prima persona, analogico e digitale, con un limite europeo di 25 mW e.i.r.p. Molti trasmettitori in vendita online partono da 200 mW o più: sono legali altrove, non qui. È la ragione per cui tanti apparati hanno una modalità CE e una modalità FCC."
+      }
+    ]
+  },
+  "categorie-open": {
+    "suggerimento": "Tocca una classe o una sottocategoria per vedere che cosa comporta.",
+    "punti": [
+      {
+        "id": "cat-c0",
+        "etichetta": "Classe C0",
+        "testo": "Droni sotto i 250 grammi. È la classe più permissiva: in A1 puoi sorvolare anche persone non coinvolte, mai però un assembramento. La logica è quella dell'energia cinetica, perché sotto questa massa il danno in caso di caduta è considerato trascurabile. Se il drone ha una camera, l'operatore deve comunque registrarsi."
+      },
+      {
+        "id": "cat-c1",
+        "etichetta": "Classe C1",
+        "testo": "Droni sotto i 900 grammi, sempre in A1, ma con un obbligo in più rispetto al C0: non devi sorvolare intenzionalmente persone non coinvolte, e se capita devi ridurre al minimo il tempo di sorvolo."
+      },
+      {
+        "id": "cat-c2",
+        "etichetta": "Classe C2",
+        "testo": "Droni sotto i 4 chilogrammi. È l'unica classe ammessa in A2, che richiede al pilota un certificato di competenza aggiuntivo. Un C2 può sempre volare anche in A3, accettando le regole più restrittive di quella sottocategoria."
+      },
+      {
+        "id": "cat-c3",
+        "etichetta": "Classe C3",
+        "testo": "Droni sotto i 25 chilogrammi. Volano in A3, quindi solo lontano dalle persone e ad almeno 150 metri dalle aree residenziali, commerciali, industriali o ricreative."
+      },
+      {
+        "id": "cat-c4",
+        "etichetta": "Classe C4",
+        "testo": "Droni sotto i 25 chilogrammi e privi di modalità di volo automatiche: è la classe pensata per gli aeromodelli tradizionali, pilotati a mano. Anche questi volano in A3."
+      },
+      {
+        "id": "cat-senza",
+        "etichetta": "Senza marcatura o autocostruito",
+        "testo": "I droni privi di marcatura di classe e quelli costruiti in proprio seguono un ramo a sé. Sotto i 250 grammi rientrano in A1; da 250 grammi in su vanno in A3. Dal 1º gennaio 2024 non hanno più accesso alla A2."
+      },
+      {
+        "id": "cat-a1",
+        "etichetta": "Sottocategoria A1, vicino alle persone",
+        "testo": "Ammette solo droni molto leggeri, di classe C0 e C1. Con un C0 il sorvolo di persone non coinvolte è consentito, con un C1 va evitato. Sugli assembramenti non si vola in nessun caso, qualunque sia la classe."
+      },
+      {
+        "id": "cat-a2",
+        "etichetta": "Sottocategoria A2, a distanza controllata",
+        "testo": "Almeno 30 metri in orizzontale dalle persone non coinvolte, che scendono a 5 metri se il drone ha la modalità a bassa velocità, quella che limita la velocità al suolo a 3 metri al secondo. Serve il certificato di competenza A2, che si ottiene con un esame aggiuntivo. In pratica un C2 in A2 lavora in una piazza poco frequentata o in un cantiere, non sopra la testa della gente."
+      },
+      {
+        "id": "cat-a3",
+        "etichetta": "Sottocategoria A3, lontano da tutto",
+        "testo": "Si vola dove ragionevolmente non si mettono in pericolo persone non coinvolte, e ad almeno 150 metri in orizzontale da aree residenziali, commerciali, industriali o ricreative. Il caso tipico è il campo aperto in campagna, lontano da case e strade frequentate."
+      }
+    ]
+  }
+}
