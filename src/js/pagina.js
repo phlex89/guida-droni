@@ -367,18 +367,20 @@
       gruppo.setAttribute("role", "button");
       gruppo.setAttribute("aria-label", punto.etichetta);
 
-      try {
-        var riquadroParte = gruppo.getBBox();
-        var margine = 8;
-        var alone = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        alone.setAttribute("class", "alone-punto");
-        alone.setAttribute("x", riquadroParte.x - margine);
-        alone.setAttribute("y", riquadroParte.y - margine);
-        alone.setAttribute("width", riquadroParte.width + margine * 2);
-        alone.setAttribute("height", riquadroParte.height + margine * 2);
-        alone.setAttribute("rx", "10");
-        gruppo.insertBefore(alone, gruppo.firstChild);
-      } catch (e) {}
+      var aloni = document.createDocumentFragment();
+      Array.prototype.slice.call(gruppo.children).forEach(function (figlio) {
+        var tag = figlio.tagName.toLowerCase();
+        if (tag === "text" || tag === "title" || tag === "desc") return;
+        var vuoto = getComputedStyle(figlio).fill === "none";
+        var alone = figlio.cloneNode(true);
+        alone.removeAttribute("id");
+        alone.removeAttribute("marker-start");
+        alone.removeAttribute("marker-mid");
+        alone.removeAttribute("marker-end");
+        alone.setAttribute("class", vuoto ? "alone-punto alone-vuoto" : "alone-punto");
+        aloni.appendChild(alone);
+      });
+      if (aloni.childNodes.length > 0) gruppo.insertBefore(aloni, gruppo.firstChild);
 
       gruppo.addEventListener("pointerdown", function (evento) {
         trascinamento = false;

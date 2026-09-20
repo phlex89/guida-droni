@@ -152,9 +152,15 @@ dl.glossario dt[hidden], dl.glossario dd[hidden] { display: none; }
 .punto-schema { cursor: pointer; }
 .punto-schema .alone-punto {
   fill: #5FA8D3;
+  stroke: #5FA8D3;
+  stroke-width: 16;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: none;
   opacity: 0;
   transition: opacity 0.15s ease;
 }
+.punto-schema .alone-punto.alone-vuoto { fill: none; }
 .punto-schema:hover .alone-punto { opacity: 0.16; }
 .punto-schema:focus { outline: none; }
 .punto-schema:focus-visible .alone-punto { opacity: 0.24; }
