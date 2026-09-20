@@ -34,6 +34,20 @@
     .dimensione-testo button[data-taglia="3"] { font-size: 21px; }
     .contenuto { margin-left: 300px; padding: 48px 40px 80px; max-width: 930px; width: 100%; box-sizing: border-box; }
     .solo-stampa { display: none; }
+    .azioni-capitolo { display: flex; justify-content: flex-end; margin: 0 0 -8px; }
+    .capitolo + .capitolo .azioni-capitolo { margin-top: 24px; }
+    .scarica-capitolo {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; font-size: 16px; font-weight: 600;
+      color: #1B4965; background: #fff; border: 1px solid #C9D1DB; border-radius: 8px;
+      padding: 9px 14px; text-decoration: none;
+    }
+    .scarica-capitolo::before {
+      content: "PDF"; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+      color: #fff; background: #5FA8D3; border-radius: 3px; padding: 3px 6px;
+    }
+    .scarica-capitolo:hover { background: #E3EAF1; border-color: #1B4965; }
+    @media print { .azioni-capitolo { display: none; } }
     .sidebar-toggle {
       display: none; position: fixed; top: 12px; left: 12px; z-index: 20;
       background: #1B4965; color: #fff; border: none; border-radius: 6px;
@@ -89,6 +103,7 @@
 </nav>
 <main class="contenuto">
 <section class="capitolo" id="cap-00" data-titolo="Introduzione e mappa della guida">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/00-introduzione.pdf" download>Scarica il capitolo in PDF</a></div>
 <section class="copertina">
   <figure class="foto">
     <img src="assets/img/foto/14-copertina-paesaggio-dallalto.jpg" alt="Paesaggio ripreso dall'alto da un drone">
@@ -256,6 +271,7 @@
 </section>
 
 <section class="capitolo" id="cap-01" data-titolo="Cos'è un drone">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/01-cos-e-un-drone.pdf" download>Scarica il capitolo in PDF</a></div>
 <header class="apertura">
   <div class="etichetta">Capitolo 01</div>
   <div class="numero-capitolo">01</div>
@@ -525,6 +541,7 @@
 </section>
 
 <section class="capitolo" id="cap-02" data-titolo="Anatomia e funzionamento">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/02-anatomia-e-funzionamento.pdf" download>Scarica il capitolo in PDF</a></div>
 <header class="apertura">
   <div class="etichetta">Capitolo 02</div>
   <div class="numero-capitolo">02</div>
@@ -1041,6 +1058,7 @@
 </section>
 
 <section class="capitolo" id="cap-03" data-titolo="Radio, video e telemetria">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/03-radio-video-telemetria.pdf" download>Scarica il capitolo in PDF</a></div>
 <header class="apertura">
   <div class="etichetta">Capitolo 03</div>
   <div class="numero-capitolo">03</div>
@@ -1434,6 +1452,7 @@
 </section>
 
 <section class="capitolo" id="cap-04" data-titolo="Il quadro normativo europeo">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/04-quadro-normativo-europeo.pdf" download>Scarica il capitolo in PDF</a></div>
 <header class="apertura">
   <div class="etichetta">Capitolo 04</div>
   <div class="numero-capitolo">04</div>
@@ -1932,6 +1951,7 @@
 </section>
 
 <section class="capitolo" id="cap-05" data-titolo="Volare in Italia">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/05-volare-in-italia.pdf" download>Scarica il capitolo in PDF</a></div>
 <header class="apertura">
   <div class="etichetta">Capitolo 05</div>
   <div class="numero-capitolo">05</div>
@@ -2256,6 +2276,7 @@
 </section>
 
 <section class="capitolo" id="cap-06" data-titolo="Categoria Specific e prospettive">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/06-categoria-specific-e-prospettive.pdf" download>Scarica il capitolo in PDF</a></div>
 <header class="apertura">
   <div class="etichetta">Capitolo 06</div>
   <div class="numero-capitolo">06</div>
@@ -2424,6 +2445,7 @@
 </section>
 
 <section class="capitolo" id="cap-07" data-titolo="Volare in pratica">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/07-volare-in-pratica.pdf" download>Scarica il capitolo in PDF</a></div>
 <header class="apertura">
   <div class="etichetta">Capitolo 07</div>
   <div class="numero-capitolo">07</div>
@@ -2634,6 +2656,7 @@
 </section>
 
 <section class="capitolo" id="cap-08" data-titolo="Percorso del neofita e appendici">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/08-percorso-e-appendici.pdf" download>Scarica il capitolo in PDF</a></div>
 <header class="apertura">
   <div class="etichetta">Capitolo 08</div>
   <div class="numero-capitolo">08</div>
@@ -2973,6 +2996,7 @@
 </section>
 
 <section class="capitolo" id="cap-SR" data-titolo="Scheda rapida">
+<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/09-scheda-rapida.pdf" download>Scarica il capitolo in PDF</a></div>
 <header class="sr-testata">
   <h1>Scheda rapida: la categoria Open</h1>
   <p class="sottotitolo">Da stampare e tenere nella borsa del drone.<br>Regole UE 2019/947 e Italia, verificate il 20 settembre 2026.</p>

@@ -48,8 +48,11 @@ async function inlineSvgSchemi(contenuto, cartellaCapitolo) {
   return risultato;
 }
 
-function sezioneCapitolo(numero, titolo, contenuto) {
-  return `<section class="capitolo" id="cap-${numero}" data-titolo="${titolo}">\n${contenuto}\n</section>`;
+function sezioneCapitolo(numero, titolo, contenuto, nomePdf) {
+  const azioni = nomePdf
+    ? `<div class="azioni-capitolo"><a class="scarica-capitolo" href="pdf/${nomePdf}" download>Scarica il capitolo in PDF</a></div>\n`
+    : "";
+  return `<section class="capitolo" id="cap-${numero}" data-titolo="${titolo}">\n${azioni}${contenuto}\n</section>`;
 }
 
 function voceSidebar(numero, titolo) {
@@ -86,6 +89,20 @@ function stileLayout() {
     .dimensione-testo button[data-taglia="3"] { font-size: 21px; }
     .contenuto { margin-left: 300px; padding: 48px 40px 80px; max-width: 930px; width: 100%; box-sizing: border-box; }
     .solo-stampa { display: none; }
+    .azioni-capitolo { display: flex; justify-content: flex-end; margin: 0 0 -8px; }
+    .capitolo + .capitolo .azioni-capitolo { margin-top: 24px; }
+    .scarica-capitolo {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; font-size: 16px; font-weight: 600;
+      color: #1B4965; background: #fff; border: 1px solid #C9D1DB; border-radius: 8px;
+      padding: 9px 14px; text-decoration: none;
+    }
+    .scarica-capitolo::before {
+      content: "PDF"; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+      color: #fff; background: #5FA8D3; border-radius: 3px; padding: 3px 6px;
+    }
+    .scarica-capitolo:hover { background: #E3EAF1; border-color: #1B4965; }
+    @media print { .azioni-capitolo { display: none; } }
     .sidebar-toggle {
       display: none; position: fixed; top: 12px; left: 12px; z-index: 20;
       background: #1B4965; color: #fff; border: none; border-radius: 6px;
@@ -167,10 +184,11 @@ export async function buildHtml({ src, out }) {
     const titolo = estraiAttributoBody(html, "data-titolo") || numero;
     const mainConSvgInline = await inlineSvgSchemi(estraiContenutoMain(html), path.dirname(filePath));
     const contenuto = riscriviPercorsi(mainConSvgInline);
-    sidebarVoci.push(voceSidebar(numero, titolo));
-    sezioni.push(sezioneCapitolo(numero, titolo, contenuto));
     const nomePdf = `${path.basename(filePath, ".html")}.pdf`;
-    if (pdfDisponibili.includes(nomePdf)) {
+    const pdfPresente = pdfDisponibili.includes(nomePdf);
+    sidebarVoci.push(voceSidebar(numero, titolo));
+    sezioni.push(sezioneCapitolo(numero, titolo, contenuto, pdfPresente ? nomePdf : null));
+    if (pdfPresente) {
       pdfVoci.push(`    <li><a href="pdf/${nomePdf}">${numero} · ${titolo}</a></li>`);
     }
   }
