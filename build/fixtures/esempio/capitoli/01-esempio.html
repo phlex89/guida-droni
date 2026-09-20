@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Capitolo di esempio</title>
+<link rel="stylesheet" href="../css/guida.css">
+</head>
+<body data-capitolo="01" data-titolo="Capitolo di esempio">
+<main>
+<h1>Capitolo di esempio</h1>
+<p>Data di verifica delle fonti: 20 settembre 2026.</p>
+
+<h2>Primo sottotitolo</h2>
+<p>
+Questo primo paragrafo serve a verificare che il testo lungo in italiano venga impaginato correttamente nel PDF generato dallo script di build, con particolare attenzione alla resa dei font Source Serif 4 per il corpo del testo e Source Sans 3 per i titoli. Il paragrafo contiene frasi di lunghezza variabile, punteggiatura complessa (virgole, punti e virgola; due punti) e alcune parole con accenti come città, però, perché e università, così da controllare che i caratteri accentati siano renderizzati correttamente e che il subset latin-ext dei font copra tutti i glifi necessari alla lingua italiana.
+</p>
+
+<h2>Secondo sottotitolo</h2>
+<p>
+Il secondo paragrafo prosegue la prova di impaginazione con un testo altrettanto esteso, utile a valutare l'interlinea, la giustificazione e il comportamento del testo quando supera la prima pagina disponibile. Si parla qui, a titolo di esempio neutro, di anemometri, di sensori barometrici e di unità di misura come i metri al secondo, i gradi Celsius e i pascal, per avere anche numeri e simboli tecnici nel flusso del testo, ad esempio 12,4 m/s oppure 1013 hPa, oltre a una sigla tecnica come IMU resa in monospazio con l'elemento <code>IMU</code>.
+</p>
+
+<p>
+Questo terzo paragrafo chiude la sezione di prova con un contenuto altrettanto lungo, includendo un rimando a uno schema successivo e una breve digressione descrittiva priva di contenuto normativo reale, dato che questo file esiste esclusivamente per verificare la toolchain di build e non fa parte della guida vera e propria. Si controlla qui anche la resa del grassetto e del corsivo, come in <strong>testo in grassetto</strong> e in <em>testo in corsivo</em>, per assicurarsi che i pesi 600 e 700 e lo stile italico dei font siano caricati correttamente dal foglio di stile.
+</p>
+
+<h2>Tabella di prova</h2>
+<table>
+<thead>
+<tr><th>Parametro</th><th>Valore</th><th>Unità</th></tr>
+</thead>
+<tbody>
+<tr><td>Velocità del vento</td><td>12,4</td><td>m/s</td></tr>
+<tr><td>Pressione</td><td>1013</td><td>hPa</td></tr>
+<tr><td>Temperatura</td><td>18</td><td>°C</td></tr>
+</tbody>
+</table>
+
+<aside class="box nota">
+<strong>Nota.</strong> Questo box serve a verificare la resa grafica degli elementi di richiamo laterale, con sfondo colorato e bordo di accento.
+</aside>
+
+<h2>Schema vettoriale inline</h2>
+<svg viewBox="0 0 160 100" width="160" height="100" role="img" aria-label="Schema inline di prova">
+  <rect x="5" y="5" width="150" height="90" fill="none" stroke="#1B4965" stroke-width="2" />
+  <line x1="5" y1="50" x2="155" y2="50" stroke="#5FA8D3" stroke-width="2" />
+  <text x="20" y="30" font-family="sans-serif" font-size="12" fill="#2B2D31">SVG inline</text>
+</svg>
+
+<h2>Immagine da file</h2>
+<img src="../img/schemi/test.svg" alt="Schema di test caricato da file esterno" width="300" height="140">
+
+<h2>In sintesi</h2>
+<ul>
+<li>Il capitolo di prova copre titolo, sottotitoli, paragrafi lunghi, tabella, box e immagini.</li>
+<li>Serve solo a verificare la toolchain di build, non fa parte della guida.</li>
+</ul>
+</main>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>03 · Radio, video e telemetria</title>
+  <link rel="stylesheet" href="../css/guida.css">
+</head>
+<body data-capitolo="03" data-titolo="Radio, video e telemetria">
+<main>
+
+<header class="apertura">
+  <div class="etichetta">Capitolo 03</div>
+  <div class="numero-capitolo">03</div>
+  <h1>Radio, video e telemetria</h1>
+  <p class="sommario">Un drone è un sistema radio con le eliche. Tra te e la macchina corrono almeno tre collegamenti, comandi, video e telemetria, più i segnali dei satelliti che scendono e il Remote ID che sale verso chiunque voglia ascoltarlo. Questo è il capitolo in cui giochi in casa: parleremo di bande, potenze, protocolli e latenze, e di come le regole europee sullo spettro decidono cosa puoi comprare e usare.</p>
+  <div class="in-questo-capitolo">
+    <strong>In questo capitolo</strong>
+    <ol>
+      <li>Tre collegamenti e due segnali</li>
+      <li>Lo spettro disponibile in Europa</li>
+      <li>Il link di comando</li>
+      <li>Il link video</li>
+      <li>Telemetria e protocolli</li>
+      <li>Il posizionamento satellitare</li>
+      <li>Il Remote ID visto dal lato radio</li>
+      <li>Interferenze e coesistenza</li>
+    </ol>
+  </div>
+  <p class="verifica">Fonti tecniche e normative verificate il 20 settembre 2026.</p>
+</header>
+
+<h2><span class="numero">3.1</span> Tre collegamenti e due segnali</h2>
+
+<p>Lo schema della Figura 3.1 mostra tutto ciò che viaggia via radio in un volo tipico. Il <strong>link di comando</strong> porta i tuoi stick al flight controller, decine o centinaia di volte al secondo: è il collegamento che non può cadere, e infatti tutta la sua progettazione ruota intorno alla robustezza. Il <strong>link video</strong> porta l'immagine della camera ai tuoi occhi, su uno schermo o negli occhiali: è quello che consuma più banda e tollera meglio un'interruzione. La <strong>telemetria</strong> torna indietro dal drone: tensione della batteria, posizione, quota, qualità del link stesso. Nei sistemi integrati dei droni consumer i tre collegamenti condividono un unico link digitale bidirezionale; nel mondo FPV sono spesso tre sistemi separati, ciascuno con la sua banda e la sua antenna.</p>
+
+<p>A questi si aggiungono due segnali che non controlli. I segnali <strong>GNSS</strong> scendono dai satelliti e danno al drone posizione e velocità. Il <strong>Remote ID</strong> parte dal drone e annuncia in chiaro chi sei e dove sei, a chiunque abbia uno smartphone a portata (sezione 3.7).</p>
+
+<aside class="box tlc">
+  <p>I requisiti dei tre collegamenti sono quelli di tre servizi diversi su una stessa rete: il comando è traffico a bassissima latenza e alta affidabilità con pochi byte per pacchetto; il video è traffico ad alta banda che tollera perdite; la telemetria è traffico di controllo a bassa priorità. Non stupisce che si siano evoluti su bande e modulazioni diverse, e che i sistemi integrati li multiplexino con priorità esplicite.</p>
+</aside>
+
+<figure class="schema">
+  <img src="../img/schemi/link-radio.svg" alt="Schema a blocchi dei collegamenti radio: radiocomando, ricevitore, flight controller, trasmettitore video, occhiali, satelliti GNSS e smartphone che riceve il Remote ID">
+  <figcaption><strong>Figura 3.1</strong> I collegamenti radio di un drone. Il comando e la telemetria di ritorno viaggiano di solito sullo stesso link; il video ha spesso una banda propria; GNSS e Remote ID sono a senso unico.</figcaption>
+</figure>
+
+<h2><span class="numero">3.2</span> Lo spettro disponibile in Europa</h2>
+
+<p>Un drone hobbistico non ha una licenza di frequenza: usa le bande destinate agli <em>apparati a corto raggio</em> (<abbr title="Short Range Devices">SRD</abbr>) e alle reti locali senza fili, con i limiti di potenza fissati dalle norme armonizzate ETSI e dalla Raccomandazione ERC 70-03. Sono limiti bassi, pensati per far convivere milioni di dispositivi, e valgono in tutta l'Unione; l'Italia li recepisce nel Piano Nazionale di Ripartizione delle Frequenze. La Figura 3.2 e la Tabella 3.1 li riassumono.</p>
+
+<figure class="schema">
+  <img src="../img/schemi/spettro-radio.svg" alt="Asse delle frequenze da 400 MHz a 6 GHz con le bande usate dai droni e i limiti di potenza europei">
+  <figcaption><strong>Figura 3.2</strong> Le bande usate dai droni in Europa con i limiti di potenza per uso senza licenza. La differenza con le regole statunitensi spiega perché molti prodotti hanno una «modalità CE» e una «modalità FCC».</figcaption>
+</figure>
+
+<table>
+  <thead>
+    <tr><th>Banda</th><th>Uso tipico</th><th>Limite in Europa</th><th>Norma</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>433&nbsp;MHz</th><td>Telemetria a lungo raggio</td><td>10&nbsp;mW e.r.p. con duty cycle ≤&nbsp;10%, oppure 1&nbsp;mW senza limite</td><td>ERC 70-03, EN&nbsp;300&nbsp;220</td></tr>
+    <tr><th>863-870&nbsp;MHz</th><td>Comando a lungo raggio (LoRa)</td><td>25&nbsp;mW e.r.p. nelle sottobande principali con duty cycle 0,1-1%; 500&nbsp;mW e.r.p. al 10% solo in 869,4-869,65&nbsp;MHz</td><td>ERC 70-03, EN&nbsp;300&nbsp;220</td></tr>
+    <tr><th>2,4&nbsp;GHz</th><td>Radiocomando, video digitale, Wi-Fi</td><td>100&nbsp;mW e.i.r.p.</td><td>EN&nbsp;300&nbsp;328</td></tr>
+    <tr><th>5,17-5,25&nbsp;GHz</th><td>Comando e video dei droni (banda dedicata dal 2022)</td><td>200&nbsp;mW e.i.r.p.</td><td>Decisione (UE) 2022/179</td></tr>
+    <tr><th>5,15-5,35 / 5,47-5,725&nbsp;GHz</th><td>Wi-Fi 5 GHz</td><td>200&nbsp;mW solo al chiuso / 1&nbsp;W con DFS</td><td>EN&nbsp;301&nbsp;893</td></tr>
+    <tr><th>5,725-5,875&nbsp;GHz</th><td>Video FPV analogico e digitale</td><td>25&nbsp;mW e.i.r.p.</td><td>EN&nbsp;300&nbsp;440</td></tr>
+  </tbody>
+  <caption><strong>Tabella 3.1</strong> Bande e limiti per l'uso senza licenza in Europa. I valori sono quelli delle norme al 20 settembre 2026; le sottobande degli 868&nbsp;MHz hanno limiti diversi tra loro e vanno lette nella norma.</caption>
+</table>
+
+<p>Due confronti spiegano molte cose che leggerai nei forum. Negli Stati Uniti la banda dei 900&nbsp;MHz va da 902 a 928&nbsp;MHz con potenze fino a 1&nbsp;W: in Europa quella banda non esiste per gli SRD, e l'equivalente sono i 868&nbsp;MHz con 25&nbsp;mW e vincoli di duty cycle. Un modulo «915» acceso in Italia trasmette fuori banda. Sui 5,8&nbsp;GHz la FCC ammette potenze dell'ordine del watt; in Europa il limite è 25&nbsp;mW. Un trasmettitore video da 600&nbsp;mW, comunissimo nei prodotti per il mercato americano, supera il limite europeo di oltre venti volte, qualunque sia l'etichetta sulla scatola.</p>
+
+<aside class="box tlc">
+  <p>I limiti sono espressi come potenza irradiata: e.i.r.p. riferita all'antenna isotropa, e.r.p. riferita al dipolo (e.r.p. = e.i.r.p. − 2,15&nbsp;dB). Il guadagno dell'antenna conta: 25&nbsp;mW e.i.r.p. con un'antenna da 5&nbsp;dBi significano circa 8&nbsp;mW al connettore. Chi progetta un link per un drone ragiona quindi in link budget: a parità di potenza irradiata, si guadagna portata solo abbassando il bit rate e migliorando la sensibilità del ricevitore, che è esattamente ciò che fanno le modulazioni LoRa.</p>
+</aside>
+
+<h3>La direttiva RED e la marcatura CE</h3>
+
+<p>Ogni apparato radio venduto in Europa, drone e radiocomando compresi, deve rispettare la <strong>direttiva 2014/53/UE</strong>, la <abbr title="Radio Equipment Directive">RED</abbr>: uso efficiente dello spettro, compatibilità elettromagnetica, sicurezza. Il costruttore la dimostra applicando le norme armonizzate viste sopra, appone la marcatura CE e firma una dichiarazione di conformità. È una filiera distinta da quella della marcatura di classe C0-C6 del capitolo 4, che riguarda la sicurezza del volo: un drone di classe C1 ha entrambe. Chi importa un apparato da fuori Europa, anche per uso personale, ne diventa responsabile: un prodotto non conforme può essere fermato in dogana e il suo uso, oltre a interferire con altri servizi, espone a sanzioni.</p>
+
+<h2><span class="numero">3.3</span> Il link di comando</h2>
+
+<p>Il link di comando moderno è un sistema digitale a pacchetti su 2,4&nbsp;GHz o 868&nbsp;MHz. Il radiocomando campiona gli stick, li impacchetta e trasmette con <em>frequency hopping</em>: trasmettitore e ricevitore saltano su decine di canali secondo una sequenza pseudocasuale condivisa al momento del <em>binding</em>, così che un'interferenza su un canale costi un pacchetto e non il collegamento. Il ricevitore risponde con pacchetti di telemetria sullo stesso link. Il <strong>packet rate</strong>, da 50 a 1000&nbsp;Hz, fissa la latenza e, in senso opposto, la portata: a parità di potenza, pacchetti più frequenti significano meno energia per bit e sensibilità peggiore.</p>
+
+<p>Il pilota legge la salute del link con due indicatori. Il <strong>RSSI</strong> è la potenza ricevuta in dBm; la <strong>link quality</strong> è la percentuale di pacchetti arrivati integri in una finestra recente, ed è spesso più informativa perché misura ciò che conta davvero. Quando i pacchetti validi mancano per più di una soglia, il ricevitore dichiara il <strong>failsafe</strong> e il flight controller esegue il comportamento configurato: tenere l'ultimo comando per un istante, poi tornare a casa o atterrare (capitolo 7).</p>
+
+<p>Tra i sistemi aperti, <strong>ExpressLRS</strong> usa i modem LoRa e FLRC di Semtech su 2,4&nbsp;GHz e su 868&nbsp;MHz, con packet rate fino a 1000&nbsp;Hz e latenze di pochi millisecondi alle frequenze più alte; la comunità riporta portate di decine di chilometri in condizioni ideali con i soli 100&nbsp;mW ammessi. <strong>Crossfire</strong>, su 868&nbsp;MHz, lavora a 50 o 150&nbsp;Hz e ha reso popolare il protocollo seriale CRSF (sezione 3.5). I droni consumer integrati usano invece link proprietari che saltano tra 2,4 e 5,8&nbsp;GHz, e dal 2022 anche sulla banda dedicata 5,17-5,25&nbsp;GHz, scegliendo la banda meno disturbata istante per istante.</p>
+
+<aside class="box attenzione">
+  <p>La portata dichiarata nelle schede tecniche è misurata in campo aperto, senza ostacoli né interferenze, con antenne allineate e spesso in modalità FCC. Lo stesso sistema che dichiara 10&nbsp;km in modalità FCC ne dichiara 2 o 8 in modalità CE, e in un ambiente reale con alberi, case e Wi-Fi ne fa una frazione. In categoria Open, comunque, la portata che ti serve è quella in cui vedi il drone a occhio nudo: poche centinaia di metri. Il resto è margine, non obiettivo.</p>
+</aside>
+
+<h2><span class="numero">3.4</span> Il link video</h2>
+
+<p>Il video ha due filosofie. Il <strong>video analogico</strong> sui 5,8&nbsp;GHz trasmette il segnale della camera in modulazione di frequenza, senza compressione: 40 canali tra 5,6 e 5,9&nbsp;GHz, di cui la banda «Raceband» con otto canali distanziati di 37&nbsp;MHz per far volare insieme più piloti. La latenza è praticamente nulla e il degrado è graduale: più il segnale è debole, più l'immagine si riempie di neve, ma resta leggibile fino all'ultimo. Per questo il volo acrobatico e le gare lo hanno usato per anni. Il prezzo è la qualità: definizione standard, colori sbiaditi, disturbi.</p>
+
+<p>Il <strong>video digitale</strong> comprime il flusso della camera e lo trasmette a pacchetti, su 5,8&nbsp;GHz o su più bande. La qualità è quella di un video HD, con latenze tipiche tra 15 e 35&nbsp;ms a seconda del sistema, della risoluzione e della complessità della scena. In cambio compare l'<em>effetto cliff</em>: il segnale è perfetto fino a una soglia e poi si blocca o sparisce di colpo, senza la degradazione progressiva dell'analogico. I sistemi migliori attenuano il problema riducendo risoluzione e bit rate quando il link peggiora. I droni giocattolo, infine, spediscono il video su Wi-Fi verso l'app del telefono, con latenze che arrivano al secondo e portate di poche decine di metri: sufficienti per guardare, inadatte per pilotare.</p>
+
+<table>
+  <thead>
+    <tr><th>Caratteristica</th><th>Analogico 5,8&nbsp;GHz</th><th>Digitale</th><th>Wi-Fi (giocattoli)</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Latenza</th><td>Sotto il millisecondo</td><td>15-35&nbsp;ms</td><td>Fino a 1&nbsp;s</td></tr>
+    <tr><th>Qualità</th><td>Definizione standard, disturbi</td><td>HD</td><td>Variabile</td></tr>
+    <tr><th>Comportamento al limite</th><td>Degrado graduale</td><td>Effetto cliff</td><td>Blocco</td></tr>
+    <tr><th>Banda occupata</th><td>Canale FM largo</td><td>Pacchetti compressi</td><td>Wi-Fi standard</td></tr>
+    <tr><th>Uso tipico</th><td>Gare, freestyle</td><td>Consumer, FPV cinematico</td><td>Giocattoli</td></tr>
+  </tbody>
+  <caption><strong>Tabella 3.2</strong> Le tre famiglie di trasmissione video. Le latenze sono ordini di grandezza al 2026, misurate «da vetro a vetro», dalla lente della camera allo schermo.</caption>
+</table>
+
+<aside class="box tlc">
+  <p>Il comportamento «cliff» è il classico effetto soglia dei sistemi digitali: sotto un certo rapporto segnale-rumore la correzione d'errore non regge più e il tasso di errore esplode in pochi dB. L'analogico, invece, degrada con continuità con il rapporto segnale-rumore. Nei sistemi digitali il pilota deve quindi imparare a leggere gli indicatori di qualità del link invece dell'immagine, che non avvisa.</p>
+</aside>
+
+<h2><span class="numero">3.5</span> Telemetria e protocolli</h2>
+
+<p>Dentro il drone i dati viaggiano su protocolli seriali. <strong>CRSF</strong>, nato per Crossfire e adottato da ExpressLRS, trasporta comandi e telemetria su un solo UART a circa 400&nbsp;kbaud, bidirezionale; è lo standard di fatto del mondo FPV. <strong>S.Port</strong> è il protocollo di telemetria a bus di un altro grande produttore di radiocomandi, in cui il ricevitore interroga a turno i sensori collegati. Sui droni autonomi domina <strong>MAVLink</strong>, un protocollo di messaggistica leggero con centinaia di messaggi standard: ogni pacchetto porta identificativo di sistema e di componente, numero di sequenza e checksum, e trasporta telemetria, parametri, missioni a waypoint e comandi. È il linguaggio con cui i firmware ArduPilot e PX4 parlano con la <strong>stazione di controllo a terra</strong>, il software su PC o tablet, come QGroundControl o Mission Planner, con cui pianifichi le missioni e osservi il volo.</p>
+
+<p>Per il pilota della categoria Open la telemetria che conta si riduce a pochi valori, che il radiocomando o l'app mostrano in continuazione: tensione della batteria per cella, qualità del link, numero di satelliti, distanza e quota rispetto al punto di decollo. Impara a guardarli come guardi il cruscotto di un'auto.</p>
+
+<h2><span class="numero">3.6</span> Il posizionamento satellitare</h2>
+
+<p>Il ricevitore <abbr title="Global Navigation Satellite System">GNSS</abbr> di un drone moderno traccia più costellazioni insieme: GPS, Galileo, GLONASS e BeiDou. Più satelliti in vista significano geometria migliore e fix più robusto. La precisione di un ricevitore autonomo è di alcuni metri, e i ricevitori multibanda, che ascoltano due frequenze per costellazione, riducono gli errori ionosferici e accelerano il fix. Per il rilievo di precisione si passa a <strong>RTK</strong> e <strong>PPK</strong>: correzioni da una stazione base, in tempo reale o in post-elaborazione, che portano la precisione al centimetro. Al volo hobbistico non servono.</p>
+
+<p>Il GNSS è la base di tutto ciò che il drone fa da solo: tenere la posizione, tornare a casa, seguire una rotta. Ecco perché il flight controller rifiuta di armare in modalità posizione finché non ha un fix con un numero minimo di satelliti, tipicamente sei, e perché i manuali consigliano di attendere che siano dieci o più. Due fenomeni lo disturbano. Il <strong>multipath</strong>, le riflessioni su edifici e superfici metalliche, che in città degradano la posizione anche di decine di metri. E l'<strong>attività geomagnetica</strong>, misurata dall'indice Kp: con Kp pari o superiore a 4 o 5 la ionosfera disturba i segnali e il fix diventa instabile. Le app meteo per droni mostrano il Kp per questo motivo.</p>
+
+<aside class="box nota">
+  <p>Il punto di decollo registrato dal GNSS è il «punto di home» a cui il drone torna in caso di failsafe. Se decolli prima di avere un buon fix, il punto di home potrebbe essere registrato con un errore di decine di metri, o aggiornato in volo: uno dei classici incidenti del principiante. Aspetta il fix, poi decolla.</p>
+</aside>
+
+<h2><span class="numero">3.7</span> Il Remote ID visto dal lato radio</h2>
+
+<p>Il Remote ID diretto, obbligatorio sulle classi C1, C2 e C3 e in categoria Specific (capitolo 4), è un trasmettitore broadcast che usa tecnologie che hai già in tasca. Lo standard europeo <strong>EN&nbsp;4709-002</strong> di ASD-STAN prevede quattro trasporti: <em>advertising</em> Bluetooth 4 (legacy), Bluetooth 5 Long Range, <em>beacon</em> Wi-Fi e Wi-Fi <abbr title="Neighbor Awareness Networking">NAN</abbr>. Il drone deve implementarne almeno alcuni, e uno smartphone con un'app gratuita li riceve tutti senza associarsi al drone: è un annuncio, non una connessione. La portata è quella del Bluetooth e del Wi-Fi, centinaia di metri in campo aperto.</p>
+
+<p>Il messaggio, aggiornato circa una volta al secondo, contiene il numero di registrazione dell'operatore, il numero di serie del drone in formato ANSI/CTA-2063-A, la marca temporale, posizione e altezza del drone, rotta e velocità al suolo, e la posizione del pilota o, in mancanza, del punto di decollo. È una targa che parla. Dal lato del pilota comporta due obblighi pratici: inserire il numero di operatore nel drone prima del primo volo, e non spegnere o schermare il trasmettitore. Per i droni senza marcatura usati in categoria Specific esistono moduli aggiuntivi autonomi, con GNSS e batteria propri, che fanno lo stesso lavoro.</p>
+
+<aside class="box tlc">
+  <p>Il Remote ID diretto è il livello «locale» dell'identificazione; il livello «di rete», previsto dallo U-space (capitolo 6), trasmette gli stessi dati attraverso la connessione mobile a un servizio centrale. La coppia ricorda i due modi di annunciare la presenza di un dispositivo: il broadcast di prossimità e la registrazione a un server. Lo standard statunitense ASTM F3411 è simile e in parte compatibile, ma non identico nei campi.</p>
+</aside>
+
+<h2><span class="numero">3.8</span> Interferenze e coesistenza</h2>
+
+<p>La banda dei 2,4&nbsp;GHz è la più affollata dello spettro: Wi-Fi, Bluetooth, radiocomandi, video digitale, forni a microonde. In città, in un raduno di piloti o vicino a un evento con molte persone e telefoni, il rumore di fondo sale e la portata utile scende, a volte drasticamente. Il frequency hopping e la selezione adattiva dei canali mitigano ma non eliminano il problema; i link su 868&nbsp;MHz soffrono meno l'affollamento e penetrano meglio gli ostacoli, a costo di antenne più grandi e bit rate più bassi.</p>
+
+<p>Le strutture metalliche, tralicci, capannoni, ponti, gru, fanno due cose: schermano il segnale e lo riflettono, creando multipath sia sul link di comando sia sul GNSS. Volare dietro un edificio rispetto a te significa perdere la linea di vista radio prima di quella ottica. Le antenne contano: le antenne a polarizzazione circolare del video FPV tollerano meglio le riflessioni, e l'orientamento del radiocomando rispetto al drone cambia il guadagno di parecchi dB. Il consiglio pratico che discende da tutto questo è uno: vola dove vedi il drone senza ostacoli in mezzo, e tratta ogni calo della link quality come un invito a tornare indietro.</p>
+
+<p>Quando il link cade davvero, il sistema è progettato per cavarsela da solo: il failsafe attiva il ritorno automatico al punto di home, guidato dal GNSS, e il video torna appena il drone rientra a portata. La regola per il pilota è non spegnere il radiocomando e non correre: il capitolo 7 descrive la procedura passo per passo.</p>
+
+<section class="sintesi">
+  <h2>In sintesi</h2>
+  <ul>
+    <li>Tre collegamenti radio: comando (robustezza), video (banda), telemetria (di ritorno); più il GNSS in discesa e il Remote ID in salita.</li>
+    <li>In Europa i droni usano le bande per apparati a corto raggio: 100&nbsp;mW sui 2,4&nbsp;GHz, 25&nbsp;mW sui 5,8&nbsp;GHz, 25&nbsp;mW sugli 868&nbsp;MHz con duty cycle, 200&nbsp;mW sulla banda dedicata 5,17-5,25&nbsp;GHz. I 915&nbsp;MHz e i trasmettitori video da centinaia di milliwatt non sono ammessi.</li>
+    <li>Drone e radiocomando devono rispettare la direttiva RED e portare la marcatura CE, oltre alla marcatura di classe.</li>
+    <li>Il link di comando salta di frequenza, misura RSSI e link quality e attiva il failsafe quando i pacchetti mancano.</li>
+    <li>Video analogico: latenza nulla, degrado graduale, bassa qualità. Video digitale: HD, 15-35&nbsp;ms, effetto cliff.</li>
+    <li>La portata dichiarata è misurata in condizioni ideali e spesso in modalità FCC; in Open conta solo la distanza a cui vedi il drone.</li>
+    <li>GNSS multicostellazione: aspetta il fix e almeno una decina di satelliti prima di decollare; attenzione a multipath e indice Kp.</li>
+    <li>Il Remote ID trasmette via Bluetooth e Wi-Fi identità e posizione del drone e del pilota, leggibili da chiunque.</li>
+  </ul>
+</section>
+
+<h2><span class="numero">3.9</span> Fonti</h2>
+<ul class="fonti">
+  <li>ETSI EN 300 328 (2,4&nbsp;GHz), EN 300 440 (5,725-5,875&nbsp;GHz), EN 301 893 (5&nbsp;GHz RLAN), EN 300 220 (25-1000&nbsp;MHz): <a href="https://www.etsi.org/standards">etsi.org/standards</a></li>
+  <li>CEPT/ERC Recommendation 70-03, Annex 1, apparati a corto raggio non specifici: <a href="https://docdb.cept.org/download/4635">docdb.cept.org/download/4635</a></li>
+  <li>Direttiva 2014/53/UE (RED): <a href="https://eur-lex.europa.eu/eli/dir/2014/53">eur-lex.europa.eu/eli/dir/2014/53</a></li>
+  <li>Piano Nazionale di Ripartizione delle Frequenze (MIMIT), aggiornamento 2022: <a href="https://www.mimit.gov.it/it/comunicazioni/radio/pnrf-piano-nazionale-di-ripartizione-delle-frequenze">mimit.gov.it, PNRF</a></li>
+  <li>Regolamento delegato (UE) 2019/945, Allegato, requisiti del sistema di identificazione a distanza diretta: <a href="https://eur-lex.europa.eu/eli/reg_del/2019/945">eur-lex.europa.eu/eli/reg_del/2019/945</a></li>
+  <li>ASD-STAN, introduzione allo standard europeo di Remote ID EN 4709-002: <a href="https://asd-stan.org">asd-stan.org</a></li>
+  <li>Documentazione ExpressLRS (<a href="https://www.expresslrs.org">expresslrs.org</a>), MAVLink (<a href="https://mavlink.io">mavlink.io</a>), ArduPilot (<a href="https://ardupilot.org">ardupilot.org</a>), PX4 (<a href="https://docs.px4.io">docs.px4.io</a>)</li>
+  <li>IATA, viaggiare con batterie al litio: <a href="https://www.iata.org/en/youandiata/travelers/batteries/">iata.org, batteries</a></li>
+</ul>
+
+</main>
+</body>
+</html>

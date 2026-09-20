@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 820" role="img" aria-labelledby="flw-titolo" class="flw-svg">
+  <title id="flw-titolo">Posso volare qui, oggi?</title>
+  <style>
+    .flw-svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+    .flw-titolo { font-size: 32px; font-weight: 600; fill: #12354A; }
+    .flw-dom { font-size: 22px; font-weight: 600; fill: #12354A; }
+    .flw-azi { font-size: 22px; fill: #2B2D31; }
+    .flw-esi { font-size: 24px; font-weight: 600; fill: #12354A; }
+    .flw-ram { font-size: 22px; font-weight: 600; fill: #12354A; }
+    .flw-ramr { font-size: 22px; font-weight: 600; fill: #B23A3A; }
+    .flw-ramo { font-size: 22px; font-weight: 600; fill: #E0851F; }
+    .flw-ramv { font-size: 22px; font-weight: 600; fill: #3E8E63; }
+    .flw-rombo { fill: #FFFFFF; stroke: #1B4965; stroke-width: 2.5; }
+    .flw-l { fill: none; stroke-width: 3; stroke-linejoin: round; }
+    .flw-lb { stroke: #1B4965; }
+    .flw-lr { stroke: #B23A3A; }
+    .flw-lo { stroke: #E0851F; }
+    .flw-lv { stroke: #3E8E63; }
+  </style>
+  <defs>
+    <marker id="flw-fr-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#1B4965"/></marker>
+    <marker id="flw-fr-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#B23A3A"/></marker>
+    <marker id="flw-fr-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#E0851F"/></marker>
+    <marker id="flw-fr-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#3E8E63"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="820" fill="#FFFFFF"/>
+  <text class="flw-titolo" x="24" y="46">Posso volare qui, oggi?</text>
+
+  <path class="flw-rombo" d="M330,72 L620,127 L330,182 L40,127 Z"/>
+  <text class="flw-dom" x="330" y="120" text-anchor="middle">Il drone pesa 250 g o più,</text>
+  <text class="flw-dom" x="330" y="146" text-anchor="middle">oppure ha una camera?</text>
+
+  <path class="flw-l flw-lb" d="M620,127 H662" marker-end="url(#flw-fr-b)"/>
+  <text class="flw-ram" x="641" y="114" text-anchor="middle">Sì</text>
+  <rect x="670" y="76" width="310" height="102" rx="10" fill="#DCEEF8" stroke="#1B4965" stroke-width="2.5"/>
+  <text class="flw-azi" x="684" y="110">Registrati come operatore</text>
+  <text class="flw-azi" x="684" y="136">su d-flight e applica il</text>
+  <text class="flw-azi" x="684" y="162">numero sul drone</text>
+
+  <path class="flw-l flw-lb" d="M825,178 V219 H330"/>
+  <circle cx="330" cy="219" r="5.5" fill="#1B4965"/>
+  <path class="flw-l flw-lb" d="M330,182 V231" marker-end="url(#flw-fr-b)"/>
+  <text class="flw-ram" x="346" y="204">No: giocattolo senza camera</text>
+
+  <path class="flw-rombo" d="M330,235 L620,290 L330,345 L40,290 Z"/>
+  <text class="flw-dom" x="330" y="283" text-anchor="middle">Hai l'attestato A1/A3 valido (e il</text>
+  <text class="flw-dom" x="330" y="309" text-anchor="middle">certificato A2 se voli in A2)?</text>
+
+  <path class="flw-l flw-lr" d="M620,290 H662" marker-end="url(#flw-fr-r)"/>
+  <text class="flw-ram" x="641" y="277" text-anchor="middle">No</text>
+  <rect x="670" y="249" width="310" height="82" rx="24" fill="#F6E2E2" stroke="#B23A3A" stroke-width="2.5"/>
+  <text class="flw-esi" x="684" y="284">Fermati:</text>
+  <text class="flw-esi" x="684" y="314">prima la formazione</text>
+
+  <path class="flw-l flw-lb" d="M330,345 V392" marker-end="url(#flw-fr-b)"/>
+  <text class="flw-ram" x="346" y="378">Sì</text>
+
+  <path class="flw-rombo" d="M330,396 L620,451 L330,506 L40,451 Z"/>
+  <text class="flw-dom" x="330" y="444" text-anchor="middle">La mappa d-flight mostra</text>
+  <text class="flw-dom" x="330" y="470" text-anchor="middle">la zona libera fino a 120 m?</text>
+
+  <path class="flw-l flw-lr" d="M620,451 H645 V390 H662" marker-end="url(#flw-fr-r)"/>
+  <path class="flw-l flw-lo" d="M645,451 V512 H662" marker-end="url(#flw-fr-o)"/>
+  <text class="flw-ramr" x="670" y="355">Rossa</text>
+  <rect x="670" y="363" width="310" height="54" rx="24" fill="#F6E2E2" stroke="#B23A3A" stroke-width="2.5"/>
+  <text class="flw-esi" x="684" y="398">Non volare</text>
+  <text class="flw-ramo" x="670" y="441">Gialla o con vincoli</text>
+  <rect x="670" y="449" width="310" height="126" rx="10" fill="#FCEEDC" stroke="#E0851F" stroke-width="2.5"/>
+  <text class="flw-azi" x="684" y="481">Rispetta il limite di</text>
+  <text class="flw-azi" x="684" y="507">quota indicato o chiedi</text>
+  <text class="flw-azi" x="684" y="533">l'autorizzazione all'ente</text>
+  <text class="flw-azi" x="684" y="559">indicato</text>
+
+  <path class="flw-l flw-lb" d="M330,506 V551" marker-end="url(#flw-fr-b)"/>
+  <text class="flw-ramv" x="346" y="532">Verde</text>
+
+  <path class="flw-rombo" d="M330,555 L620,635 L330,715 L40,635 Z"/>
+  <text class="flw-dom" x="330" y="609" text-anchor="middle">Meteo, vento e batterie</text>
+  <text class="flw-dom" x="330" y="635" text-anchor="middle">a posto? Assicurazione attiva?</text>
+  <text class="flw-dom" x="330" y="661" text-anchor="middle">Nessun assembramento sotto?</text>
+
+  <path class="flw-l flw-lo" d="M620,635 H662" marker-end="url(#flw-fr-o)"/>
+  <text class="flw-ram" x="641" y="622" text-anchor="middle">No</text>
+  <rect x="670" y="608" width="310" height="54" rx="24" fill="#FCEEDC" stroke="#E0851F" stroke-width="2.5"/>
+  <text class="flw-esi" x="684" y="643">Rinvia</text>
+
+  <path class="flw-l flw-lv" d="M330,715 V744" marker-end="url(#flw-fr-v)"/>
+  <text class="flw-ram" x="346" y="738">Sì</text>
+  <rect x="40" y="748" width="940" height="52" rx="24" fill="#E3F2E9" stroke="#3E8E63" stroke-width="2.5"/>
+  <text class="flw-esi" x="510" y="781" text-anchor="middle">Vola: sotto 120 m, sempre in vista, lontano da persone non coinvolte</text>
+</svg>

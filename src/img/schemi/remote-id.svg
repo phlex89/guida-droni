@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 506" role="img" aria-labelledby="rid-titolo">
+  <title id="rid-titolo">Remote ID: il drone in volo trasmette via radio i dati di identificazione, che uno smartphone con un'app può ricevere</title>
+  <style>
+    .rid-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+    .rid-h { font-size: 32px; font-weight: 600; fill: #1B4965; }
+    .rid-lab { font-size: 24px; font-weight: 600; fill: #2B2D31; }
+    .rid-hdr { font-size: 24px; font-weight: 600; fill: #FFFFFF; }
+    .rid-row { font-size: 22px; fill: #2B2D31; }
+    .rid-cap { font-size: 22px; fill: #5C6370; }
+    .rid-arm { fill: none; stroke: #1B4965; stroke-width: 10; stroke-linecap: round; }
+    .rid-prop { fill: none; stroke: #5FA8D3; stroke-width: 2.5; }
+    .rid-blade { fill: #DCEEF8; stroke: #5FA8D3; stroke-width: 2; }
+    .rid-body { fill: #DCEEF8; stroke: #1B4965; stroke-width: 2.5; }
+    .rid-wave { fill: none; stroke: #5FA8D3; stroke-width: 3; }
+  </style>
+
+  <g class="rid-w">
+    <rect x="0" y="0" width="1000" height="506" fill="#FFFFFF"/>
+    <text class="rid-h" x="500" y="46" text-anchor="middle">Remote ID: la targa radio del drone</text>
+    <line class="rid-arm" x1="170" y1="230" x2="110" y2="170"/>
+    <line class="rid-arm" x1="170" y1="230" x2="230" y2="170"/>
+    <line class="rid-arm" x1="170" y1="230" x2="110" y2="290"/>
+    <line class="rid-arm" x1="170" y1="230" x2="230" y2="290"/>
+    <circle class="rid-prop" cx="110" cy="170" r="34"/>
+    <ellipse class="rid-blade" cx="110" cy="170" rx="30" ry="7" transform="rotate(-25 110 170)"/>
+    <circle cx="110" cy="170" r="6" fill="#1B4965"/>
+    <circle class="rid-prop" cx="230" cy="170" r="34"/>
+    <ellipse class="rid-blade" cx="230" cy="170" rx="30" ry="7" transform="rotate(25 230 170)"/>
+    <circle cx="230" cy="170" r="6" fill="#1B4965"/>
+    <circle class="rid-prop" cx="110" cy="290" r="34"/>
+    <ellipse class="rid-blade" cx="110" cy="290" rx="30" ry="7" transform="rotate(25 110 290)"/>
+    <circle cx="110" cy="290" r="6" fill="#1B4965"/>
+    <circle class="rid-prop" cx="230" cy="290" r="34"/>
+    <ellipse class="rid-blade" cx="230" cy="290" rx="30" ry="7" transform="rotate(-25 230 290)"/>
+    <circle cx="230" cy="290" r="6" fill="#1B4965"/>
+    <rect class="rid-body" x="136" y="196" width="68" height="68" rx="14"/>
+    <circle cx="170" cy="230" r="13" fill="#5FA8D3"/>
+    <text class="rid-lab" x="170" y="352" text-anchor="middle">Drone in volo</text>
+    <path class="rid-wave" d="M295.0 176.4 A 70 70 0 0 1 295.0 283.6"/>
+    <path class="rid-wave" d="M317.5 149.6 A 105 105 0 0 1 317.5 310.4"/>
+    <path class="rid-wave" d="M340.0 122.8 A 140 140 0 0 1 340.0 337.2"/>
+    <path class="rid-wave" d="M362.5 95.9 A 175 175 0 0 1 362.5 364.1"/>
+    <rect x="456" y="80" width="512" height="358" rx="28" fill="#FFFFFF" stroke="#1B4965" stroke-width="3"/>
+    <rect x="672" y="96" width="80" height="8" rx="4" fill="#D9DEE5"/>
+    <rect x="474" y="118" width="476" height="288" rx="10" fill="#F2F4F7"/>
+    <path d="M474 128 a10 10 0 0 1 10 -10 h456 a10 10 0 0 1 10 10 v36 h-476 z" fill="#1B4965"/>
+    <text class="rid-hdr" x="494" y="150" text-anchor="start">Remote ID ricevuto</text>
+    <rect x="486" y="174" width="452" height="28" rx="6" fill="#FFFFFF" stroke="#D9DEE5" stroke-width="1.5"/>
+    <circle cx="504" cy="188" r="4" fill="#5FA8D3"/>
+    <text class="rid-row" x="520" y="195" text-anchor="start">Numero di registrazione dell'operatore</text>
+    <rect x="486" y="206" width="452" height="28" rx="6" fill="#FFFFFF" stroke="#D9DEE5" stroke-width="1.5"/>
+    <circle cx="504" cy="220" r="4" fill="#5FA8D3"/>
+    <text class="rid-row" x="520" y="227" text-anchor="start">Numero di serie del drone</text>
+    <rect x="486" y="238" width="452" height="28" rx="6" fill="#FFFFFF" stroke="#D9DEE5" stroke-width="1.5"/>
+    <circle cx="504" cy="252" r="4" fill="#5FA8D3"/>
+    <text class="rid-row" x="520" y="259" text-anchor="start">Posizione e quota</text>
+    <rect x="486" y="270" width="452" height="28" rx="6" fill="#FFFFFF" stroke="#D9DEE5" stroke-width="1.5"/>
+    <circle cx="504" cy="284" r="4" fill="#5FA8D3"/>
+    <text class="rid-row" x="520" y="291" text-anchor="start">Velocità e rotta</text>
+    <rect x="486" y="302" width="452" height="28" rx="6" fill="#FFFFFF" stroke="#D9DEE5" stroke-width="1.5"/>
+    <circle cx="504" cy="316" r="4" fill="#5FA8D3"/>
+    <text class="rid-row" x="520" y="323" text-anchor="start">Posizione del pilota (o punto di decollo)</text>
+    <rect x="486" y="334" width="452" height="28" rx="6" fill="#FFFFFF" stroke="#D9DEE5" stroke-width="1.5"/>
+    <circle cx="504" cy="348" r="4" fill="#5FA8D3"/>
+    <text class="rid-row" x="520" y="355" text-anchor="start">Marca temporale</text>
+    <rect x="486" y="366" width="452" height="28" rx="6" fill="#FFFFFF" stroke="#D9DEE5" stroke-width="1.5"/>
+    <circle cx="504" cy="380" r="4" fill="#5FA8D3"/>
+    <text class="rid-row" x="520" y="387" text-anchor="start">Stato di emergenza</text>
+    <rect x="672" y="418" width="80" height="6" rx="3" fill="#1B4965"/>
+    <text class="rid-cap" x="640" y="478" text-anchor="middle">Ricevibile da chiunque con un'app, via Bluetooth o Wi-Fi</text>
+  </g>
+</svg>

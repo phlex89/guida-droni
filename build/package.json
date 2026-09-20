@@ -1,0 +1,19 @@
+{
+  "name": "guida-droni-build",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Toolchain di build per la guida ai droni: PDF per capitolo e pagina HTML unica.",
+  "scripts": {
+    "pdf": "node build.mjs pdf",
+    "html": "node build.mjs html",
+    "preview": "node build.mjs preview"
+  },
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.0.0",
+    "@fontsource/literata": "^5.3.0",
+    "@fontsource/source-sans-3": "^5.0.0",
+    "@fontsource/source-serif-4": "^5.0.0",
+    "puppeteer-core": "^23.0.0"
+  }
+}

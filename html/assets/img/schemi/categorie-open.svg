@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 790" role="img" aria-labelledby="cat-titolo" class="cat-svg">
+  <title id="cat-titolo">In quale sottocategoria Open voli?</title>
+  <style>
+    .cat-svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+    .cat-titolo { font-size: 32px; font-weight: 600; fill: #12354A; }
+    .cat-nodo { font-size: 26px; font-weight: 600; fill: #12354A; }
+    .cat-dom { font-size: 24px; font-weight: 600; fill: #12354A; }
+    .cat-head { font-size: 22px; font-weight: 600; fill: #FFFFFF; }
+    .cat-lab { font-size: 22px; fill: #2B2D31; }
+    .cat-chip { font-size: 24px; font-weight: 700; fill: #FFFFFF; }
+    .cat-esito { font-size: 22px; fill: #2B2D31; }
+    .cat-tenue { font-size: 22px; fill: #5C6370; }
+    .cat-box { fill: #FFFFFF; stroke: #D9DEE5; stroke-width: 2.5; }
+    .cat-boxb { fill: #DCEEF8; stroke: #1B4965; stroke-width: 2.5; }
+    .cat-boxq { fill: #FFFFFF; stroke: #1B4965; stroke-width: 2.5; }
+    .cat-l { fill: none; stroke-width: 3; stroke-linejoin: round; }
+    .cat-lb { stroke: #1B4965; }
+    .cat-lg { stroke: #3E8E63; }
+    .cat-lo { stroke: #E0851F; }
+    .cat-lr { stroke: #B23A3A; }
+  </style>
+  <defs>
+    <marker id="cat-fr-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#1B4965"/></marker>
+    <marker id="cat-fr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#3E8E63"/></marker>
+    <marker id="cat-fr-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#E0851F"/></marker>
+    <marker id="cat-fr-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#B23A3A"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="790" fill="#FFFFFF"/>
+  <text class="cat-titolo" x="24" y="46">In quale sottocategoria Open voli?</text>
+
+  <rect class="cat-boxb" x="20" y="300" width="230" height="64" rx="10"/>
+  <text class="cat-nodo" x="135" y="341" text-anchor="middle">Il tuo drone</text>
+  <path class="cat-l cat-lb" d="M135,364 V394" marker-end="url(#cat-fr-b)"/>
+  <rect class="cat-boxq" x="20" y="402" width="230" height="88" rx="10"/>
+  <text class="cat-dom" x="135" y="437" text-anchor="middle">Ha la marcatura</text>
+  <text class="cat-dom" x="135" y="467" text-anchor="middle">di classe?</text>
+
+  <path class="cat-l cat-lb" d="M250,446 H266 V113 H274" marker-end="url(#cat-fr-b)"/>
+  <path class="cat-l cat-lb" d="M250,446 H266 V534 H274" marker-end="url(#cat-fr-b)"/>
+
+  <rect x="280" y="92" width="280" height="42" rx="8" fill="#1B4965"/>
+  <text class="cat-head" x="296" y="120">Sì, ha la marcatura</text>
+
+  <rect class="cat-box" x="280" y="144" width="280" height="58" rx="8"/>
+  <rect x="294" y="157" width="54" height="32" rx="6" fill="#3E8E63"/>
+  <text class="cat-chip" x="321" y="180" text-anchor="middle">C0</text>
+  <text class="cat-lab" x="362" y="181">sotto 250 g</text>
+
+  <rect class="cat-box" x="280" y="212" width="280" height="58" rx="8"/>
+  <rect x="294" y="225" width="54" height="32" rx="6" fill="#5FA8D3"/>
+  <text class="cat-chip" x="321" y="248" text-anchor="middle">C1</text>
+  <text class="cat-lab" x="362" y="249">sotto 900 g</text>
+
+  <rect class="cat-box" x="280" y="280" width="280" height="58" rx="8"/>
+  <rect x="294" y="293" width="54" height="32" rx="6" fill="#1B4965"/>
+  <text class="cat-chip" x="321" y="316" text-anchor="middle">C2</text>
+  <text class="cat-lab" x="362" y="317">sotto 4 kg</text>
+
+  <rect class="cat-box" x="280" y="348" width="280" height="58" rx="8"/>
+  <rect x="294" y="361" width="54" height="32" rx="6" fill="#6B5B95"/>
+  <text class="cat-chip" x="321" y="384" text-anchor="middle">C3</text>
+  <text class="cat-lab" x="362" y="385">sotto 25 kg</text>
+
+  <rect class="cat-box" x="280" y="416" width="280" height="72" rx="8"/>
+  <rect x="294" y="436" width="54" height="32" rx="6" fill="#7A7F87"/>
+  <text class="cat-chip" x="321" y="459" text-anchor="middle">C4</text>
+  <text class="cat-lab" x="362" y="445">sotto 25 kg,</text>
+  <text class="cat-lab" x="362" y="471">senza automatismi</text>
+
+  <rect x="280" y="502" width="280" height="64" rx="8" fill="#7A7F87"/>
+  <text class="cat-head" x="296" y="530">No: senza marcatura</text>
+  <text class="cat-head" x="296" y="556">o autocostruito</text>
+
+  <rect class="cat-box" x="280" y="576" width="280" height="58" rx="8"/>
+  <text class="cat-lab" x="296" y="613">sotto 250 g</text>
+
+  <rect class="cat-box" x="280" y="644" width="280" height="58" rx="8"/>
+  <text class="cat-lab" x="296" y="681">250 g o più</text>
+
+  <path class="cat-l cat-lg" d="M560,173 H582 V150 H664" marker-end="url(#cat-fr-g)"/>
+  <path class="cat-l cat-lg" d="M560,241 H592 V190 H664" marker-end="url(#cat-fr-g)"/>
+  <path class="cat-l cat-lo" d="M560,309 H628 V400 H664" marker-end="url(#cat-fr-o)"/>
+  <path class="cat-l cat-lr" d="M560,377 H616 V580 H664" marker-end="url(#cat-fr-r)"/>
+  <path class="cat-l cat-lr" d="M560,452 H604 V620 H664" marker-end="url(#cat-fr-r)"/>
+  <path class="cat-l cat-lg" d="M560,605 H572 V250 H664" marker-end="url(#cat-fr-g)"/>
+  <path class="cat-l cat-lr" d="M560,673 H640 V660 H664" marker-end="url(#cat-fr-r)"/>
+
+  <rect x="668" y="92" width="312" height="196" rx="12" fill="#E3F2E9" stroke="#3E8E63" stroke-width="2.5"/>
+  <rect x="686" y="106" width="54" height="34" rx="6" fill="#3E8E63"/>
+  <text class="cat-chip" x="713" y="131" text-anchor="middle">A1</text>
+  <text class="cat-esito" x="686" y="176">Vicino alle persone.</text>
+  <text class="cat-esito" x="686" y="202">Con C1 mai sorvolare</text>
+  <text class="cat-esito" x="686" y="228">intenzionalmente persone</text>
+  <text class="cat-esito" x="686" y="254">non coinvolte; mai</text>
+  <text class="cat-esito" x="686" y="280">sorvolare assembramenti</text>
+
+  <rect x="668" y="299" width="312" height="222" rx="12" fill="#FCEEDC" stroke="#E0851F" stroke-width="2.5"/>
+  <rect x="686" y="313" width="54" height="34" rx="6" fill="#E0851F"/>
+  <text class="cat-chip" x="713" y="338" text-anchor="middle">A2</text>
+  <text class="cat-esito" x="686" y="383">Almeno 30 m dalle</text>
+  <text class="cat-esito" x="686" y="409">persone non coinvolte</text>
+  <text class="cat-esito" x="686" y="435">(5 m in modalità a bassa</text>
+  <text class="cat-esito" x="686" y="461">velocità). Serve il</text>
+  <text class="cat-esito" x="686" y="487">certificato A2</text>
+  <text class="cat-tenue" x="686" y="513">Con C2 anche in A3.</text>
+
+  <rect x="668" y="532" width="312" height="170" rx="12" fill="#F6E2E2" stroke="#B23A3A" stroke-width="2.5"/>
+  <rect x="686" y="546" width="54" height="34" rx="6" fill="#B23A3A"/>
+  <text class="cat-chip" x="713" y="571" text-anchor="middle">A3</text>
+  <text class="cat-esito" x="686" y="616">Lontano dalle persone.</text>
+  <text class="cat-esito" x="686" y="642">Almeno 150 m da aree</text>
+  <text class="cat-esito" x="686" y="668">residenziali, commerciali,</text>
+  <text class="cat-esito" x="686" y="694">industriali o ricreative</text>
+
+  <text class="cat-tenue" x="24" y="738">In tutti i casi: massimo 120 m dal suolo, sempre in vista (VLOS),</text>
+  <text class="cat-tenue" x="24" y="766">operatore registrato, attestato A1/A3 (salvo C0 senza camera).</text>
+</svg>

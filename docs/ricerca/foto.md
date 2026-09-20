@@ -1,0 +1,36 @@
+# Ricerca fotografie Wikimedia Commons — Guida introduttiva sui droni
+
+Data ricerca: 20 settembre 2026.
+
+Tutte le fotografie sono state reperite tramite l'API di Wikimedia Commons (`action=query`, `generator=search`), verificando in ogni caso i campi `LicenseShortName`/`License`/`UsageTerms` dei metadati estesi (`extmetadata`) prima del download. Sono state accettate solo licenze CC0, Pubblico dominio, CC BY (qualsiasi versione) e CC BY-SA (qualsiasi versione). Le immagini sono salvate in `src/img/foto/` con dimensione massima 1800 px sul lato lungo (ridimensionate con `sips` quando necessario); i crediti strutturati sono in `src/img/foto/crediti.json`.
+
+Due immagini (soggetti 7 e 10) sono state ritagliate rispetto all'originale per isolare il soggetto richiesto: il ritaglio è consentito dalla licenza CC BY-SA (opera derivata), a condizione di mantenere l'attribuzione, riportata nella didascalia.
+
+## Tabella foto
+
+| # | File | Soggetto | Titolo originale | Autore | Licenza | Dimensioni | Pagina Commons |
+|---|------|----------|-------------------|--------|---------|------------|----------------|
+| 1 | `01-quadricottero-consumer-in-volo.jpg` | Quadricottero consumer in volo, sfondo neutro/cielo | Quadcopter camera drone in flight.jpg | Josh Sorenson | CC0 | 1800×1200 | [link](https://commons.wikimedia.org/wiki/File:Quadcopter_camera_drone_in_flight.jpg) |
+| 2 | `02-drone-ala-fissa-decollo.jpg` | Drone ad ala fissa (mapping/professionale) in volo o al decollo | USGS Team Flies Drones for Oregon BLM Forestry Research (14778619794).jpg | Bureau of Land Management Oregon and Washington | Pubblico dominio | 1800×1145 | [link](https://commons.wikimedia.org/wiki/File:USGS_Team_Flies_Drones_for_Oregon_BLM_Forestry_Research_(14778619794).jpg) |
+| 3 | `03-quadricottero-fpv-racing.jpg` | Quadricottero FPV freestyle/racing, telaio in carbonio e camera FPV | Racing Drone.jpg | Commanderbryce | CC BY-SA 4.0 | 1800×1192 | [link](https://commons.wikimedia.org/wiki/File:Racing_Drone.jpg) |
+| 4 | `04-radiocomando-in-mano.jpg` | Radiocomando per droni tenuto in mano | Person controls a drone with a remote in an outdoor setting undefined.jpg | Shixart1985 | CC BY 2.0 | 1350×1800 | [link](https://commons.wikimedia.org/wiki/File:Person_controls_a_drone_with_a_remote_in_an_outdoor_setting_undefined.jpg) |
+| 5 | `05-persona-occhiali-fpv.jpg` | Persona con occhiali FPV indossati | Fpv Pilot.jpg | Mr.Oizo FPV | CC BY-SA 4.0 | 1198×1800 | [link](https://commons.wikimedia.org/wiki/File:Fpv_Pilot.jpg) |
+| 6 | `06-batteria-lipo.jpg` | Pacco batteria LiPo con connettori ed etichetta leggibile | AGAC5200 50C 2S2P.jpg | RC Lipo battery | CC BY-SA 3.0 | 1800×1200 | [link](https://commons.wikimedia.org/wiki/File:AGAC5200_50C_2S2P.jpg) |
+| 7 | `07-flight-controller-board.jpg` | Scheda flight controller/ESC in primo piano | Quadcopter Bottom Removed.jpg (ritagliata) | Ryan Decker | CC BY-SA 3.0 | 1800×1440 | [link](https://commons.wikimedia.org/wiki/File:Quadcopter_Bottom_Removed.jpg) |
+| 8 | `08-motore-brushless-elica.jpg` | Motore brushless con elica montata, primo piano | Propeller of a Quadcopter - Top view.JPG | Ali.yusuf7 | CC BY-SA 4.0 | 1800×1350 | [link](https://commons.wikimedia.org/wiki/File:Propeller_of_a_Quadcopter_-_Top_view.JPG) |
+| 9 | `09-cartello-divieto-drone.jpg` | Cartello/segnale di divieto di volo per droni (no drone zone) | No Drone Zone (32364808291).jpg | James McNellis | CC BY 2.0 | 1800×1125 | [link](https://commons.wikimedia.org/wiki/File:No_Drone_Zone_(32364808291).jpg) |
+| 10 | `10-esacottero-professionale.jpg` | Drone multirotore professionale grande (esacottero) con payload | Tarot, AERO 2025, Friedrichshafen (P1046556).jpg (ritagliata) | Matti Blume | CC BY-SA 4.0 | 1488×1800 | [link](https://commons.wikimedia.org/wiki/File:Tarot,_AERO_2025,_Friedrichshafen_(P1046556).jpg) |
+| 11 | `11-torre-controllo-aeroporto.jpg` | Torre di controllo di un aeroporto vista da terra | Jandakot Airport Air Traffic Control Tower, August 2023 01.jpg | Calistemon | CC BY-SA 4.0 | 1350×1800 | [link](https://commons.wikimedia.org/wiki/File:Jandakot_Airport_Air_Traffic_Control_Tower,_August_2023_01.jpg) |
+| 12 | `12-pilota-campagna-aperta.jpg` | Pilota che fa volare un drone in campagna aperta, drone visibile nel cielo (volo a vista) | USGS Team Flies Drones for Oregon BLM Forestry Research (14594340998).jpg | Bureau of Land Management Oregon and Washington | Pubblico dominio | 1800×1261 | [link](https://commons.wikimedia.org/wiki/File:USGS_Team_Flies_Drones_for_Oregon_BLM_Forestry_Research_(14594340998).jpg) |
+| 13 | `13-drone-agricoltura.jpg` | Drone usato in agricoltura (spargimento su coltivazione) | IRRI BBM rice drone demo 2.jpg | Christopher Hedreyd / Philippine Information Agency | Pubblico dominio | 1800×1200 | [link](https://commons.wikimedia.org/wiki/File:IRRI_BBM_rice_drone_demo_2.jpg) |
+| 14 | `14-copertina-paesaggio-dallalto.jpg` | Paesaggio ripreso dall'alto da un drone (copertina) | Burnham Overy Staithe aerial image - Flickr - John D Fielding.jpg | John Fielding | CC BY 2.0 | 1800×1201 | [link](https://commons.wikimedia.org/wiki/File:Burnham_Overy_Staithe_aerial_image_-_Flickr_-_John_D_Fielding.jpg) |
+
+## Note su qualità e scelte
+
+- **Soggetto 2** (ala fissa): non è stata trovata nessuna foto di un drone ad ala fissa *in volo* a media/alta quota con licenza libera; è stata scelta una foto del lancio a mano (decollo), che rientra comunque nella richiesta ("in volo o al decollo").
+- **Soggetto 7** (flight controller/ESC): non esistono su Commons molte foto ravvicinate e pulite di sole schede flight controller/ESC con licenza libera. È stata usata una foto di un quadricottero (Parrot AR.Drone) con il guscio inferiore rimosso, ritagliata per mettere in primo piano la scheda elettronica centrale.
+- **Soggetto 10** (esacottero/ottocottero professionale): le foto di grandi multirotori professionali trovate mostravano quasi sempre loghi commerciali molto vistosi sullo sfondo (stand fieristici). È stata scelta una foto di un esacottero Tarot a una fiera aeronautica (AERO 2025), ritagliata per escludere il pannello con il logo dell'ente di ricerca DLR visibile nell'originale; nel fotogramma restano solo il drone e il payload (contenitore bianco sotto la fusoliera).
+- **Soggetto 12** (pilota in campagna aperta): la foto scelta ritrae il lancio/volo di un drone ad ala fissa; è stata preferita alle alternative disponibili perché mostra chiaramente sia il pilota sia il velivolo in cielo in un contesto di campagna aperta con cielo sereno.
+- Nessun soggetto tra i 14 richiesti è stato scartato per assenza totale di risultati: per tutti è stata trovata almeno una foto con licenza libera accettabile.
+- Tutte le foto rispettano il vincolo di risoluzione minima (1600 px sul lato lungo) nell'originale; dove l'originale superava 1800 px è stato ridimensionato con `sips --resampleWidth`/`--resampleHeight`.
+- Non sono stati riscontrati volti di minori riconoscibili nelle foto scelte. Alcune foto scartate durante la ricerca sono state escluse proprio per la presenza di loghi commerciali dominanti (es. sponsor su un multirotor da corsa, adesivi di marca su adattatori USB) o di soggetti non pertinenti.

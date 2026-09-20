@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 740" role="img" aria-labelledby="anq-titolo">
+  <title id="anq-titolo">Anatomia di un quadricottero visto dall'alto: eliche, motori, ESC, bracci, piastra centrale, flight controller, modulo GNSS, ricevitore, batteria, camera e LED</title>
+  <style>
+    .anq-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+    .anq-h { font-size: 32px; font-weight: 600; fill: #1B4965; }
+    .anq-lab { font-size: 24px; font-weight: 600; fill: #2B2D31; }
+    .anq-rot { font-size: 22px; fill: #5C6370; }
+    .anq-front { font-size: 24px; font-weight: 600; fill: #1B4965; }
+    .anq-lead { fill: none; stroke: #5C6370; stroke-width: 1.5; }
+    .anq-dot { fill: #5C6370; }
+    .anq-arm { fill: none; stroke: #1B4965; stroke-width: 11; stroke-linecap: round; }
+    .anq-disc { fill: none; stroke: #5FA8D3; stroke-width: 2.5; }
+    .anq-blade { fill: #DCEEF8; stroke: #5FA8D3; stroke-width: 2; }
+    .anq-motor { fill: #F2F4F7; stroke: #1B4965; stroke-width: 2.5; }
+    .anq-spin { fill: none; stroke: #E0851F; stroke-width: 3; }
+    .anq-plate { fill: #F2F4F7; stroke: #1B4965; stroke-width: 2.5; }
+    .anq-esc { fill: #FCEEDC; stroke: #E0851F; stroke-width: 2.5; }
+    .anq-gnss { fill: #E3F2E9; stroke: #3E8E63; stroke-width: 2.5; }
+    .anq-fc { fill: #ECE8F4; stroke: #6B5B95; stroke-width: 2.5; }
+    .anq-rx { fill: #DCEEF8; stroke: #1B4965; stroke-width: 2.5; }
+    .anq-ant { fill: none; stroke: #1B4965; stroke-width: 2.5; stroke-linecap: round; }
+    .anq-batt { fill: none; stroke: #5C6370; stroke-width: 2.5; stroke-dasharray: 9 6; }
+    .anq-cam { fill: #FCEEDC; stroke: #E0851F; stroke-width: 2.5; }
+    .anq-dir { fill: none; stroke: #1B4965; stroke-width: 3; stroke-linecap: round; }
+  </style>
+  <defs>
+    <marker id="anq-ar-ora" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#E0851F"/>
+    </marker>
+    <marker id="anq-ar-blu" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#1B4965"/>
+    </marker>
+  </defs>
+
+  <g class="anq-w">
+    <rect x="0" y="0" width="1000" height="740" fill="#FFFFFF"/>
+    <text class="anq-h" x="500" y="46" text-anchor="middle">Anatomia di un quadricottero</text>
+
+    <text class="anq-front" x="500" y="98" text-anchor="middle">Avanti</text>
+    <line class="anq-dir" x1="500" y1="142" x2="500" y2="112" marker-end="url(#anq-ar-blu)"/>
+
+    <!-- bracci -->
+    <line class="anq-arm" x1="500" y1="420" x2="300" y2="220"/>
+    <line class="anq-arm" x1="500" y1="420" x2="700" y2="220"/>
+    <line class="anq-arm" x1="500" y1="420" x2="300" y2="620"/>
+    <line class="anq-arm" x1="500" y1="420" x2="700" y2="620"/>
+
+    <!-- ESC sui bracci -->
+    <rect class="anq-esc" x="382" y="309" width="36" height="22" rx="5" transform="rotate(45 400 320)"/>
+    <rect class="anq-esc" x="582" y="309" width="36" height="22" rx="5" transform="rotate(-45 600 320)"/>
+    <rect class="anq-esc" x="382" y="509" width="36" height="22" rx="5" transform="rotate(-45 400 520)"/>
+    <rect class="anq-esc" x="582" y="509" width="36" height="22" rx="5" transform="rotate(45 600 520)"/>
+
+    <!-- LED posteriori -->
+    <circle cx="365" cy="555" r="9" fill="#B23A3A"/>
+    <circle cx="635" cy="555" r="9" fill="#B23A3A"/>
+
+    <!-- eliche -->
+    <g>
+      <circle class="anq-disc" cx="300" cy="220" r="58"/>
+      <ellipse class="anq-blade" cx="300" cy="220" rx="48" ry="7" transform="rotate(-30 300 220)"/>
+      <circle class="anq-motor" cx="300" cy="220" r="18"/>
+      <path class="anq-spin" d="M282 251.2 A 36 36 0 1 1 318 251.2" marker-end="url(#anq-ar-ora)"/>
+    </g>
+    <g>
+      <circle class="anq-disc" cx="700" cy="220" r="58"/>
+      <ellipse class="anq-blade" cx="700" cy="220" rx="48" ry="7" transform="rotate(30 700 220)"/>
+      <circle class="anq-motor" cx="700" cy="220" r="18"/>
+      <path class="anq-spin" d="M718 251.2 A 36 36 0 1 0 682 251.2" marker-end="url(#anq-ar-ora)"/>
+    </g>
+    <g>
+      <circle class="anq-disc" cx="300" cy="620" r="58"/>
+      <ellipse class="anq-blade" cx="300" cy="620" rx="48" ry="7" transform="rotate(30 300 620)"/>
+      <circle class="anq-motor" cx="300" cy="620" r="18"/>
+      <path class="anq-spin" d="M318 651.2 A 36 36 0 1 0 282 651.2" marker-end="url(#anq-ar-ora)"/>
+    </g>
+    <g>
+      <circle class="anq-disc" cx="700" cy="620" r="58"/>
+      <ellipse class="anq-blade" cx="700" cy="620" rx="48" ry="7" transform="rotate(-30 700 620)"/>
+      <circle class="anq-motor" cx="700" cy="620" r="18"/>
+      <path class="anq-spin" d="M682 651.2 A 36 36 0 1 1 718 651.2" marker-end="url(#anq-ar-ora)"/>
+    </g>
+
+    <!-- corpo -->
+    <rect class="anq-plate" x="424" y="340" width="152" height="160" rx="16"/>
+    <rect class="anq-cam" x="462" y="334" width="76" height="12" rx="6"/>
+    <rect class="anq-cam" x="474" y="300" width="52" height="38" rx="8"/>
+    <circle cx="500" cy="318" r="11" fill="#E0851F"/>
+    <rect class="anq-gnss" x="440" y="352" width="120" height="38" rx="8"/>
+    <rect x="528" y="358" width="24" height="24" rx="4" fill="#3E8E63"/>
+    <rect class="anq-fc" x="440" y="400" width="120" height="52" rx="8"/>
+    <rect x="520" y="413" width="26" height="26" rx="4" fill="#6B5B95"/>
+    <rect class="anq-batt" x="440" y="462" width="120" height="32" rx="8"/>
+    <rect class="anq-rx" x="452" y="508" width="96" height="34" rx="8"/>
+    <line class="anq-ant" x1="462" y1="542" x2="430" y2="592"/>
+    <line class="anq-ant" x1="538" y1="542" x2="570" y2="592"/>
+
+    <!-- etichette: colonna sinistra -->
+    <text class="anq-lab" x="234" y="140" text-anchor="end">Elica</text>
+    <path class="anq-lead" d="M242 144 L276 178"/>
+    <circle class="anq-dot" cx="278" cy="180" r="3"/>
+
+    <text class="anq-rot" x="232" y="226" text-anchor="end">oraria</text>
+
+    <text class="anq-lab" x="234" y="285" text-anchor="end">Braccio</text>
+    <path class="anq-lead" d="M242 285 L364 287"/>
+    <circle class="anq-dot" cx="368" cy="288" r="3"/>
+
+    <text class="anq-lab" x="234" y="396" text-anchor="end">Piastra centrale</text>
+    <text class="anq-lab" x="234" y="422" text-anchor="end">(telaio)</text>
+    <path class="anq-lead" d="M242 408 L418 408"/>
+    <circle class="anq-dot" cx="422" cy="408" r="3"/>
+
+    <text class="anq-lab" x="234" y="474" text-anchor="end">Batteria LiPo,</text>
+    <text class="anq-lab" x="234" y="500" text-anchor="end">sotto il telaio</text>
+    <path class="anq-lead" d="M242 486 L433 478"/>
+    <circle class="anq-dot" cx="437" cy="477" r="3"/>
+
+    <text class="anq-rot" x="232" y="626" text-anchor="end">antioraria</text>
+
+    <!-- etichette: colonna destra -->
+    <text class="anq-lab" x="766" y="140" text-anchor="start">Motore brushless</text>
+    <path class="anq-lead" d="M758 144 L718 200"/>
+    <circle class="anq-dot" cx="716" cy="203" r="3"/>
+
+    <text class="anq-rot" x="768" y="226" text-anchor="start">antioraria</text>
+
+    <text class="anq-lab" x="766" y="372" text-anchor="start">Modulo GNSS</text>
+    <path class="anq-lead" d="M758 371 L566 370"/>
+    <circle class="anq-dot" cx="562" cy="369" r="3"/>
+
+    <text class="anq-lab" x="766" y="428" text-anchor="start">Flight controller</text>
+    <text class="anq-lab" x="766" y="454" text-anchor="start">con IMU</text>
+    <path class="anq-lead" d="M758 440 L566 428"/>
+    <circle class="anq-dot" cx="562" cy="426" r="3"/>
+
+    <text class="anq-lab" x="766" y="524" text-anchor="start">ESC (regolatore</text>
+    <text class="anq-lab" x="766" y="550" text-anchor="start">di velocità)</text>
+    <path class="anq-lead" d="M758 536 L612 514"/>
+    <circle class="anq-dot" cx="608" cy="513" r="3"/>
+
+    <text class="anq-rot" x="768" y="626" text-anchor="start">oraria</text>
+
+    <!-- etichette: zona bassa -->
+    <text class="anq-lab" x="340" y="706" text-anchor="middle">LED di navigazione</text>
+    <path class="anq-lead" d="M400 682 L371 562"/>
+    <circle class="anq-dot" cx="370" cy="558" r="3"/>
+
+    <text class="anq-lab" x="700" y="706" text-anchor="middle">Ricevitore radio e antenne</text>
+    <path class="anq-lead" d="M640 682 L563 580"/>
+    <circle class="anq-dot" cx="560" cy="576" r="3"/>
+
+    <text class="anq-lab" x="500" y="242" text-anchor="middle">Camera e gimbal</text>
+    <path class="anq-lead" d="M500 252 L500 292"/>
+    <circle class="anq-dot" cx="500" cy="295" r="3"/>
+  </g>
+</svg>

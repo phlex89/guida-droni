@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>02 · Anatomia e funzionamento</title>
+  <link rel="stylesheet" href="../css/guida.css">
+</head>
+<body data-capitolo="02" data-titolo="Anatomia e funzionamento">
+<main>
+
+<header class="apertura">
+  <div class="etichetta">Capitolo 02</div>
+  <div class="numero-capitolo">02</div>
+  <h1>Anatomia e funzionamento</h1>
+  <p class="sommario">Un drone è un insieme di sottosistemi che si reggono a vicenda: una struttura rigida, quattro azionamenti trifase, una batteria che eroga correnti da avviamento d'auto e un calcolatore che corregge l'assetto migliaia di volte al secondo. Questo capitolo apre la macchina e spiega cosa fa ogni pezzo e quali numeri contano in una scheda tecnica.</p>
+  <div class="in-questo-capitolo">
+    <strong>In questo capitolo</strong>
+    <ol>
+      <li>Vista d'insieme</li>
+      <li>Il telaio</li>
+      <li>La propulsione</li>
+      <li>L'alimentazione</li>
+      <li>Il cervello e i sensori</li>
+      <li>Come si muove</li>
+      <li>Modalità di volo</li>
+      <li>Il software</li>
+      <li>In sintesi</li>
+    </ol>
+  </div>
+  <p class="verifica">Fonti normative verificate il 20 settembre 2026.</p>
+</header>
+
+<h2><span class="numero">2.1</span> Vista d'insieme</h2>
+
+<p>Come caso di studio usiamo il quadricottero, la macchina più diffusa: la stessa architettura copre il giocattolo da interni, il drone pieghevole da 249&nbsp;g e il mezzo professionale da rilievo. Ha quattro rotori a passo fisso e nessuna superficie mobile, cioè un solo attuatore ripetuto quattro volte.</p>
+
+<p>La semplicità meccanica si paga sul controllo: senza elettronica attiva un quadricottero non resta in aria un secondo, perché è instabile su tutti e tre gli assi. Tutto ciò che segue esiste per chiudere quell'anello.</p>
+
+<ul class="spaziata">
+  <li><strong>Struttura.</strong> Telaio, bracci e coperture: tengono i motori a distanza fissa dal baricentro.</li>
+  <li><strong>Propulsione.</strong> Quattro gruppi motore ed elica con i rispettivi regolatori, unico organo di comando.</li>
+  <li><strong>Alimentazione.</strong> Batteria e distribuzione di potenza: decidono autonomia, peso e gran parte dei rischi.</li>
+  <li><strong>Controllo.</strong> Il <em>flight controller</em>, microcontrollore più unità inerziale, che stabilizza la macchina.</li>
+  <li><strong>Navigazione.</strong> Ricevitore satellitare, barometro, magnetometro e sensori ottici: dicono dove sei.</li>
+  <li><strong>Radio.</strong> Comando, video e telemetria con le antenne, argomento del capitolo 3.</li>
+  <li><strong>Carico utile.</strong> Camera su sospensione cardanica o sensori, integrati o intercambiabili.</li>
+</ul>
+
+<figure class="schema">
+  <img src="../img/schemi/anatomia-quadricottero.svg" alt="Schema di un quadricottero visto dall'alto con i componenti etichettati: quattro bracci con motore ed elica, regolatori elettronici, flight controller al centro, pacco batteria, ricevitore radio, modulo satellitare, camera su sospensione cardanica">
+  <figcaption><strong>Figura 2.1</strong> Le eliche opposte sulla diagonale girano nello stesso senso; le due diagonali girano in senso contrario fra loro.</figcaption>
+</figure>
+
+<h2><span class="numero">2.2</span> Il telaio</h2>
+
+<p>Il telaio deve essere leggero e rigido insieme. La fibra di carbonio domina per rigidezza specifica e costo, ma è conduttiva: attenua i segnali radio e fa ombra al ricevitore satellitare, quindi antenne e modulo <abbr title="Global Navigation Satellite System">GNSS</abbr> si montano fuori dalle piastre. Le plastiche tecniche, dal nylon caricato al policarbonato, assorbono l'impatto e sono trasparenti alle radiofrequenze: da qui i gusci dei droni consumer. Magnesio e alluminio restano ai bracci dei mezzi professionali.</p>
+
+<p>I bracci hanno tre disposizioni classiche. Nella “+” un braccio punta in avanti, quindi ogni comando di rollio o beccheggio agisce su due soli motori. Nella X stanno a 45° dagli assi: tutti e quattro i motori contribuiscono a ogni comando e la camera guarda fra due bracci, ed è per questo che la X ha vinto. La H allunga il corpo in un rettangolo e guadagna spazio interno. La taglia si esprime con la diagonale fra gli assi di due motori opposti: una macchina da 5&nbsp;pollici di elica sta intorno ai 220&nbsp;mm, una da 7&nbsp;pollici sui 300&nbsp;mm. I bracci pieghevoli dei droni consumer riducono l'ingombro al prezzo di una cerniera, un punto meno rigido.</p>
+
+<p>La rigidezza non è pignoleria. Motori ed eliche eccitano la struttura alla frequenza di rotazione e ai suoi multipli, e il giroscopio al centro legge quella vibrazione come una rotazione vera. L'unità inerziale campiona a qualche kHz, quindi le componenti sopra la frequenza di Nyquist rientrano in banda come alias, indistinguibili dal segnale. Le contromisure sono meccaniche: eliche bilanciate, telaio rigido, scheda su smorzatori.</p>
+
+<h2><span class="numero">2.3</span> La propulsione</h2>
+
+<h3>Il motore brushless</h3>
+
+<p>I droni usano motori sincroni a magneti permanenti di tipo <em>outrunner</em>: lo statore avvolto sta fermo al centro, la campana esterna con i magneti è il rotore e porta direttamente l'elica. Rispetto a un <em>inrunner</em> dà più coppia e meno giri, che è ciò che serve per trascinare un'elica senza riduttore.</p>
+
+<p>La sigla dimensionale descrive lo statore: 2207 significa 22&nbsp;mm di diametro e 7&nbsp;mm di altezza del pacco lamellare, e uno statore più alto dà più coppia e più peso. L'altro numero di targa è la costante <abbr title="costante di velocità, giri al minuto per volt">KV</abbr>, i giri al minuto per volt a vuoto: un 2207 da 1750&nbsp;KV a 22,2&nbsp;V nominali gira intorno a 39.000&nbsp;giri/min. Poiché la costante di coppia è l'inverso di quella di velocità, KV alto significa molti giri e poca coppia per ampere: eliche piccole e KV alti sulle macchine agili, il contrario sui mezzi da carico.</p>
+
+<h3>Il regolatore elettronico</h3>
+
+<p>Il regolatore, o <abbr title="Electronic Speed Controller">ESC</abbr>, è un inverter trifase che sintetizza le tre fasi alla frequenza giusta, modulando la tensione media con la larghezza degli impulsi.</p>
+
+<aside class="box tlc">
+  <p>Un ESC è un azionamento trifase in miniatura: sei transistor di potenza in tre semiponti e una logica di commutazione su pochi centimetri quadrati. La differenza rispetto a un azionamento industriale è che non c'è sensore di posizione: la posizione del rotore si ricava dalla forza controelettromotrice indotta sulla fase momentaneamente non alimentata, cercandone l'attraversamento dello zero.</p>
+  <p>L'ampiezza di quella tensione è proporzionale alla velocità, quindi a rotore fermo il segnale sparisce nel rumore e l'anello non si chiude: l'avviamento avviene in catena aperta, imponendo una rampa di commutazioni e sperando che il rotore la segua. È il motivo per cui un motore a volte “gratta” all'armamento.</p>
+</aside>
+
+<p>Il comando arriva su un solo filo: un tempo un impulso analogico da 1000 a 2000&nbsp;µs ereditato dal modellismo, oggi i protocolli digitali della famiglia DShot. Il valore di spinta viaggia in un pacchetto di 16 bit, con 11 bit di comando, un bit di richiesta telemetria e 4 bit di controllo a ridondanza ciclica, fra 150 e 1200&nbsp;kbit/s. Il pacchetto è verificato e, nelle varianti bidirezionali, riporta il numero di giri effettivo, usato per filtrare le vibrazioni alla frequenza esatta.</p>
+
+<p>Sulle macchine compatte i quattro regolatori stanno su una sola scheda, detta 4-in-1, impilata sotto il flight controller. Le correnti non sono trascurabili: in transitorio un motore da 5&nbsp;pollici assorbe decine di ampere e una manovra brusca porta il totale oltre il centinaio, quindi si dimensiona sui picchi.</p>
+
+<h3>Le eliche</h3>
+
+<p>L'elica si identifica con tre numeri, per esempio 5x4,3x3: diametro in pollici, passo in pollici, numero di pale. Il passo è l'avanzamento teorico in un giro, quindi passo alto significa più velocità e più corrente. A parità di geometria la spinta cresce con il quadrato dei giri e la quarta potenza del diametro, la potenza assorbita con il cubo e la quinta: un disco grande che gira piano consuma meno, ed è per questo che i droni da lunga autonomia hanno eliche grandi.</p>
+
+<p>I materiali vanno dal policarbonato caricato, elastico e perdonante, ai compositi in carbonio, rigidi ed efficienti ma distruttivi in caso di contatto. L'elica va bilanciata: uno squilibrio di frazioni di grammo a 20.000&nbsp;giri/min scuote tutta la macchina. Sono materiale di consumo: porta un ricambio completo e monta le protezioni negli ambienti chiusi. Il senso di rotazione è alternato fra le due diagonali e i mozzi sono filettati di conseguenza.</p>
+
+<figure class="foto">
+  <img src="../img/foto/08-motore-brushless-elica.jpg" alt="Primo piano di un motore brushless outrunner montato all'estremità di un braccio, con elica calzata sul mozzo">
+  <figcaption><strong>Figura 2.2</strong> La campana esterna con i magneti ruota solidale all'elica; i tre fili portano le fasi dal regolatore.
+    <span class="credito">Foto: Ali.yusuf7, CC BY-SA 4.0, via Wikimedia Commons</span></figcaption>
+</figure>
+
+<table>
+  <thead>
+    <tr><th>Componente</th><th>Funzione</th><th>Parametri chiave</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Batteria</th><td>Fornisce energia e corrente di picco</td><td>Tensione nominale, energia in Wh, corrente erogabile</td></tr>
+    <tr><th>Regolatore</th><td>Converte la continua in tre fasi</td><td>Corrente continua e di picco, tensione massima, protocollo</td></tr>
+    <tr><th>Motore</th><td>Trasforma la potenza elettrica in coppia</td><td>Sigla dello statore, KV, resistenza di fase, peso</td></tr>
+    <tr><th>Elica</th><td>Trasforma la coppia in spinta</td><td>Diametro, passo, numero di pale, materiale</td></tr>
+  </tbody>
+  <caption><strong>Tabella 2.1</strong> Un anello sottodimensionato limita tutti gli altri: un motore generoso su un regolatore piccolo dà surriscaldamento.</caption>
+</table>
+
+<h2><span class="numero">2.4</span> L'alimentazione</h2>
+
+<p>Due chimiche si dividono il campo. Le celle ai polimeri di litio, dette LiPo, hanno resistenza interna bassissima e reggono correnti enormi rispetto alla capacità: sono obbligate quando conta la potenza istantanea. Le celle agli ioni di litio cilindriche immagazzinano circa il doppio di energia per chilogrammo ma erogano correnti molto più modeste, e si usano dove il volo è a potenza moderata: ali fisse, mappatura, multirotori da lunga autonomia.</p>
+
+<p>I valori di tensione per cella vanno imparati a memoria: 3,7&nbsp;V nominali, 4,2&nbsp;V a piena carica, 3,5&nbsp;V come soglia prudente per rientrare, 3,0&nbsp;V come limite oltre il quale la cella si danneggia. Le celle si collegano in serie e la sigla lo dichiara: 4S sono quattro celle per 14,8&nbsp;V nominali e 16,8&nbsp;V a piena carica, fino ai 6S delle macchine da prestazione. Il parallelo, indicato con P, somma le capacità.</p>
+
+<p>La capacità si dà in milliampereora, ma il numero che conta è l'energia in wattora, cioè tensione nominale per capacità in ampereora. Un pacco 4S da 1500&nbsp;mAh contiene 14,8 × 1,5 = 22,2&nbsp;Wh. Se il volo assorbe in media 250&nbsp;W l'energia teorica basta per poco più di cinque minuti; usando l'80% del pacco restano poco più di quattro minuti.</p>
+
+<p>La corrente massima si esprime con il C-rating, un moltiplicatore della capacità: 100C su un pacco da 1500&nbsp;mAh significa 1,5 × 100 = 150&nbsp;A dichiarati. Prendilo con prudenza, perché è misurato per pochi secondi a pacco pieno. L'indicatore onesto è la caduta di tensione sotto carico.</p>
+
+<figure class="foto">
+  <img src="../img/foto/06-batteria-lipo.jpg" alt="Pacco batteria ai polimeri di litio a più celle, con connettore di potenza e connettore di bilanciamento">
+  <figcaption><strong>Figura 2.3</strong> Il connettore grosso porta la corrente, quello piccolo espone le singole celle al caricabatterie per il bilanciamento.
+    <span class="credito">Foto: RC Lipo battery, CC BY-SA 3.0, via Wikimedia Commons</span></figcaption>
+</figure>
+
+<p>Sui droni consumer il pacco è una <em>smart battery</em>: un'elettronica integrata misura tensione di cella, corrente e temperatura, bilancia in carica, conta i cicli e si autoscarica alla tensione di conservazione dopo alcuni giorni di inattività. Sui pacchi da modellismo lo fai tu: carica sempre in modalità bilanciata e, se non voli entro un giorno o due, porta le celle a 3,8-3,85&nbsp;V. Al freddo la resistenza interna sale e l'autonomia cala, quindi in inverno i pacchi si tengono al caldo.</p>
+
+<aside class="box attenzione">
+  <p>Una cella al litio danneggiata, sovraccaricata o perforata può entrare in fuga termica: la reazione si autoalimenta e produce un incendio che l'acqua non spegne. I segnali d'allarme sono il rigonfiamento dell'involucro, un pacco che scalda in carica e una cella che resta indietro in tensione.</p>
+  <p>Di conseguenza: un pacco gonfio esce dal servizio subito. Non caricare mai senza sorveglianza, usa un contenitore ignifugo e proteggi i connettori dai cortocircuiti. Per il trasporto aereo valgono regole specifiche su quantità e stato di carica: le trovi nel capitolo 7.</p>
+</aside>
+
+<table>
+  <thead>
+    <tr><th>Caratteristica</th><th>LiPo</th><th>Li-ion cilindriche</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Energia specifica</th><td>Media: privilegia la potenza</td><td>Circa doppia a parità di peso</td></tr>
+    <tr><th>Scarica</th><td>Molto alta, decine di C</td><td>Bassa, pochi C continuativi</td></tr>
+    <tr><th>Resistenza interna</th><td>Bassissima, poca caduta</td><td>Più alta, caduta sensibile ai picchi</td></tr>
+    <tr><th>Al freddo</th><td>Degrada, ma regge i picchi</td><td>Soffre di più</td></tr>
+    <tr><th>Uso tipico</th><td>Multirotori acrobatici, FPV, droni compatti</td><td>Ali fisse, mappatura, lunga autonomia</td></tr>
+  </tbody>
+  <caption><strong>Tabella 2.2</strong> La scelta non è fra “migliore” e “peggiore” ma fra potenza istantanea ed energia trasportata.</caption>
+</table>
+
+<h2><span class="numero">2.5</span> Il cervello: flight controller e sensori</h2>
+
+<p>Il flight controller è una scheda piccola, spesso 36&nbsp;mm di lato, costruita intorno a un microcontrollore a 32 bit della famiglia ARM Cortex-M. Non serve potenza di calcolo, serve determinismo: poche centinaia di microsecondi di ritardo contano più di qualche MHz.</p>
+
+<p>Il sensore fondamentale è l'unità di misura inerziale, o <abbr title="Inertial Measurement Unit">IMU</abbr>: giroscopio e accelerometro a tre assi in un integrato MEMS, campionati a qualche migliaio di campioni al secondo. Il giroscopio dà la velocità angolare e regge il controllo di assetto; l'accelerometro ritrova la verticale, perché a macchina ferma legge la gravità. Il giroscopio da solo deriva, l'accelerometro da solo è inutilizzabile in volo: il primo comanda sul breve periodo, il secondo fa da riferimento lento.</p>
+
+<p>Il barometro ricava dalla pressione assoluta una quota relativa, ma risente delle variazioni meteorologiche, del vento attorno al telaio e della scia delle eliche: dà una quota affidabile su tempi brevi e una deriva lenta su tempi lunghi. Il magnetometro fornisce la direzione della prua ed è il più facile da disturbare, perché un cavo che porta decine di ampere o l'armatura di un tetto deformano il campo locale: da qui i frequenti errori di bussola. Il ricevitore GNSS dà posizione e velocità rispetto al suolo ed è trattato nel capitolo 3.</p>
+
+<p>Vicino al terreno servono altri sensori. L'<em>optical flow</em> è una camera rivolta verso il basso che misura lo spostamento dell'immagine fra un fotogramma e l'altro: abbinata a un telemetro che dà la scala, stima la velocità orizzontale e tiene la posizione senza satelliti, purché ci siano luce e texture al suolo. I telemetri, a ultrasuoni o a tempo di volo, si perdono su erba alta e soffrono il sole diretto; gli stessi principi, in versione stereoscopica, alimentano i sistemi anticollisione dei droni consumer.</p>
+
+<figure class="foto">
+  <img src="../img/foto/07-flight-controller-board.jpg" alt="Scheda elettronica di piccole dimensioni con microcontrollore, sensore inerziale, connettori a passo fine e piazzole di saldatura">
+  <figcaption><strong>Figura 2.4</strong> Una scheda di controllo di volo si impila sopra il regolatore 4-in-1 su colonnine con smorzatori.
+    <span class="credito">Foto: Ryan Decker, CC BY-SA 3.0, via Wikimedia Commons (ritagliata)</span></figcaption>
+</figure>
+
+<p>Queste letture, discordanti e rumorose, confluiscono in un filtro di Kalman esteso, che mantiene assetto, velocità e posizione con la relativa incertezza e li corregge a ogni misura, pesando ciascun sensore secondo quanto è affidabile. Sopra lo stimatore sta il controllo, in anelli <abbr title="Proporzionale, Integrale, Derivativo">PID</abbr> in cascata: il più interno regola la velocità angolare e gira alla frequenza del giroscopio, il suo riferimento arriva dall'anello di assetto, e sopra ancora, quando la modalità lo prevede, un anello di velocità e uno di posizione a poche decine di hertz. Se il segnale satellitare degrada, i due anelli esterni si aprono e la macchina scala di modalità.</p>
+
+<aside class="box tlc">
+  <p>La stabilizzazione è un anello di retroazione classico che gira a qualche kHz su un segnale sporco. Il guadagno che ti puoi permettere dipende dal margine di fase, e il margine di fase lo consuma il ritardo complessivo dell'anello: campionamento del giroscopio, filtri contro le vibrazioni, calcolo, aggiornamento del regolatore, inerzia di motore ed elica. Ogni filtro che aggiungi per pulire il segnale introduce ritardo e ti toglie guadagno.</p>
+  <p>Nota cosa non entra in questo bilancio: il collegamento radio. L'anello è chiuso a bordo, quindi la latenza del link influisce sulla sensazione ai comandi, non sulla stabilità. Un drone che perde il radiocomando resta stabile, semplicemente non riceve più riferimenti.</p>
+</aside>
+
+<h2><span class="numero">2.6</span> Come si muove</h2>
+
+<p>Quattro rotori a passo fisso, due orari e due antiorari, con le eliche opposte sulla diagonale che girano nello stesso verso. Ogni rotore produce una spinta verso l'alto e, per reazione, una coppia sul telaio opposta al proprio verso di rotazione.</p>
+
+<p>In volo stazionario le quattro spinte eguagliano il peso e le coppie si annullano a due a due. Per salire il controllo aumenta le quattro spinte insieme. Per inclinarsi aumenta la spinta sui due motori di un lato e la riduce sull'altro: nasce una coppia che ruota la macchina di rollio o di beccheggio. Il vettore di spinta non è più verticale, e la sua componente orizzontale spinge il drone avanti o di lato. Un quadricottero non può traslare senza inclinarsi, e inclinarsi sottrae al sostentamento parte della spinta.</p>
+
+<p>L'imbardata sfrutta le coppie di reazione: il controllo accelera la diagonale che gira in un verso e rallenta l'altra della stessa quantità, così la spinta totale e la quota non cambiano, ma le coppie non si annullano più e la macchina ruota attorno all'asse verticale. È la manovra più lenta, perché dipende dall'attrito aerodinamico delle eliche.</p>
+
+<figure class="schema">
+  <img src="../img/schemi/come-vola.svg" alt="Schema in quattro riquadri: volo stazionario con spinte uguali, salita con spinte aumentate, rollio e beccheggio con spinte differenziate su due motori, imbardata con coppie di reazione sbilanciate">
+  <figcaption><strong>Figura 2.5</strong> Le quattro situazioni di base. La lunghezza delle frecce indica la spinta relativa dei quattro rotori.</figcaption>
+</figure>
+
+<p>Nessuna di queste manovre coinvolge parti mobili oltre ai rotori: non ci sono alettoni, timoni né passo variabile. Tutto dipende dalla rapidità con cui i motori cambiano regime, cioè dall'inerzia del gruppo motore-elica e dalla banda del regolatore.</p>
+
+<p>Esacotteri e ottocotteri seguono la stessa logica con sei o otto rotori, e la ragione è la ridondanza: con un motore in avaria restano spinta e coppie sufficienti perché, secondo configurazione e carico, la macchina resti controllabile fino a un atterraggio di emergenza. Su un quadricottero la perdita di un motore significa quasi sempre la caduta.</p>
+
+<h2><span class="numero">2.7</span> Modalità di volo e automatismi</h2>
+
+<p>Le modalità di volo sono livelli diversi di automazione sopra lo stesso hardware. Cambia solo quale anello di controllo riceve i tuoi comandi, e quanto lavoro resta a te.</p>
+
+<table>
+  <thead>
+    <tr><th>Modalità</th><th>Cosa comanda lo stick</th><th>Se rilasci gli stick</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Manuale o acro</th><td>Velocità angolare sui tre assi</td><td>Mantiene l'inclinazione che ha</td></tr>
+    <tr><th>Stabilizzata o angle</th><td>Angolo di inclinazione, entro un limite</td><td>Torna orizzontale, ma va alla deriva</td></tr>
+    <tr><th>Posizione o GNSS hold</th><td>Velocità rispetto al suolo</td><td>Si ferma e tiene posizione e quota</td></tr>
+  </tbody>
+  <caption><strong>Tabella 2.3</strong> Scendendo nella tabella si aggiunge un anello di controllo e diminuisce il carico di pilotaggio.</caption>
+</table>
+
+<p>La modalità manuale, chiamata acro, passa i comandi all'anello più interno: gli stick chiedono velocità di rotazione e la macchina non si raddrizza da sola. È innaturale all'inizio e indispensabile per il volo <abbr title="First Person View, volo in prima persona">FPV</abbr>, perché è l'unica che consente manovre oltre l'assetto orizzontale. La stabilizzata inserisce l'anello di assetto, quindi lo stick corrisponde a un angolo entro un limite, ma non tiene la posizione: senza satelliti il vento porta via il drone. La modalità di posizione chiude anche gli anelli di velocità e posizione, e al centro degli stick il drone si pianta in aria.</p>
+
+<p>Sopra le modalità stanno gli automatismi. Il rientro automatico, o <abbr title="Return To Home">RTH</abbr>, riporta la macchina a un punto memorizzato al decollo, ed è la reazione tipica del <em>failsafe</em>, la logica che decide cosa fare quando il collegamento di comando si interrompe: le alternative sono restare fermi, atterrare o rientrare, e la scelta dipende dal contesto, come spiega il capitolo 7. Le missioni a waypoint percorrono una rotta programmata, ed è così che si eseguono i rilievi fotogrammetrici. Le funzioni <em>follow-me</em> tengono il soggetto nell'inquadratura, e il geofence è un limite software di quota e distanza, accompagnato da banche dati delle zone in cui il volo è limitato.</p>
+
+<aside class="box nota">
+  <p>I nomi delle modalità cambiano da un produttore all'altro: la stessa logica si chiama <em>angle</em>, <em>stabilize</em>, “modalità normale” o “modalità principiante” a seconda di dove la leggi. Prima di volare con una macchina nuova, verifica a quale anello corrisponde ogni posizione dell'interruttore e cosa è impostato come failsafe.</p>
+</aside>
+
+<h2><span class="numero">2.8</span> Il software</h2>
+
+<p>Il comportamento di un drone è deciso dal firmware più che dall'hardware, e il panorama si divide in due mondi. Da un lato i firmware aperti su schede generiche: Betaflight è lo standard dell'FPV, con filtri configurabili e registrazione dei dati di volo per l'analisi a terra; iNav aggiunge navigazione satellitare, rientro automatico e waypoint; ArduPilot e PX4 giocano un altro campionato, con stimatori sofisticati e integrazione con un calcolatore di bordo, e sono la base dei droni autonomi e professionali. Tutti si configurano da personal computer, e gli ultimi due parlano MAVLink, il protocollo descritto nel capitolo 3.</p>
+
+<p>Dall'altro lato i firmware proprietari dei droni consumer integrati: chiusi, non configurabili oltre le opzioni dell'app, aggiornati via applicazione. In cambio offrono un'integrazione che nessun assemblaggio raggiunge: sensori, radio, camera, batteria e limiti di volo sono collaudati come un unico prodotto. Nel firmware risiedono anche la consapevolezza geografica e i moduli per l'identificazione a distanza.</p>
+
+<p>Queste ultime non sono dettagli tecnici: marcature di classe, identificazione a distanza e consapevolezza geografica dipendono da cosa gira dentro la macchina, e un aggiornamento può cambiare ciò che il drone è autorizzato a fare. Il quadro è nel capitolo 4. La regola pratica è aggiornare a casa, mai in campo il giorno del volo; vale anche per l'app di controllo, che spesso rifiuta di far decollare il drone finché non è allineata al firmware. Un simulatore, infine, costa quanto un'elica e ti fa sbagliare mille volte senza conseguenze.</p>
+
+<section class="sintesi">
+  <h2>In sintesi</h2>
+  <ul>
+    <li>Il quadricottero è semplice e intrinsecamente instabile: vola solo perché un anello di controllo lo corregge migliaia di volte al secondo.</li>
+    <li>La taglia si misura in diagonale fra motori opposti, e la X domina perché tutti e quattro i motori agiscono su ogni asse.</li>
+    <li>Le vibrazioni entrano nel giroscopio e degradano il controllo; sopra la frequenza di Nyquist nessun filtro le recupera.</li>
+    <li>Motore e regolatore formano un azionamento trifase sensorless: il KV lega giri e coppia, l'elica traduce coppia in spinta secondo leggi di scala ripide.</li>
+    <li>Della batteria contano l'energia in wattora, la tensione per cella e la caduta sotto carico; il C-rating dichiarato è ottimistico.</li>
+    <li>Le celle al litio non perdonano sovraccarica e rigonfiamenti: carica bilanciata e sorvegliata, conservazione a 3,8-3,85&nbsp;V per cella.</li>
+    <li>Il controllo è una cascata di anelli, dal più veloce sulla velocità angolare al più lento sulla posizione, alimentata da sensori imperfetti.</li>
+    <li>Le modalità di volo differiscono solo per quale anello riceve i tuoi comandi: i nomi cambiano fra produttori, la logica no.</li>
+  </ul>
+</section>
+
+</main>
+</body>
+</html>

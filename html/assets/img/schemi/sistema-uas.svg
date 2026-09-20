@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-labelledby="sus-titolo">
+  <title id="sus-titolo">Il sistema UAS: stazione di controllo a terra, link di comando e controllo, aeromobile senza equipaggio</title>
+  <style>
+    .sus-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+    .sus-h { font-size: 32px; font-weight: 600; fill: #1B4965; }
+    .sus-lab { font-size: 24px; font-weight: 600; fill: #1B4965; }
+    .sus-key { font-size: 24px; font-weight: 600; fill: #2B2D31; }
+    .sus-sub { font-size: 22px; font-weight: 600; fill: #2B2D31; }
+    .sus-note { font-size: 22px; fill: #5C6370; }
+    .sus-shape { fill: none; stroke: #1B4965; stroke-width: 2.5; }
+    .sus-fill { fill: #DCEEF8; stroke: #1B4965; stroke-width: 2.5; }
+    .sus-white { fill: #FFFFFF; stroke: #1B4965; stroke-width: 2.5; }
+    .sus-arm { fill: none; stroke: #1B4965; stroke-width: 9; stroke-linecap: round; }
+    .sus-prop { fill: none; stroke: #5FA8D3; stroke-width: 2.5; }
+    .sus-blade { fill: #DCEEF8; stroke: #5FA8D3; stroke-width: 2; }
+    .sus-frame { fill: none; stroke: #5FA8D3; stroke-width: 2.5; stroke-dasharray: 11 8; }
+    .sus-ora { fill: none; stroke: #E0851F; stroke-width: 3; stroke-linecap: round; }
+    .sus-blu { fill: none; stroke: #1B4965; stroke-width: 3; stroke-linecap: round; }
+  </style>
+  <defs>
+    <marker id="sus-ar-ora" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#E0851F"/>
+    </marker>
+    <marker id="sus-ar-blu" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#1B4965"/>
+    </marker>
+  </defs>
+
+  <g class="sus-w">
+    <rect x="0" y="0" width="1000" height="500" fill="#FFFFFF"/>
+    <text class="sus-h" x="500" y="44" text-anchor="middle">Il sistema UAS</text>
+
+    <rect class="sus-frame" x="30" y="96" width="940" height="324" rx="12"/>
+    <rect x="188" y="82" width="624" height="30" fill="#FFFFFF"/>
+    <text class="sus-lab" x="500" y="105" text-anchor="middle">UAS = aeromobile + stazione di controllo + link</text>
+
+    <!-- stazione di controllo a terra -->
+    <text class="sus-lab" x="195" y="142" text-anchor="middle">Stazione di controllo</text>
+    <text class="sus-lab" x="195" y="169" text-anchor="middle">a terra</text>
+
+    <rect class="sus-white" x="152" y="182" width="86" height="56" rx="8"/>
+    <rect x="159" y="189" width="72" height="42" rx="4" fill="#DCEEF8"/>
+    <rect x="185" y="238" width="20" height="14" fill="#1B4965"/>
+    <line class="sus-shape" x1="120" y1="252" x2="100" y2="222"/>
+    <line class="sus-shape" x1="270" y1="252" x2="290" y2="222"/>
+    <rect class="sus-fill" x="105" y="250" width="180" height="88" rx="14"/>
+    <circle class="sus-white" cx="147" cy="294" r="16"/>
+    <circle cx="147" cy="294" r="5" fill="#1B4965"/>
+    <circle class="sus-white" cx="243" cy="294" r="16"/>
+    <circle cx="243" cy="294" r="5" fill="#1B4965"/>
+
+    <circle class="sus-shape" cx="195" cy="350" r="11"/>
+    <path class="sus-shape" d="M195 361 L195 377"/>
+    <path class="sus-shape" d="M177 367 L213 367"/>
+    <path class="sus-shape" d="M195 377 L185 391 M195 377 L205 391"/>
+    <text class="sus-sub" x="195" y="413" text-anchor="middle">Pilota remoto</text>
+
+    <!-- link C2 -->
+    <text class="sus-lab" x="495" y="142" text-anchor="middle">Link di comando</text>
+    <text class="sus-lab" x="495" y="169" text-anchor="middle">e controllo (C2)</text>
+
+    <text class="sus-sub" x="495" y="248" text-anchor="middle">comandi</text>
+    <line class="sus-ora" x1="355" y1="268" x2="632" y2="268" marker-end="url(#sus-ar-ora)"/>
+    <line class="sus-blu" x1="632" y1="318" x2="358" y2="318" marker-end="url(#sus-ar-blu)"/>
+    <text class="sus-sub" x="495" y="352" text-anchor="middle">telemetria e video</text>
+
+    <!-- aeromobile -->
+    <text class="sus-lab" x="810" y="142" text-anchor="middle">Aeromobile senza</text>
+    <text class="sus-lab" x="810" y="169" text-anchor="middle">equipaggio (UA)</text>
+
+    <g>
+      <line class="sus-arm" x1="810" y1="290" x2="741" y2="221"/>
+      <line class="sus-arm" x1="810" y1="290" x2="879" y2="221"/>
+      <line class="sus-arm" x1="810" y1="290" x2="741" y2="359"/>
+      <line class="sus-arm" x1="810" y1="290" x2="879" y2="359"/>
+      <g>
+        <circle class="sus-prop" cx="735" cy="215" r="37"/>
+        <ellipse class="sus-blade" cx="735" cy="215" rx="33" ry="7" transform="rotate(-25 735 215)"/>
+        <circle cx="735" cy="215" r="6" fill="#1B4965"/>
+      </g>
+      <g>
+        <circle class="sus-prop" cx="885" cy="215" r="37"/>
+        <ellipse class="sus-blade" cx="885" cy="215" rx="33" ry="7" transform="rotate(25 885 215)"/>
+        <circle cx="885" cy="215" r="6" fill="#1B4965"/>
+      </g>
+      <g>
+        <circle class="sus-prop" cx="735" cy="365" r="37"/>
+        <ellipse class="sus-blade" cx="735" cy="365" rx="33" ry="7" transform="rotate(25 735 365)"/>
+        <circle cx="735" cy="365" r="6" fill="#1B4965"/>
+      </g>
+      <g>
+        <circle class="sus-prop" cx="885" cy="365" r="37"/>
+        <ellipse class="sus-blade" cx="885" cy="365" rx="33" ry="7" transform="rotate(-25 885 365)"/>
+        <circle cx="885" cy="365" r="6" fill="#1B4965"/>
+      </g>
+      <rect class="sus-fill" x="772" y="252" width="76" height="76" rx="14"/>
+      <circle cx="810" cy="290" r="14" fill="#5FA8D3"/>
+    </g>
+
+    <text class="sus-note" x="500" y="456" text-anchor="middle">L'operatore UAS è la persona o l'organizzazione responsabile;</text>
+    <text class="sus-note" x="500" y="482" text-anchor="middle">il pilota remoto è chi comanda il volo.</text>
+  </g>
+</svg>

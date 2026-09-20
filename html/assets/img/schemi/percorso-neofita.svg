@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-labelledby="per-titolo" class="per-svg">
+  <title id="per-titolo">Dal primo giorno al primo volo legale</title>
+  <style>
+    .per-svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+    .per-titolo { font-size: 32px; font-weight: 600; fill: #12354A; }
+    .per-num { font-size: 30px; font-weight: 700; fill: #FFFFFF; }
+    .per-tappa { font-size: 26px; font-weight: 600; fill: #12354A; }
+    .per-att { font-size: 22px; fill: #2B2D31; }
+    .per-tenue { font-size: 22px; fill: #5C6370; }
+    .per-riga { stroke: #D9DEE5; stroke-width: 1.5; }
+  </style>
+
+  <rect x="0" y="0" width="1000" height="500" fill="#FFFFFF"/>
+  <text class="per-titolo" x="24" y="46">Dal primo giorno al primo volo legale</text>
+
+  <path d="M48,100 H780" fill="none" stroke="#D9DEE5" stroke-width="4"/>
+
+  <circle cx="48" cy="100" r="26" fill="#5FA8D3"/>
+  <text class="per-num" x="48" y="111" text-anchor="middle">1</text>
+  <text class="per-tappa" x="20" y="164">Capire</text>
+  <text class="per-att" x="20" y="230">Leggi i capitoli 1-4</text>
+  <path class="per-riga" d="M20,249 H248"/>
+  <text class="per-att" x="20" y="268">Impara le sigle: UAS,</text>
+  <text class="per-att" x="20" y="294">VLOS, A1/A2/A3, C0-C4</text>
+  <path class="per-riga" d="M20,313 H248"/>
+  <text class="per-att" x="20" y="332">Segui qualche volo</text>
+  <text class="per-att" x="20" y="358">altrui, di persona o</text>
+  <text class="per-att" x="20" y="384">in video</text>
+
+  <circle cx="292" cy="100" r="26" fill="#1B4965"/>
+  <text class="per-num" x="292" y="111" text-anchor="middle">2</text>
+  <text class="per-tappa" x="264" y="164">Registrarsi</text>
+  <text class="per-tappa" x="264" y="194">e studiare</text>
+  <text class="per-att" x="264" y="230">Apri l'account</text>
+  <text class="per-att" x="264" y="256">d-flight e registrati</text>
+  <text class="per-att" x="264" y="282">come operatore</text>
+  <path class="per-riga" d="M264,301 H492"/>
+  <text class="per-att" x="264" y="320">Segui il corso e</text>
+  <text class="per-att" x="264" y="346">supera l'esame A1/A3</text>
+  <text class="per-att" x="264" y="372">online</text>
+  <path class="per-riga" d="M264,391 H492"/>
+  <text class="per-att" x="264" y="410">Attiva</text>
+  <text class="per-att" x="264" y="436">un'assicurazione RC</text>
+
+  <circle cx="536" cy="100" r="26" fill="#6B5B95"/>
+  <text class="per-num" x="536" y="111" text-anchor="middle">3</text>
+  <text class="per-tappa" x="508" y="164">Scegliere</text>
+  <text class="per-tappa" x="508" y="194">e preparare</text>
+  <text class="per-att" x="508" y="230">Scegli la classe</text>
+  <text class="per-att" x="508" y="256">(C0 o C1 per iniziare)</text>
+  <path class="per-riga" d="M508,275 H736"/>
+  <text class="per-att" x="508" y="294">Prova un simulatore</text>
+  <path class="per-riga" d="M508,313 H736"/>
+  <text class="per-att" x="508" y="332">Prepara la checklist</text>
+  <text class="per-att" x="508" y="358">pre-volo</text>
+
+  <circle cx="780" cy="100" r="26" fill="#3E8E63"/>
+  <text class="per-num" x="780" y="111" text-anchor="middle">4</text>
+  <text class="per-tappa" x="752" y="164">Volare</text>
+  <text class="per-att" x="752" y="230">Campo aperto, zona</text>
+  <text class="per-att" x="752" y="256">verde su d-flight</text>
+  <path class="per-riga" d="M752,275 H980"/>
+  <text class="per-att" x="752" y="294">Quota bassa, drone</text>
+  <text class="per-att" x="752" y="320">sempre in vista</text>
+  <path class="per-riga" d="M752,339 H980"/>
+  <text class="per-att" x="752" y="358">Pochi minuti alla</text>
+  <text class="per-att" x="752" y="384">volta, batterie a metà</text>
+  <text class="per-att" x="752" y="410">carica per la</text>
+  <text class="per-att" x="752" y="436">conservazione</text>
+
+  <text class="per-tenue" x="24" y="472">Durata indicativa: quattro settimane, un paio d'ore alla settimana.</text>
+</svg>

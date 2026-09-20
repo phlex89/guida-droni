@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="cvo-titolo">
+  <title id="cvo-titolo">Come si muove un quadricottero: hovering, salita e discesa, rollio e beccheggio, imbardata</title>
+  <style>
+    .cvo-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+    .cvo-h { font-size: 32px; font-weight: 600; fill: #1B4965; }
+    .cvo-pt { font-size: 26px; font-weight: 600; fill: #1B4965; }
+    .cvo-cap { font-size: 22px; fill: #2B2D31; }
+    .cvo-none { font-size: 22px; fill: #5C6370; }
+    .cvo-box { fill: #FFFFFF; stroke: #D9DEE5; stroke-width: 2.5; }
+    .cvo-arm { fill: none; stroke: #1B4965; stroke-width: 7; stroke-linecap: round; }
+    .cvo-body { fill: #DCEEF8; stroke: #1B4965; stroke-width: 2.5; }
+    .cvo-prop { fill: #FFFFFF; stroke: #5FA8D3; stroke-width: 2.5; }
+    .cvo-thr { fill: none; stroke: #E0851F; stroke-width: 3; stroke-linecap: butt; }
+    .cvo-spin { fill: none; stroke: #E0851F; stroke-width: 2.5; }
+    .cvo-mov { fill: none; stroke: #3E8E63; stroke-width: 5; stroke-linecap: butt; }
+  </style>
+  <defs>
+    <marker id="cvo-ar-ora" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#E0851F"/>
+    </marker>
+    <marker id="cvo-ar-spin" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#E0851F"/>
+    </marker>
+    <marker id="cvo-ar-ver" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#3E8E63"/>
+    </marker>
+  </defs>
+
+  <g class="cvo-w">
+    <rect x="0" y="0" width="1000" height="600" fill="#FFFFFF"/>
+    <text class="cvo-h" x="500" y="46" text-anchor="middle">Come si muove un quadricottero</text>
+    <rect class="cvo-box" x="12" y="76" width="236" height="500" rx="12"/>
+    <text class="cvo-pt" x="130" y="114" text-anchor="middle">Hovering</text>
+    <line class="cvo-arm" x1="130" y1="274" x2="68" y2="224"/>
+    <line class="cvo-arm" x1="130" y1="274" x2="192" y2="224"/>
+    <line class="cvo-arm" x1="130" y1="274" x2="68" y2="324"/>
+    <line class="cvo-arm" x1="130" y1="274" x2="192" y2="324"/>
+    <rect class="cvo-body" x="108" y="252" width="44" height="44" rx="10"/>
+    <circle class="cvo-prop" cx="68" cy="224" r="24"/>
+    <circle cx="68" cy="224" r="4" fill="#1B4965"/>
+    <circle class="cvo-prop" cx="192" cy="224" r="24"/>
+    <circle cx="192" cy="224" r="4" fill="#1B4965"/>
+    <circle class="cvo-prop" cx="68" cy="324" r="24"/>
+    <circle cx="68" cy="324" r="4" fill="#1B4965"/>
+    <circle class="cvo-prop" cx="192" cy="324" r="24"/>
+    <circle cx="192" cy="324" r="4" fill="#1B4965"/>
+    <line class="cvo-thr" x1="68" y1="200" x2="68" y2="166" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="192" y1="200" x2="192" y2="166" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="68" y1="300" x2="68" y2="266" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="192" y1="300" x2="192" y2="266" marker-end="url(#cvo-ar-ora)"/>
+    <text class="cvo-none" x="130" y="404" text-anchor="middle">nessun movimento</text>
+    <text class="cvo-cap" x="130" y="452" text-anchor="middle">Spinte uguali sulle</text>
+    <text class="cvo-cap" x="130" y="477" text-anchor="middle">quattro eliche: il</text>
+    <text class="cvo-cap" x="130" y="502" text-anchor="middle">peso è bilanciato e</text>
+    <text class="cvo-cap" x="130" y="527" text-anchor="middle">il drone sta fermo.</text>
+    <rect class="cvo-box" x="258" y="76" width="236" height="500" rx="12"/>
+    <text class="cvo-pt" x="376" y="114" text-anchor="middle">Salita</text>
+    <text class="cvo-pt" x="376" y="142" text-anchor="middle">e discesa</text>
+    <line class="cvo-arm" x1="376" y1="274" x2="314" y2="224"/>
+    <line class="cvo-arm" x1="376" y1="274" x2="438" y2="224"/>
+    <line class="cvo-arm" x1="376" y1="274" x2="314" y2="324"/>
+    <line class="cvo-arm" x1="376" y1="274" x2="438" y2="324"/>
+    <rect class="cvo-body" x="354" y="252" width="44" height="44" rx="10"/>
+    <circle class="cvo-prop" cx="314" cy="224" r="24"/>
+    <circle cx="314" cy="224" r="4" fill="#1B4965"/>
+    <circle class="cvo-prop" cx="438" cy="224" r="24"/>
+    <circle cx="438" cy="224" r="4" fill="#1B4965"/>
+    <circle class="cvo-prop" cx="314" cy="324" r="24"/>
+    <circle cx="314" cy="324" r="4" fill="#1B4965"/>
+    <circle class="cvo-prop" cx="438" cy="324" r="24"/>
+    <circle cx="438" cy="324" r="4" fill="#1B4965"/>
+    <line class="cvo-thr" x1="314" y1="200" x2="314" y2="158" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="438" y1="200" x2="438" y2="158" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="314" y1="300" x2="314" y2="258" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="438" y1="300" x2="438" y2="258" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-mov" x1="376" y1="424" x2="376" y2="374" marker-end="url(#cvo-ar-ver)"/>
+    <text class="cvo-cap" x="376" y="452" text-anchor="middle">Tutte le spinte</text>
+    <text class="cvo-cap" x="376" y="477" text-anchor="middle">aumentano insieme e</text>
+    <text class="cvo-cap" x="376" y="502" text-anchor="middle">il drone sale; se</text>
+    <text class="cvo-cap" x="376" y="527" text-anchor="middle">calano, scende.</text>
+    <rect class="cvo-box" x="504" y="76" width="236" height="500" rx="12"/>
+    <text class="cvo-pt" x="622" y="114" text-anchor="middle">Rollio</text>
+    <text class="cvo-pt" x="622" y="142" text-anchor="middle">e beccheggio</text>
+    <line class="cvo-arm" x1="622" y1="274" x2="560" y2="224"/>
+    <line class="cvo-arm" x1="622" y1="274" x2="684" y2="224"/>
+    <line class="cvo-arm" x1="622" y1="274" x2="560" y2="324"/>
+    <line class="cvo-arm" x1="622" y1="274" x2="684" y2="324"/>
+    <rect class="cvo-body" x="600" y="252" width="44" height="44" rx="10"/>
+    <circle class="cvo-prop" cx="560" cy="224" r="24"/>
+    <circle cx="560" cy="224" r="4" fill="#1B4965"/>
+    <circle class="cvo-prop" cx="684" cy="224" r="24"/>
+    <circle cx="684" cy="224" r="4" fill="#1B4965"/>
+    <circle class="cvo-prop" cx="560" cy="324" r="24"/>
+    <circle cx="560" cy="324" r="4" fill="#1B4965"/>
+    <circle class="cvo-prop" cx="684" cy="324" r="24"/>
+    <circle cx="684" cy="324" r="4" fill="#1B4965"/>
+    <line class="cvo-thr" x1="560" y1="200" x2="560" y2="158" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="684" y1="200" x2="684" y2="176" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="560" y1="300" x2="560" y2="258" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="684" y1="300" x2="684" y2="276" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-mov" x1="574" y1="398" x2="670" y2="398" marker-end="url(#cvo-ar-ver)"/>
+    <text class="cvo-cap" x="622" y="452" text-anchor="middle">Più spinta da un lato</text>
+    <text class="cvo-cap" x="622" y="477" text-anchor="middle">che dall'altro: il</text>
+    <text class="cvo-cap" x="622" y="502" text-anchor="middle">drone si inclina e</text>
+    <text class="cvo-cap" x="622" y="527" text-anchor="middle">scivola. Uguale fra</text>
+    <text class="cvo-cap" x="622" y="552" text-anchor="middle">davanti e dietro.</text>
+    <rect class="cvo-box" x="750" y="76" width="236" height="500" rx="12"/>
+    <text class="cvo-pt" x="868" y="114" text-anchor="middle">Imbardata</text>
+    <line class="cvo-arm" x1="868" y1="274" x2="806" y2="224"/>
+    <line class="cvo-arm" x1="868" y1="274" x2="930" y2="224"/>
+    <line class="cvo-arm" x1="868" y1="274" x2="806" y2="324"/>
+    <line class="cvo-arm" x1="868" y1="274" x2="930" y2="324"/>
+    <rect class="cvo-body" x="846" y="252" width="44" height="44" rx="10"/>
+    <circle class="cvo-prop" cx="806" cy="224" r="24"/>
+    <circle cx="806" cy="224" r="4" fill="#1B4965"/>
+    <path class="cvo-spin" d="M798.5 237.0 A 15 15 0 1 1 813.5 237.0" marker-end="url(#cvo-ar-spin)"/>
+    <circle class="cvo-prop" cx="930" cy="224" r="24"/>
+    <circle cx="930" cy="224" r="4" fill="#1B4965"/>
+    <path class="cvo-spin" d="M937.5 237.0 A 15 15 0 1 0 922.5 237.0" marker-end="url(#cvo-ar-spin)"/>
+    <circle class="cvo-prop" cx="806" cy="324" r="24"/>
+    <circle cx="806" cy="324" r="4" fill="#1B4965"/>
+    <path class="cvo-spin" d="M813.5 337.0 A 15 15 0 1 0 798.5 337.0" marker-end="url(#cvo-ar-spin)"/>
+    <circle class="cvo-prop" cx="930" cy="324" r="24"/>
+    <circle cx="930" cy="324" r="4" fill="#1B4965"/>
+    <path class="cvo-spin" d="M922.5 337.0 A 15 15 0 1 1 937.5 337.0" marker-end="url(#cvo-ar-spin)"/>
+    <line class="cvo-thr" x1="806" y1="200" x2="806" y2="158" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="930" y1="200" x2="930" y2="176" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="806" y1="300" x2="806" y2="276" marker-end="url(#cvo-ar-ora)"/>
+    <line class="cvo-thr" x1="930" y1="300" x2="930" y2="258" marker-end="url(#cvo-ar-ora)"/>
+    <path class="cvo-mov" d="M902 410 A 34 34 0 0 0 834 410" marker-end="url(#cvo-ar-ver)"/>
+    <text class="cvo-cap" x="868" y="452" text-anchor="middle">Più spinta alla</text>
+    <text class="cvo-cap" x="868" y="477" text-anchor="middle">coppia che ruota in</text>
+    <text class="cvo-cap" x="868" y="502" text-anchor="middle">un senso: la reazione</text>
+    <text class="cvo-cap" x="868" y="527" text-anchor="middle">fa girare il drone</text>
+    <text class="cvo-cap" x="868" y="552" text-anchor="middle">nel senso opposto.</text>
+  </g>
+</svg>

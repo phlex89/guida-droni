@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 140" width="300" height="140">
+  <rect x="10" y="10" width="280" height="120" fill="#F2F4F7" stroke="#1B4965" stroke-width="2" />
+  <circle cx="45" cy="45" r="18" fill="#5FA8D3" />
+  <text x="20" y="90" font-size="13" fill="#2B2D31">Schema di test</text>
+  <text x="20" y="110" font-size="13" fill="#2B2D31">(font ereditato)</text>
+</svg>

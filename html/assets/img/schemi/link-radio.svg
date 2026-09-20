@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" role="img" aria-labelledby="lnk-titolo">
+  <title id="lnk-titolo">I collegamenti radio di un drone: comandi dal radiocomando, telemetria di ritorno, video FPV, ricezione GNSS e Remote ID</title>
+  <style>
+    .lnk-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
+    .lnk-h { font-size: 32px; font-weight: 600; fill: #1B4965; }
+    .lnk-blk { font-size: 24px; font-weight: 600; fill: #2B2D31; }
+    .lnk-cap { font-size: 22px; fill: #2B2D31; }
+    .lnk-drone { font-size: 26px; font-weight: 600; fill: #1B4965; }
+    .lnk-leg { font-size: 22px; fill: #2B2D31; }
+    .lnk-legt { font-size: 22px; font-weight: 600; fill: #2B2D31; }
+    .lnk-box { fill: #F2F4F7; stroke: #1B4965; stroke-width: 2.5; }
+    .lnk-ora { fill: #FCEEDC; stroke: #E0851F; stroke-width: 2.5; }
+    .lnk-vio { fill: #ECE8F4; stroke: #6B5B95; stroke-width: 2.5; }
+    .lnk-azz { fill: #DCEEF8; stroke: #1B4965; stroke-width: 2.5; }
+    .lnk-ver { fill: #E3F2E9; stroke: #3E8E63; stroke-width: 2.5; }
+    .lnk-l-cmd { fill: none; stroke: #E0851F; stroke-width: 3; }
+    .lnk-l-tel { fill: none; stroke: #1B4965; stroke-width: 3; stroke-dasharray: 10 7; }
+    .lnk-l-vid { fill: none; stroke: #6B5B95; stroke-width: 3; }
+    .lnk-l-gns { fill: none; stroke: #3E8E63; stroke-width: 3; }
+    .lnk-wave { fill: none; stroke: #5FA8D3; stroke-width: 3; }
+    .lnk-thin { fill: none; stroke: #1B4965; stroke-width: 2.5; }
+  </style>
+  <defs>
+    <marker id="lnk-ar-cmd" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M1 1 L11 6 L1 11 Z" fill="#E0851F"/></marker>
+    <marker id="lnk-ar-tel" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M1 1 L11 6 L1 11 Z" fill="#1B4965"/></marker>
+    <marker id="lnk-ar-vid" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M1 1 L11 6 L1 11 Z" fill="#6B5B95"/></marker>
+    <marker id="lnk-ar-gns" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M1 1 L11 6 L1 11 Z" fill="#3E8E63"/></marker>
+  </defs>
+
+  <g class="lnk-w">
+    <rect x="0" y="0" width="1000" height="660" fill="#FFFFFF"/>
+    <text class="lnk-h" x="500" y="46" text-anchor="middle">I collegamenti radio di un drone</text>
+
+    <!-- satelliti GNSS -->
+    <g>
+      <rect class="lnk-ver" x="506" y="86" width="17" height="16" rx="3"/>
+      <rect class="lnk-ver" x="557" y="86" width="17" height="16" rx="3"/>
+      <line x1="523" y1="94" x2="527" y2="94" stroke="#3E8E63" stroke-width="2.5"/>
+      <line x1="553" y1="94" x2="557" y2="94" stroke="#3E8E63" stroke-width="2.5"/>
+      <rect class="lnk-ver" x="527" y="81" width="26" height="26" rx="5"/>
+      <line x1="538" y1="107" x2="538" y2="111" stroke="#3E8E63" stroke-width="2.5"/>
+      <path d="M529 118 A 9 9 0 0 1 547 118 Z" fill="#FFFFFF" stroke="#3E8E63" stroke-width="2.5"/>
+      <rect class="lnk-ver" x="606" y="70" width="17" height="16" rx="3"/>
+      <rect class="lnk-ver" x="657" y="70" width="17" height="16" rx="3"/>
+      <line x1="623" y1="78" x2="627" y2="78" stroke="#3E8E63" stroke-width="2.5"/>
+      <line x1="653" y1="78" x2="657" y2="78" stroke="#3E8E63" stroke-width="2.5"/>
+      <rect class="lnk-ver" x="627" y="65" width="26" height="26" rx="5"/>
+      <line x1="638" y1="91" x2="638" y2="95" stroke="#3E8E63" stroke-width="2.5"/>
+      <path d="M629 102 A 9 9 0 0 1 647 102 Z" fill="#FFFFFF" stroke="#3E8E63" stroke-width="2.5"/>
+      <rect class="lnk-ver" x="706" y="86" width="17" height="16" rx="3"/>
+      <rect class="lnk-ver" x="757" y="86" width="17" height="16" rx="3"/>
+      <line x1="723" y1="94" x2="727" y2="94" stroke="#3E8E63" stroke-width="2.5"/>
+      <line x1="753" y1="94" x2="757" y2="94" stroke="#3E8E63" stroke-width="2.5"/>
+      <rect class="lnk-ver" x="727" y="81" width="26" height="26" rx="5"/>
+      <line x1="738" y1="107" x2="738" y2="111" stroke="#3E8E63" stroke-width="2.5"/>
+      <path d="M729 118 A 9 9 0 0 1 747 118 Z" fill="#FFFFFF" stroke="#3E8E63" stroke-width="2.5"/>
+    </g>
+    <line class="lnk-l-gns" x1="548" y1="122" x2="548" y2="150" marker-end="url(#lnk-ar-gns)"/>
+    <line class="lnk-l-gns" x1="648" y1="106" x2="648" y2="150" marker-end="url(#lnk-ar-gns)"/>
+    <line class="lnk-l-gns" x1="748" y1="122" x2="748" y2="150" marker-end="url(#lnk-ar-gns)"/>
+    <text class="lnk-blk" x="452" y="100" text-anchor="end">GNSS (GPS, Galileo)</text>
+
+    <!-- drone -->
+    <rect class="lnk-box" x="472" y="156" width="320" height="374" rx="16"/>
+    <text class="lnk-drone" x="494" y="200" text-anchor="start">Drone</text>
+    <g>
+      <line class="lnk-thin" x1="748" y1="198" x2="730" y2="180" stroke-width="6" stroke-linecap="round"/>
+      <line class="lnk-thin" x1="748" y1="198" x2="766" y2="180" stroke-width="6" stroke-linecap="round"/>
+      <line class="lnk-thin" x1="748" y1="198" x2="730" y2="216" stroke-width="6" stroke-linecap="round"/>
+      <line class="lnk-thin" x1="748" y1="198" x2="766" y2="216" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="726" cy="176" r="11" fill="none" stroke="#5FA8D3" stroke-width="2.5"/>
+      <circle cx="770" cy="176" r="11" fill="none" stroke="#5FA8D3" stroke-width="2.5"/>
+      <circle cx="726" cy="220" r="11" fill="none" stroke="#5FA8D3" stroke-width="2.5"/>
+      <circle cx="770" cy="220" r="11" fill="none" stroke="#5FA8D3" stroke-width="2.5"/>
+      <rect x="738" y="188" width="20" height="20" rx="4" fill="#DCEEF8" stroke="#1B4965" stroke-width="2.5"/>
+    </g>
+    <rect class="lnk-ora" x="494" y="242" width="276" height="64" rx="10"/>
+    <text class="lnk-blk" x="632" y="282" text-anchor="middle">Ricevitore RC (RX)</text>
+    <rect class="lnk-azz" x="494" y="336" width="276" height="64" rx="10"/>
+    <text class="lnk-blk" x="632" y="376" text-anchor="middle">Flight controller</text>
+    <rect class="lnk-vio" x="494" y="430" width="276" height="74" rx="10"/>
+    <text class="lnk-blk" x="632" y="464" text-anchor="middle">Trasmettitore video</text>
+    <text class="lnk-blk" x="632" y="490" text-anchor="middle">(VTX)</text>
+
+    <!-- radiocomando -->
+    <rect class="lnk-ora" x="22" y="250" width="220" height="110" rx="12"/>
+    <g>
+      <rect x="100" y="272" width="64" height="34" rx="8" fill="#FFFFFF" stroke="#E0851F" stroke-width="2.5"/>
+      <circle cx="116" cy="289" r="7" fill="none" stroke="#E0851F" stroke-width="2.5"/>
+      <circle cx="148" cy="289" r="7" fill="none" stroke="#E0851F" stroke-width="2.5"/>
+      <line x1="106" y1="272" x2="96" y2="256" stroke="#E0851F" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="158" y1="272" x2="168" y2="256" stroke="#E0851F" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <text class="lnk-blk" x="132" y="332" text-anchor="middle">Radiocomando</text>
+    <text class="lnk-blk" x="132" y="356" text-anchor="middle">(TX)</text>
+
+    <!-- occhiali FPV -->
+    <rect class="lnk-vio" x="22" y="420" width="220" height="110" rx="12"/>
+    <g>
+      <rect x="92" y="438" width="80" height="38" rx="12" fill="#FFFFFF" stroke="#6B5B95" stroke-width="2.5"/>
+      <circle cx="112" cy="457" r="9" fill="none" stroke="#6B5B95" stroke-width="2.5"/>
+      <circle cx="152" cy="457" r="9" fill="none" stroke="#6B5B95" stroke-width="2.5"/>
+      <line x1="92" y1="446" x2="76" y2="442" stroke="#6B5B95" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="172" y1="446" x2="188" y2="442" stroke="#6B5B95" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <text class="lnk-blk" x="132" y="502" text-anchor="middle">Occhiali FPV</text>
+    <text class="lnk-blk" x="132" y="526" text-anchor="middle">o monitor</text>
+
+    <!-- collegamenti -->
+    <line class="lnk-l-cmd" x1="246" y1="290" x2="486" y2="282" marker-end="url(#lnk-ar-cmd)"/>
+    <text class="lnk-cap" x="368" y="222" text-anchor="middle">Comandi, 2,4 GHz</text>
+    <text class="lnk-cap" x="368" y="248" text-anchor="middle">(o 868 MHz)</text>
+
+    <line class="lnk-l-tel" x1="490" y1="300" x2="250" y2="330" marker-end="url(#lnk-ar-tel)"/>
+    <text class="lnk-cap" x="357" y="352" text-anchor="middle">Telemetria di ritorno</text>
+    <text class="lnk-cap" x="357" y="378" text-anchor="middle">RSSI, tensione, GNSS</text>
+
+    <line class="lnk-l-vid" x1="490" y1="466" x2="250" y2="470" marker-end="url(#lnk-ar-vid)"/>
+    <text class="lnk-cap" x="357" y="420" text-anchor="middle">Video, 5,8 GHz</text>
+    <text class="lnk-cap" x="357" y="446" text-anchor="middle">analogico o digitale</text>
+
+    <!-- Remote ID -->
+    <path class="lnk-wave" d="M806.1 368.2 A 22 22 0 0 1 806.1 401.8"/>
+    <path class="lnk-wave" d="M816.4 355.9 A 38 38 0 0 1 816.4 414.1"/>
+    <path class="lnk-wave" d="M826.7 343.6 A 54 54 0 0 1 826.7 426.4"/>
+    <rect x="846" y="300" width="92" height="170" rx="14" fill="#FFFFFF" stroke="#1B4965" stroke-width="2.5"/>
+    <rect x="856" y="318" width="72" height="128" rx="6" fill="#DCEEF8"/>
+    <line x1="876" y1="458" x2="908" y2="458" stroke="#1B4965" stroke-width="2.5" stroke-linecap="round"/>
+    <text class="lnk-cap" x="892" y="520" text-anchor="middle">Remote ID,</text>
+    <text class="lnk-cap" x="892" y="546" text-anchor="middle">Bluetooth o Wi-Fi</text>
+
+    <!-- legenda -->
+    <text class="lnk-legt" x="22" y="588" text-anchor="start">Legenda</text>
+    <line class="lnk-l-cmd" x1="22" y1="622" x2="70" y2="622" marker-end="url(#lnk-ar-cmd)"/>
+    <text class="lnk-leg" x="92" y="629" text-anchor="start">comando</text>
+    <line class="lnk-l-tel" x1="216" y1="622" x2="264" y2="622" marker-end="url(#lnk-ar-tel)"/>
+    <text class="lnk-leg" x="286" y="629" text-anchor="start">telemetria</text>
+    <line class="lnk-l-vid" x1="428" y1="622" x2="476" y2="622" marker-end="url(#lnk-ar-vid)"/>
+    <text class="lnk-leg" x="498" y="629" text-anchor="start">video</text>
+  </g>
+</svg>

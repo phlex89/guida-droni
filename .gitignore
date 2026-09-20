@@ -1,0 +1,8 @@
+build/node_modules
+build/preview
+build/fixtures/out
+build/.venv
+build/schemi-prova
+build/schemi-prova-norme
+.DS_Store
+html/pdf
