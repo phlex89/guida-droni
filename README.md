@@ -50,9 +50,9 @@ Ogni `<img>` che punta a un file dentro `img/schemi/` viene sostituito automatic
 node build/build.mjs html
 ```
 
-Unisce tutti i capitoli in `html/index.html`, con barra di navigazione laterale e stile per la lettura a schermo. Il file si apre direttamente in un browser, senza bisogno di un server.
+Unisce tutti i capitoli in `html/index.html`, con barra di navigazione laterale e stile per la lettura a schermo. Il file si apre direttamente in un browser, senza bisogno di un server. Sotto i 900 px di larghezza (tablet e smartphone) la barra laterale diventa un menu a scomparsa: una barra fissa in alto mostra il capitolo in lettura e il pulsante che apre l'indice; il menu si chiude toccando fuori, con Esc o scegliendo un capitolo. Sotto i 640 px le griglie passano a una colonna e le tabelle larghe e gli schemi si scorrono in orizzontale.
 
-A schermo il corpo del testo usa il font Literata a 20 px con interlinea 1,65, pensato per la lettura prolungata; nella barra laterale tre pulsanti «A» cambiano la dimensione del testo (17, 20 o 23 px) e la scelta viene ricordata dal browser. I PDF mantengono Source Serif 4 a 10,75 pt per restare entro le 90 pagine.
+A schermo il corpo del testo usa il font Literata a 20 px con interlinea 1,65, pensato per la lettura prolungata; nella barra laterale tre pulsanti «A» cambiano la dimensione del testo (17, 20 o 23 px; su smartphone 15,5, 17 o 19 px) e la scelta viene ricordata dal browser. I PDF mantengono Source Serif 4 a 10,75 pt per restare entro le 90 pagine.
 
 ### Generare un'anteprima PNG di un PDF
 

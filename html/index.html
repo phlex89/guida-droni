@@ -3,12 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1B4965">
 <title>Guida ai droni</title>
+<script>
+(function () {
+  var taglia = "2";
+  try { taglia = localStorage.getItem("guida-droni-taglia") || "2"; } catch (e) {}
+  document.documentElement.setAttribute("data-taglia", /^[123]$/.test(taglia) ? taglia : "2");
+})();
+</script>
 <link rel="stylesheet" href="assets/css/guida.css">
   <style>
+    html { scroll-padding-top: 16px; }
+    html[data-taglia="1"] { font-size: 17px; }
+    html[data-taglia="2"] { font-size: 20px; }
+    html[data-taglia="3"] { font-size: 23px; }
     body { margin: 0; display: flex; min-height: 100vh; background: #fff; }
     .sidebar {
-      position: fixed; top: 0; left: 0; bottom: 0; width: 300px;
+      position: fixed; top: 0; left: 0; bottom: 0; width: 300px; z-index: 10;
       overflow-y: auto; padding: 28px 20px; background: #F2F4F7;
       border-right: 1px solid #D8DCE3; box-sizing: border-box;
       font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
@@ -18,6 +30,8 @@
     .sidebar li { margin: 0; }
     .sidebar a { display: block; text-decoration: none; color: #2B2D31; font-size: 17px; line-height: 1.35; padding: 7px 8px; border-radius: 6px; border: 0; }
     .sidebar a:hover { color: #1B4965; background: #E3EAF1; }
+    .sidebar a[aria-current="true"] { color: #1B4965; background: #E3EAF1; font-weight: 600; box-shadow: inset 3px 0 0 #5FA8D3; }
+    .chiudi-menu { display: none; }
     .scarica-pdf { margin-top: 28px; padding-top: 18px; border-top: 1px solid #D8DCE3; }
     .scarica-pdf a { font-size: 15px; padding: 5px 8px; }
     .scarica-pdf a::before { content: "PDF"; display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: #fff; background: #5FA8D3; border-radius: 3px; padding: 2px 5px; margin-right: 8px; vertical-align: 2px; }
@@ -27,6 +41,7 @@
     .dimensione-testo button {
       font-family: inherit; font-weight: 700; color: #1B4965; background: #fff;
       border: 1px solid #C9D1DB; border-radius: 6px; padding: 6px 12px; margin-right: 6px; cursor: pointer;
+      min-width: 44px; min-height: 40px;
     }
     .dimensione-testo button.attivo { background: #1B4965; color: #fff; border-color: #1B4965; }
     .dimensione-testo button[data-taglia="1"] { font-size: 14px; }
@@ -47,23 +62,76 @@
       color: #fff; background: #5FA8D3; border-radius: 3px; padding: 3px 6px;
     }
     .scarica-capitolo:hover { background: #E3EAF1; border-color: #1B4965; }
-    @media print { .azioni-capitolo { display: none; } }
-    .sidebar-toggle {
-      display: none; position: fixed; top: 12px; left: 12px; z-index: 20;
-      background: #1B4965; color: #fff; border: none; border-radius: 6px;
-      padding: 10px 14px; font-size: 16px; cursor: pointer;
-    }
+    .barra-mobile { display: none; }
+    .velo { display: none; }
+
     @media (max-width: 900px) {
-      .sidebar { transform: translateX(-100%); transition: transform 0.2s ease; z-index: 10; }
-      .sidebar.aperta { transform: translateX(0); }
-      .contenuto { margin-left: 0; padding: 64px 20px 60px; }
-      .sidebar-toggle { display: block; }
+      html { scroll-padding-top: 72px; }
+      .barra-mobile {
+        display: flex; align-items: center; gap: 10px;
+        position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 20;
+        padding: 0 12px 0 max(6px, env(safe-area-inset-left));
+        background: rgba(255, 255, 255, 0.96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+        border-bottom: 1px solid #D8DCE3; box-sizing: border-box;
+        font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+      }
+      .apri-menu, .chiudi-menu {
+        display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+        width: 44px; height: 44px; padding: 0; border: 0; border-radius: 8px;
+        background: transparent; color: #1B4965; cursor: pointer;
+      }
+      .apri-menu:hover, .apri-menu:focus-visible, .chiudi-menu:hover, .chiudi-menu:focus-visible { background: #E3EAF1; }
+      .apri-menu svg { width: 26px; height: 26px; }
+      .chiudi-menu svg { width: 22px; height: 22px; }
+      .barra-mobile .titoli { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+      .barra-mobile .nome-guida { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5FA8D3; }
+      .barra-mobile .capitolo-corrente { font-size: 15px; font-weight: 600; color: #1B4965; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .sidebar {
+        width: min(320px, 86vw); z-index: 40; padding-top: 14px;
+        padding-left: max(20px, env(safe-area-inset-left));
+        transform: translateX(-100%); transition: transform 0.25s ease;
+      }
+      .sidebar.aperta { transform: translateX(0); box-shadow: 0 0 40px rgba(18, 53, 74, 0.28); }
+      .sidebar > h2 { margin-top: 10px; padding-right: 52px; }
+      .sidebar a { padding: 10px 10px; }
+      .chiudi-menu { position: absolute; top: 6px; right: 8px; }
+      .velo {
+        display: block; position: fixed; inset: 0; z-index: 30;
+        background: rgba(18, 53, 74, 0.45); opacity: 0; pointer-events: none; touch-action: none;
+        transition: opacity 0.25s ease;
+      }
+      body.menu-aperto { overflow: hidden; }
+      body.menu-aperto .velo { opacity: 1; pointer-events: auto; }
+      .contenuto { margin-left: 0; padding: 72px 16px 56px; max-width: none; overflow-x: clip; }
+      .azioni-capitolo { justify-content: flex-start; margin-bottom: 18px; }
+      .capitolo + .capitolo .azioni-capitolo { margin-top: 20px; }
+      .scarica-capitolo { font-size: 15px; padding: 8px 12px; }
+    }
+    @media (max-width: 640px) {
+      html[data-taglia="1"] { font-size: 15.5px; }
+      html[data-taglia="2"] { font-size: 17px; }
+      html[data-taglia="3"] { font-size: 19px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sidebar, .velo { transition: none; }
+    }
+    @media print {
+      .barra-mobile, .velo, .sidebar, .azioni-capitolo { display: none !important; }
+      .contenuto { margin-left: 0; padding: 0; max-width: none; }
     }
   </style>
 </head>
 <body>
-<button class="sidebar-toggle" type="button">Indice</button>
-<nav class="sidebar">
+<header class="barra-mobile">
+  <button class="apri-menu" type="button" aria-label="Apri l'indice" aria-expanded="false" aria-controls="indice"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <div class="titoli">
+    <span class="nome-guida">Guida ai droni</span>
+    <span class="capitolo-corrente">Indice</span>
+  </div>
+</header>
+<div class="velo"></div>
+<nav class="sidebar" id="indice" aria-label="Indice della guida">
+  <button class="chiudi-menu" type="button" aria-label="Chiudi l'indice"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
   <h2>Indice</h2>
   <ul>
       <li><a href="#cap-00">00 · Introduzione e mappa della guida</a></li>
@@ -303,7 +371,7 @@
 </aside>
 
 <figure class="schema">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-labelledby="sus-titolo">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-labelledby="sus-titolo">
   <title id="sus-titolo">Il sistema UAS: stazione di controllo a terra, link di comando e controllo, aeromobile senza equipaggio</title>
   <style>
     .sus-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -406,7 +474,7 @@
     <text class="sus-note" x="500" y="482" text-anchor="middle">il pilota remoto è chi comanda il volo.</text>
   </g>
 </svg>
-
+</div>
   <figcaption><strong>Figura 1.1</strong> Le tre parti del sistema. Il collegamento è bidirezionale e asimmetrico: in salita viaggiano pochi byte di comandi, in discesa telemetria e video.</figcaption>
 </figure>
 
@@ -475,7 +543,7 @@
   </figure>
 </div>
 
-<table>
+<div class="tabella-scorrevole larga"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Famiglia</th><th>Come sta in aria</th><th>Autonomia tipica</th><th>Punto forte</th><th>Limite</th><th>Uso tipico</th></tr>
   </thead>
@@ -485,8 +553,8 @@
     <tr><th>VTOL ibrido</th><td>Rotori in verticale al decollo, ala in crociera</td><td>Intermedia, vicina all'ala fissa</td><td>Nessuna pista e lunga percorrenza</td><td>Peso, complessità, transizione delicata</td><td>Rilievi estesi da luoghi senza spazio libero</td></tr>
     <tr><th>Elicottero</th><td>Rotore principale a passo variabile</td><td>Variabile con la taglia</td><td>Carico utile alto per le dimensioni</td><td>Meccanica complessa, pilotaggio difficile</td><td>Agricoltura e applicazioni specialistiche</td></tr>
   </tbody>
-  <caption><strong>Tabella 1.1</strong> Le quattro famiglie a confronto. Le autonomie sono ordini di grandezza e dipendono da massa, carico, vento e temperatura.</caption>
-</table>
+  
+</table></div><p class="didascalia"><strong>Tabella 1.1</strong> Le quattro famiglie a confronto. Le autonomie sono ordini di grandezza e dipendono da massa, carico, vento e temperatura.</p></div>
 
 <h2><span class="numero">1.4</span> A cosa servono</h2>
 
@@ -581,7 +649,7 @@
 </ul>
 
 <figure class="schema">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 740" role="img" aria-labelledby="anq-titolo">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 740" role="img" aria-labelledby="anq-titolo">
   <title id="anq-titolo">Anatomia di un quadricottero visto dall'alto: eliche, motori, ESC, bracci, piastra centrale, flight controller, modulo GNSS, ricevitore, batteria, camera e LED</title>
   <style>
     .anq-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -738,7 +806,7 @@
     <circle class="anq-dot" cx="500" cy="295" r="3"/>
   </g>
 </svg>
-
+</div>
   <figcaption><strong>Figura 2.1</strong> Le eliche opposte sulla diagonale girano nello stesso senso; le due diagonali girano in senso contrario fra loro.</figcaption>
 </figure>
 
@@ -783,7 +851,7 @@
     <span class="credito">Foto: Ali.yusuf7, CC BY-SA 4.0, via Wikimedia Commons</span></figcaption>
 </figure>
 
-<table>
+<div class="tabella-scorrevole"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Componente</th><th>Funzione</th><th>Parametri chiave</th></tr>
   </thead>
@@ -794,7 +862,7 @@
     <tr><th>Elica</th><td>Trasforma la coppia in spinta</td><td>Diametro, passo, numero di pale, materiale</td></tr>
   </tbody>
   <caption><strong>Tabella 2.1</strong> Un anello sottodimensionato limita tutti gli altri: un motore generoso su un regolatore piccolo dà surriscaldamento.</caption>
-</table>
+</table></div></div>
 
 <h2><span class="numero">2.4</span> L'alimentazione</h2>
 
@@ -819,7 +887,7 @@
   <p>Di conseguenza: un pacco gonfio esce dal servizio subito. Non caricare mai senza sorveglianza, usa un contenitore ignifugo e proteggi i connettori dai cortocircuiti. Per il trasporto aereo valgono regole specifiche su quantità e stato di carica: le trovi nel capitolo 7.</p>
 </aside>
 
-<table>
+<div class="tabella-scorrevole"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Caratteristica</th><th>LiPo</th><th>Li-ion cilindriche</th></tr>
   </thead>
@@ -831,7 +899,7 @@
     <tr><th>Uso tipico</th><td>Multirotori acrobatici, FPV, droni compatti</td><td>Ali fisse, mappatura, lunga autonomia</td></tr>
   </tbody>
   <caption><strong>Tabella 2.2</strong> La scelta non è fra “migliore” e “peggiore” ma fra potenza istantanea ed energia trasportata.</caption>
-</table>
+</table></div></div>
 
 <h2><span class="numero">2.5</span> Il cervello: flight controller e sensori</h2>
 
@@ -865,7 +933,7 @@
 <p>L'imbardata sfrutta le coppie di reazione: il controllo accelera la diagonale che gira in un verso e rallenta l'altra della stessa quantità, così la spinta totale e la quota non cambiano, ma le coppie non si annullano più e la macchina ruota attorno all'asse verticale. È la manovra più lenta, perché dipende dall'attrito aerodinamico delle eliche.</p>
 
 <figure class="schema">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="cvo-titolo">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="cvo-titolo">
   <title id="cvo-titolo">Come si muove un quadricottero: hovering, salita e discesa, rollio e beccheggio, imbardata</title>
   <style>
     .cvo-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -1002,7 +1070,7 @@
     <text class="cvo-cap" x="868" y="552" text-anchor="middle">nel senso opposto.</text>
   </g>
 </svg>
-
+</div>
   <figcaption><strong>Figura 2.5</strong> Le quattro situazioni di base. La lunghezza delle frecce indica la spinta relativa dei quattro rotori.</figcaption>
 </figure>
 
@@ -1014,7 +1082,7 @@
 
 <p>Le modalità di volo sono livelli diversi di automazione sopra lo stesso hardware. Cambia solo quale anello di controllo riceve i tuoi comandi, e quanto lavoro resta a te.</p>
 
-<table>
+<div class="tabella-scorrevole"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Modalità</th><th>Cosa comanda lo stick</th><th>Se rilasci gli stick</th></tr>
   </thead>
@@ -1024,7 +1092,7 @@
     <tr><th>Posizione o GNSS hold</th><td>Velocità rispetto al suolo</td><td>Si ferma e tiene posizione e quota</td></tr>
   </tbody>
   <caption><strong>Tabella 2.3</strong> Scendendo nella tabella si aggiunge un anello di controllo e diminuisce il carico di pilotaggio.</caption>
-</table>
+</table></div></div>
 
 <p>La modalità manuale, chiamata acro, passa i comandi all'anello più interno: gli stick chiedono velocità di rotazione e la macchina non si raddrizza da sola. È innaturale all'inizio e indispensabile per il volo <abbr title="First Person View, volo in prima persona">FPV</abbr>, perché è l'unica che consente manovre oltre l'assetto orizzontale. La stabilizzata inserisce l'anello di assetto, quindi lo stick corrisponde a un angolo entro un limite, ma non tiene la posizione: senza satelliti il vento porta via il drone. La modalità di posizione chiude anche gli anelli di velocità e posizione, e al centro degli stick il drone si pianta in aria.</p>
 
@@ -1091,7 +1159,7 @@
 </aside>
 
 <figure class="schema">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" role="img" aria-labelledby="lnk-titolo">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" role="img" aria-labelledby="lnk-titolo">
   <title id="lnk-titolo">I collegamenti radio di un drone: comandi dal radiocomando, telemetria di ritorno, video FPV, ricezione GNSS e Remote ID</title>
   <style>
     .lnk-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -1232,7 +1300,7 @@
     <text class="lnk-leg" x="498" y="629" text-anchor="start">video</text>
   </g>
 </svg>
-
+</div>
   <figcaption><strong>Figura 3.1</strong> I collegamenti radio di un drone. Il comando e la telemetria di ritorno viaggiano di solito sullo stesso link; il video ha spesso una banda propria; GNSS e Remote ID sono a senso unico.</figcaption>
 </figure>
 
@@ -1241,7 +1309,7 @@
 <p>Un drone hobbistico non ha una licenza di frequenza: usa le bande destinate agli <em>apparati a corto raggio</em> (<abbr title="Short Range Devices">SRD</abbr>) e alle reti locali senza fili, con i limiti di potenza fissati dalle norme armonizzate ETSI e dalla Raccomandazione ERC 70-03. Sono limiti bassi, pensati per far convivere milioni di dispositivi, e valgono in tutta l'Unione; l'Italia li recepisce nel Piano Nazionale di Ripartizione delle Frequenze. La Figura 3.2 e la Tabella 3.1 li riassumono.</p>
 
 <figure class="schema">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 486" role="img" aria-labelledby="spe-titolo">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 486" role="img" aria-labelledby="spe-titolo">
   <title id="spe-titolo">Le bande radio usate dai droni in Europa, dai 433 MHz ai 5,8 GHz, con uso tipico e limite di potenza</title>
   <style>
     .spe-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -1325,11 +1393,11 @@
     <text class="spe-note" x="500" y="458" text-anchor="middle">video sopra 25 mW comuni negli USA non sono ammessi in Europa.</text>
   </g>
 </svg>
-
+</div>
   <figcaption><strong>Figura 3.2</strong> Le bande usate dai droni in Europa con i limiti di potenza per uso senza licenza. La differenza con le regole statunitensi spiega perché molti prodotti hanno una «modalità CE» e una «modalità FCC».</figcaption>
 </figure>
 
-<table>
+<div class="tabella-scorrevole larga"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Banda</th><th>Uso tipico</th><th>Limite in Europa</th><th>Norma</th></tr>
   </thead>
@@ -1341,8 +1409,8 @@
     <tr><th>5,15-5,35 / 5,47-5,725&nbsp;GHz</th><td>Wi-Fi 5 GHz</td><td>200&nbsp;mW solo al chiuso / 1&nbsp;W con DFS</td><td>EN&nbsp;301&nbsp;893</td></tr>
     <tr><th>5,725-5,875&nbsp;GHz</th><td>Video FPV analogico e digitale</td><td>25&nbsp;mW e.i.r.p.</td><td>EN&nbsp;300&nbsp;440</td></tr>
   </tbody>
-  <caption><strong>Tabella 3.1</strong> Bande e limiti per l'uso senza licenza in Europa. I valori sono quelli delle norme al 20 settembre 2026; le sottobande degli 868&nbsp;MHz hanno limiti diversi tra loro e vanno lette nella norma.</caption>
-</table>
+  
+</table></div><p class="didascalia"><strong>Tabella 3.1</strong> Bande e limiti per l'uso senza licenza in Europa. I valori sono quelli delle norme al 20 settembre 2026; le sottobande degli 868&nbsp;MHz hanno limiti diversi tra loro e vanno lette nella norma.</p></div>
 
 <p>Due confronti spiegano molte cose che leggerai nei forum. Negli Stati Uniti la banda dei 900&nbsp;MHz va da 902 a 928&nbsp;MHz con potenze fino a 1&nbsp;W: in Europa quella banda non esiste per gli SRD, e l'equivalente sono i 868&nbsp;MHz con 25&nbsp;mW e vincoli di duty cycle. Un modulo «915» acceso in Italia trasmette fuori banda. Sui 5,8&nbsp;GHz la FCC ammette potenze dell'ordine del watt; in Europa il limite è 25&nbsp;mW. Un trasmettitore video da 600&nbsp;mW, comunissimo nei prodotti per il mercato americano, supera il limite europeo di oltre venti volte, qualunque sia l'etichetta sulla scatola.</p>
 
@@ -1372,7 +1440,7 @@
 
 <p>Il <strong>video digitale</strong> comprime il flusso della camera e lo trasmette a pacchetti, su 5,8&nbsp;GHz o su più bande. La qualità è quella di un video HD, con latenze tipiche tra 15 e 35&nbsp;ms a seconda del sistema, della risoluzione e della complessità della scena. In cambio compare l'<em>effetto cliff</em>: il segnale è perfetto fino a una soglia e poi si blocca o sparisce di colpo, senza la degradazione progressiva dell'analogico. I sistemi migliori attenuano il problema riducendo risoluzione e bit rate quando il link peggiora. I droni giocattolo, infine, spediscono il video su Wi-Fi verso l'app del telefono, con latenze che arrivano al secondo e portate di poche decine di metri: sufficienti per guardare, inadatte per pilotare.</p>
 
-<table>
+<div class="tabella-scorrevole larga"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Caratteristica</th><th>Analogico 5,8&nbsp;GHz</th><th>Digitale</th><th>Wi-Fi (giocattoli)</th></tr>
   </thead>
@@ -1383,8 +1451,8 @@
     <tr><th>Banda occupata</th><td>Canale FM largo</td><td>Pacchetti compressi</td><td>Wi-Fi standard</td></tr>
     <tr><th>Uso tipico</th><td>Gare, freestyle</td><td>Consumer, FPV cinematico</td><td>Giocattoli</td></tr>
   </tbody>
-  <caption><strong>Tabella 3.2</strong> Le tre famiglie di trasmissione video. Le latenze sono ordini di grandezza al 2026, misurate «da vetro a vetro», dalla lente della camera allo schermo.</caption>
-</table>
+  
+</table></div><p class="didascalia"><strong>Tabella 3.2</strong> Le tre famiglie di trasmissione video. Le latenze sono ordini di grandezza al 2026, misurate «da vetro a vetro», dalla lente della camera allo schermo.</p></div>
 
 <aside class="box tlc">
   <p>Il comportamento «cliff» è il classico effetto soglia dei sistemi digitali: sotto un certo rapporto segnale-rumore la correzione d'errore non regge più e il tasso di errore esplode in pochi dB. L'analogico, invece, degrada con continuità con il rapporto segnale-rumore. Nei sistemi digitali il pilota deve quindi imparare a leggere gli indicatori di qualità del link invece dell'immagine, che non avvisa.</p>
@@ -1504,7 +1572,7 @@
 
 <p>La categoria <strong>Certified</strong> («certificata») è riservata alle operazioni a rischio comparabile con l'aviazione tradizionale: trasporto di persone, trasporto di merci pericolose, sorvolo di assembramenti con droni grandi. Richiede la certificazione del drone, dell'operatore e la licenza del pilota, come per un aereo di linea. Non riguarda chi legge questa guida, se non come orizzonte del settore.</p>
 
-<table>
+<div class="tabella-scorrevole larga"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Categoria</th><th>Rischio</th><th>Cosa serve prima di volare</th><th>Esempi</th></tr>
   </thead>
@@ -1513,8 +1581,8 @@
     <tr><th>Specific</th><td>Medio</td><td>Autorizzazione operativa dell'autorità (ENAC), oppure dichiarazione per uno scenario standard</td><td>Volo oltre la linea di vista, rilievo di una linea elettrica, ripresa in centro storico con drone pesante</td></tr>
     <tr><th>Certified</th><td>Alto</td><td>Certificazione di drone e operatore, licenza del pilota</td><td>Trasporto di persone, consegna di merci pericolose, sorvolo di folle con droni grandi</td></tr>
   </tbody>
-  <caption><strong>Tabella 4.1</strong> Le tre categorie del Regolamento (UE) 2019/947. Il passaggio da una categoria all'altra dipende dall'operazione, non dal drone in sé: la stessa macchina può volare in Open in campagna e richiedere un'autorizzazione Specific in città.</caption>
-</table>
+  
+</table></div><p class="didascalia"><strong>Tabella 4.1</strong> Le tre categorie del Regolamento (UE) 2019/947. Il passaggio da una categoria all'altra dipende dall'operazione, non dal drone in sé: la stessa macchina può volare in Open in campagna e richiedere un'autorizzazione Specific in città.</p></div>
 
 <h2><span class="numero">4.3</span> Operatore e pilota remoto</h2>
 
@@ -1556,7 +1624,7 @@
 <p>Le tre sottocategorie della Open rispondono a una sola domanda: quanto vicino alle persone puoi volare. La risposta dipende dalla classe del drone, e quindi dalla sua massa. Lo schema della Figura 4.1 la riassume; le sezioni che seguono la spiegano.</p>
 
 <figure class="schema">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 790" role="img" aria-labelledby="cat-titolo" class="cat-svg">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 790" role="img" aria-labelledby="cat-titolo" class="cat-svg">
   <title id="cat-titolo">In quale sottocategoria Open voli?</title>
   <style>
     .cat-svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -1674,7 +1742,7 @@
   <text class="cat-tenue" x="24" y="738">In tutti i casi: massimo 120 m dal suolo, sempre in vista (VLOS),</text>
   <text class="cat-tenue" x="24" y="766">operatore registrato, attestato A1/A3 (salvo C0 senza camera).</text>
 </svg>
-
+</div>
   <figcaption><strong>Figura 4.1</strong> Come si arriva alla sottocategoria partendo dal drone che hai in mano. I droni senza marcatura di classe seguono il ramo di destra e dal 1º gennaio 2024 non hanno più accesso alla A2.</figcaption>
 </figure>
 
@@ -1692,7 +1760,7 @@
 
 <p>La sottocategoria A3 raccoglie tutto il resto: le classi C2, C3 e C4 fino a 25&nbsp;kg, i droni autocostruiti fino a 25&nbsp;kg e i droni senza marcatura di classe da 250&nbsp;g in su. Le regole compensano il maggior rischio con la distanza: si vola solo dove ragionevolmente non si mettono in pericolo persone non coinvolte, e ad almeno 150&nbsp;m in orizzontale da aree residenziali, commerciali, industriali o ricreative. Il caso tipico è il campo aperto in campagna, lontano da case e strade frequentate.</p>
 
-<table>
+<div class="tabella-scorrevole larga"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Sotto-<br>categoria</th><th>Classi ammesse</th><th>Massa</th><th>Distanza dalle persone non coinvolte</th><th>Formazione del pilota</th></tr>
   </thead>
@@ -1726,8 +1794,8 @@
       <td>Attestato A1/A3 (esame online)</td>
     </tr>
   </tbody>
-  <caption><strong>Tabella 4.2</strong> Le sottocategorie della categoria Open. In tutte valgono le regole comuni della sezione 4.4: 120&nbsp;m, VLOS, operatore registrato.</caption>
-</table>
+  
+</table></div><p class="didascalia"><strong>Tabella 4.2</strong> Le sottocategorie della categoria Open. In tutte valgono le regole comuni della sezione 4.4: 120&nbsp;m, VLOS, operatore registrato.</p></div>
 
 <aside class="box scenario">
   <p><strong>Un C1 da 800 g nel parco di quartiere.</strong> Domenica pomeriggio, parco di periferia, qualche famiglia sui prati. Un drone di classe C1 con camera può volare qui in A1: l'operatore è registrato e il numero è sul drone, il pilota ha l'attestato A1/A3. Il pilota sceglie un'area del parco dove non passa nessuno, non sorvola intenzionalmente le persone e, se un gruppo si avvicina, si sposta. Se il parco ospita una festa con centinaia di persone, quello è un assembramento: non si sorvola, punto. E prima di tutto ha controllato che il parco non ricada in una zona geografica con divieti (capitolo 5).</p>
@@ -1743,7 +1811,7 @@
 
 <p>Ogni classe fissa un pacchetto di requisiti: massa massima, velocità massima, limite di quota impostabile, robustezza, sicurezza elettrica, comportamento in caso di perdita del link, presenza di luci, limiti di rumore, e per le classi da C1 in su il sistema di identificazione a distanza (Remote ID) e la funzione di geo-awareness (sezione 4.9). La Tabella 4.3 ne riassume gli elementi essenziali.</p>
 
-<table class="lunga">
+<div class="tabella-scorrevole larga"><div class="area-scorrevole"><table class="lunga">
   <thead>
     <tr><th>Classe</th><th>Massa e prestazioni</th><th>Requisiti caratteristici</th><th>Sotto-<br>categorie</th></tr>
   </thead>
@@ -1791,8 +1859,8 @@
       <td>Specific</td>
     </tr>
   </tbody>
-  <caption><strong>Tabella 4.3</strong> Le classi del Regolamento delegato (UE) 2019/945 in sintesi. I requisiti completi occupano decine di pagine; qui ci sono quelli che cambiano l'uso pratico.</caption>
-</table>
+  
+</table></div><p class="didascalia"><strong>Tabella 4.3</strong> Le classi del Regolamento delegato (UE) 2019/945 in sintesi. I requisiti completi occupano decine di pagine; qui ci sono quelli che cambiano l'uso pratico.</p></div>
 
 <aside class="box attenzione">
   <p>La marcatura di classe non è un adesivo che puoi comprare e attaccare. La appone il costruttore, insieme alla dichiarazione di conformità. Un drone venduto senza marcatura resta «senza marcatura» per tutta la vita, a meno che il costruttore stesso non ne dichiari la conformità in un secondo momento, di solito con un aggiornamento del firmware e un kit di etichette ufficiale. Diffida di chi ti propone scorciatoie.</p>
@@ -1833,7 +1901,7 @@
 <p>Le classi C1, C2 e C3, oltre alle C5 e C6, devono avere un sistema di <strong>identificazione a distanza diretta</strong>, il Remote ID. È un trasmettitore che, durante tutto il volo, diffonde in chiaro una serie di informazioni: il numero di registrazione dell'operatore, il numero di serie del drone, la posizione e la quota, la velocità e la direzione, la posizione del pilota o del punto di decollo, la marca temporale e uno stato di emergenza. La trasmissione avviene via Bluetooth o Wi-Fi secondo lo standard europeo EN&nbsp;4709-002, e chiunque può leggerla con un'app sullo smartphone: un agente di polizia, un cittadino, un altro pilota. Il capitolo 3 ne descrive il funzionamento radio.</p>
 
 <figure class="schema">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 506" role="img" aria-labelledby="rid-titolo">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 506" role="img" aria-labelledby="rid-titolo">
   <title id="rid-titolo">Remote ID: il drone in volo trasmette via radio i dati di identificazione, che uno smartphone con un'app può ricevere</title>
   <style>
     .rid-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -1905,7 +1973,7 @@
     <text class="rid-cap" x="640" y="478" text-anchor="middle">Ricevibile da chiunque con un'app, via Bluetooth o Wi-Fi</text>
   </g>
 </svg>
-
+</div>
   <figcaption><strong>Figura 4.3</strong> Il Remote ID diretto è la «targa» del drone: chiunque, a portata radio, può leggere chi sta volando e dove si trova il pilota. Il numero di registrazione dell'operatore va caricato nel drone prima di volare.</figcaption>
 </figure>
 
@@ -2008,7 +2076,7 @@
   <li><strong>Rinnova ogni anno.</strong> L'abbonamento scade dodici mesi dopo l'attivazione. Un operatore con la registrazione scaduta è, agli effetti della legge, non registrato.</li>
 </ol>
 
-<table>
+<div class="tabella-scorrevole"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Voce</th><th class="centro">Importo</th><th>Note</th></tr>
   </thead>
@@ -2020,7 +2088,7 @@
     <tr><th>Mappa e geo-consapevolezza</th><td class="centro">gratis</td><td>Per tutti gli utenti registrati</td></tr>
   </tbody>
   <caption><strong>Tabella 5.1</strong> Tariffe d-flight, IVA inclusa, verificate sulla pagina ufficiale il 20 settembre 2026; il listino è stato aggiornato all'inizio del 2026. Sono cifre che cambiano: controlla la pagina delle tariffe prima di pagare.</caption>
-</table>
+</table></div></div>
 
 <aside class="box attenzione">
   <p>Se il tuo drone ha una camera, la registrazione è obbligatoria anche sotto i 250&nbsp;g. La convinzione diffusa che «sotto i 250 grammi non serve nulla» è falsa: sotto i 250&nbsp;g non serve l'attestato, ma servono registrazione, QR code e assicurazione.</p>
@@ -2053,7 +2121,7 @@
 <p>Le zone geografiche UAS previste dall'articolo 15 del regolamento europeo sono definite in Italia dall'ENAC con la circolare <strong>ATM-09A</strong> del marzo 2021 e pubblicate sulla mappa del portale d-flight, che dal 1º gennaio 2022 è il canale ufficiale. La mappa è consultabile gratuitamente da chiunque abbia un account e mostra, per ogni punto del territorio, se il volo in categoria Open è libero, limitato o vietato. Consultarla è il primo gesto di ogni volo.</p>
 
 <figure class="schema compatto">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="spa-titolo" class="spa-svg">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="spa-titolo" class="spa-svg">
   <title id="spa-titolo">Dove si vola in categoria Open</title>
   <style>
     .spa-svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -2153,7 +2221,7 @@
   <text class="spa-cardb" x="682" y="558">(ATZ, CTR): volo vietato o</text>
   <text class="spa-cardb" x="682" y="584">soggetto ad autorizzazione.</text>
 </svg>
-
+</div>
   <figcaption><strong>Figura 5.1</strong> La fascia dei 120&nbsp;m segue il terreno; attorno agli aeroporti la zona geografica vieta o condiziona il volo; sopra la fascia c'è il traffico con equipaggio, a cui il drone deve sempre cedere il passo.</figcaption>
 </figure>
 
@@ -2304,7 +2372,7 @@
 <p>La differenza di fondo rispetto alla Open è che nella Specific non ci sono limiti prefissati: c'è invece una <strong>valutazione del rischio</strong> dell'operazione concreta, che l'operatore prepara e l'autorità nazionale approva. In Italia l'autorità è l'ENAC. Il risultato è un'<strong>autorizzazione operativa</strong>, un documento che descrive cosa puoi fare, dove, con quale drone, con quali misure di sicurezza e per quanto tempo. Fuori da quel perimetro l'autorizzazione non vale.</p>
 
 <figure class="schema">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 610" role="img" aria-labelledby="sor-titolo" class="sor-svg">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 610" role="img" aria-labelledby="sor-titolo" class="sor-svg">
   <title id="sor-titolo">Le tre categorie: il rischio cresce, crescono i requisiti</title>
   <style>
     .sor-svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -2362,7 +2430,7 @@
   <path d="M20,552 H964" fill="none" stroke="#5C6370" stroke-width="3" marker-end="url(#sor-fr)"/>
   <text class="sor-asse" x="500" y="586" text-anchor="middle">Onere per l'operatore</text>
 </svg>
-
+</div>
   <figcaption><strong>Figura 6.1</strong> Le tre categorie viste come gradini: a ogni passo il rischio ammesso cresce, e con esso ciò che l'operatore deve dimostrare prima di volare.</figcaption>
 </figure>
 
@@ -2569,7 +2637,7 @@
 
 <p>La batteria critica avvia un atterraggio automatico dove il drone si trova, e quella procedura non guarda se sotto c'è un lago o una strada. Il flyaway, cioè la partenza incontrollata in una direzione qualsiasi, è raro: tenta il ritorno automatico e, se non risponde, annota ultima posizione e ultima quota note, che serviranno per cercarlo e per ricostruire l'accaduto. Non inseguirlo in auto guardando lo schermo.</p>
 
-<table>
+<div class="tabella-scorrevole"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Sintomo</th><th>Causa probabile</th><th>Azione immediata</th></tr>
   </thead>
@@ -2582,7 +2650,7 @@
     <tr><th>Allontanamento in direzione non comandata</th><td>Avaria del sistema di navigazione</td><td>Tenta il ritorno automatico, annota ultima posizione e quota</td></tr>
   </tbody>
   <caption><strong>Tabella 7.1</strong> Riconoscere un guasto dal comportamento del drone e sapere che cosa fare nei primi secondi.</caption>
-</table>
+</table></div></div>
 
 <h2><span class="numero">7.4</span> Dopo il volo</h2>
 
@@ -2614,7 +2682,7 @@
 
 <p>Le batterie al litio viaggiano solo nel bagaglio a mano, mai in stiva. Il criterio non è la capacità in ampere-ora ma l'energia in wattora, che ottieni moltiplicando la tensione nominale per la capacità. Proteggi i terminali con nastro o con la custodia e porta ogni pacco carico intorno al 30 per cento.</p>
 
-<table>
+<div class="tabella-scorrevole"><div class="area-scorrevole"><table>
   <thead>
     <tr><th>Energia del pacco</th><th>Regola in bagaglio a mano</th></tr>
   </thead>
@@ -2624,7 +2692,7 @@
     <tr><th>Oltre 160&nbsp;Wh</th><td>Vietato nel trasporto passeggeri</td></tr>
   </tbody>
   <caption><strong>Tabella 7.2</strong> Soglie in wattora per le batterie al litio a bordo. Le compagnie possono applicare condizioni più restrittive: verificale prima di partire.</caption>
-</table>
+</table></div></div>
 
 <h2><span class="numero">7.5</span> Quando qualcosa va storto</h2>
 
@@ -2681,7 +2749,7 @@
 <p>Il percorso che segue è pensato per chi parte da zero e ha un paio d'ore alla settimana. Non è una gara: se una tappa richiede più tempo, prendilo. L'ordine, invece, conta: registrarsi e formarsi prima di comprare evita di scegliere il drone sbagliato, e capire le regole prima di volare evita il primo volo illegale, che è quasi sempre involontario.</p>
 
 <figure class="schema">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-labelledby="per-titolo" class="per-svg">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="img" aria-labelledby="per-titolo" class="per-svg">
   <title id="per-titolo">Dal primo giorno al primo volo legale</title>
   <style>
     .per-svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -2753,7 +2821,7 @@
 
   <text class="per-tenue" x="24" y="472">Durata indicativa: quattro settimane, un paio d'ore alla settimana.</text>
 </svg>
-
+</div>
   <figcaption><strong>Figura 8.1</strong> Le quattro tappe del percorso. Le prime due non richiedono di possedere un drone.</figcaption>
 </figure>
 
@@ -2926,7 +2994,7 @@
 
 <h2 class="pagina-nuova"><span class="numero">8.5</span> Acronimi</h2>
 
-<table class="lunga">
+<div class="tabella-scorrevole"><div class="area-scorrevole"><table class="lunga">
   <thead>
     <tr><th>Sigla</th><th>Significato</th><th>In breve</th></tr>
   </thead>
@@ -2961,7 +3029,7 @@
     <tr><th>VTX</th><td>Video Transmitter</td><td>Trasmettitore video di bordo</td></tr>
   </tbody>
   <caption><strong>Tabella 8.1</strong> Le sigle che incontrerai nei documenti ufficiali, nei forum e in questa guida.</caption>
-</table>
+</table></div></div>
 
 <h2><span class="numero">8.6</span> Fonti ufficiali e link utili</h2>
 
@@ -3002,7 +3070,7 @@
   <p class="sottotitolo">Da stampare e tenere nella borsa del drone.<br>Regole UE 2019/947 e Italia, verificate il 20 settembre 2026.</p>
 </header>
 
-<table class="sr-compatta">
+<div class="tabella-scorrevole larga"><div class="area-scorrevole"><table class="sr-compatta">
   <thead>
     <tr><th>Sotto-<br>categoria</th><th>Drone</th><th>Distanza dalle persone non coinvolte</th><th>Formazione</th></tr>
   </thead>
@@ -3032,7 +3100,7 @@
       <td>Attestato A1/A3</td>
     </tr>
   </tbody>
-</table>
+</table></div></div>
 
 <div class="sr-griglia">
   <div class="sr-blocco">
@@ -3079,7 +3147,7 @@
 </div>
 
 <figure class="schema sr-flusso">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 820" role="img" aria-labelledby="flw-titolo" class="flw-svg">
+  <div class="area-scorrevole"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 820" role="img" aria-labelledby="flw-titolo" class="flw-svg">
   <title id="flw-titolo">Posso volare qui, oggi?</title>
   <style>
     .flw-svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -3171,7 +3239,7 @@
   <rect x="40" y="748" width="940" height="52" rx="24" fill="#E3F2E9" stroke="#3E8E63" stroke-width="2.5"/>
   <text class="flw-esi" x="510" y="781" text-anchor="middle">Vola: sotto 120 m, sempre in vista, lontano da persone non coinvolte</text>
 </svg>
-
+</div>
   <figcaption><strong>Posso volare qui, oggi?</strong> Il percorso decisionale in quattro domande, dalla registrazione alle condizioni del giorno.</figcaption>
 </figure>
 
@@ -3214,22 +3282,100 @@
 </section>
 </main>
   <script>
-    const bottone = document.querySelector(".sidebar-toggle");
-    const barra = document.querySelector(".sidebar");
-    if (bottone && barra) {
-      bottone.addEventListener("click", () => barra.classList.toggle("aperta"));
+(function () {
+  const html = document.documentElement;
+  const body = document.body;
+  const menu = document.querySelector(".sidebar");
+  const apri = document.querySelector(".apri-menu");
+  const chiudi = document.querySelector(".chiudi-menu");
+  const velo = document.querySelector(".velo");
+  const etichettaCorrente = document.querySelector(".capitolo-corrente");
+  const mobile = window.matchMedia("(max-width: 900px)");
+
+  function menuAperto() { return body.classList.contains("menu-aperto"); }
+  function aggiornaInert() { menu.inert = mobile.matches && !menuAperto(); }
+  function apriMenu() {
+    body.classList.add("menu-aperto");
+    menu.classList.add("aperta");
+    apri.setAttribute("aria-expanded", "true");
+    aggiornaInert();
+    const primo = menu.querySelector("ul a");
+    if (primo) primo.focus({ preventScroll: true });
+  }
+  function chiudiMenu(riportaFocus) {
+    body.classList.remove("menu-aperto");
+    menu.classList.remove("aperta");
+    apri.setAttribute("aria-expanded", "false");
+    aggiornaInert();
+    if (riportaFocus) apri.focus({ preventScroll: true });
+  }
+  apri.addEventListener("click", () => (menuAperto() ? chiudiMenu(false) : apriMenu()));
+  chiudi.addEventListener("click", () => chiudiMenu(true));
+  velo.addEventListener("click", () => chiudiMenu(false));
+  document.addEventListener("keydown", (evento) => {
+    if (evento.key === "Escape" && menuAperto()) chiudiMenu(true);
+  });
+  menu.addEventListener("click", (evento) => {
+    if (mobile.matches && evento.target.closest("a")) chiudiMenu(false);
+  });
+  mobile.addEventListener("change", () => {
+    if (!mobile.matches) chiudiMenu(false); else aggiornaInert();
+  });
+  aggiornaInert();
+
+  const capitoli = Array.from(document.querySelectorAll(".capitolo"));
+  const linkCapitoli = new Map(
+    Array.from(menu.querySelectorAll('a[href^="#cap-"]')).map((a) => [a.getAttribute("href").slice(1), a])
+  );
+  let capitoloAttivo = null;
+  function capitoloCorrente() {
+    const inFondo = window.innerHeight + window.scrollY >= html.scrollHeight - 2;
+    if (inFondo) return capitoli[capitoli.length - 1];
+    const soglia = (mobile.matches ? 56 : 0) + 24;
+    let corrente = capitoli[0];
+    for (const capitolo of capitoli) {
+      if (capitolo.getBoundingClientRect().top <= soglia) corrente = capitolo; else break;
     }
-    const taglie = { "1": "17px", "2": "20px", "3": "23px" };
-    const bottoniTaglia = document.querySelectorAll(".dimensione-testo button");
-    function applicaTaglia(taglia) {
-      document.documentElement.style.fontSize = taglie[taglia] || taglie["2"];
-      bottoniTaglia.forEach((b) => b.classList.toggle("attivo", b.dataset.taglia === taglia));
-      try { localStorage.setItem("guida-droni-taglia", taglia); } catch (e) {}
+    return corrente;
+  }
+  function aggiornaCorrente() {
+    const corrente = capitoloCorrente();
+    if (!corrente || corrente === capitoloAttivo) return;
+    capitoloAttivo = corrente;
+    linkCapitoli.forEach((a, id) => {
+      if (id === corrente.id) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+    if (etichettaCorrente) {
+      etichettaCorrente.textContent = corrente.id.replace("cap-", "") + " · " + (corrente.dataset.titolo || "");
     }
-    let tagliaSalvata = "2";
-    try { tagliaSalvata = localStorage.getItem("guida-droni-taglia") || "2"; } catch (e) {}
-    applicaTaglia(tagliaSalvata);
-    bottoniTaglia.forEach((b) => b.addEventListener("click", () => applicaTaglia(b.dataset.taglia)));
+  }
+  let aggiornamentoPianificato = 0;
+  function pianificaAggiornamento() {
+    if (aggiornamentoPianificato) return;
+    aggiornamentoPianificato = requestAnimationFrame(() => {
+      aggiornamentoPianificato = 0;
+      aggiornaCorrente();
+    });
+  }
+  window.addEventListener("scroll", pianificaAggiornamento, { passive: true });
+  window.addEventListener("resize", pianificaAggiornamento);
+  window.addEventListener("load", pianificaAggiornamento);
+  aggiornaCorrente();
+
+  const bottoniTaglia = document.querySelectorAll(".dimensione-testo button");
+  function applicaTaglia(taglia) {
+    html.setAttribute("data-taglia", taglia);
+    bottoniTaglia.forEach((b) => {
+      const attivo = b.dataset.taglia === taglia;
+      b.classList.toggle("attivo", attivo);
+      b.setAttribute("aria-pressed", String(attivo));
+    });
+    try { localStorage.setItem("guida-droni-taglia", taglia); } catch (e) {}
+    pianificaAggiornamento();
+  }
+  applicaTaglia(html.getAttribute("data-taglia") || "2");
+  bottoniTaglia.forEach((b) => b.addEventListener("click", () => applicaTaglia(b.dataset.taglia)));
+})();
   </script>
 </body>
 </html>
