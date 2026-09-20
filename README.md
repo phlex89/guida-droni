@@ -72,6 +72,10 @@ python3 build/applica-crediti.py
 
 sostituisce nome file e credito leggendo `src/img/foto/crediti.json`. È idempotente: si può rilanciare dopo ogni modifica.
 
+## Pubblicazione online
+
+La versione HTML è pubblicata con GitHub Pages all'indirizzo <https://phlex89.github.io/guida-droni/>. Il workflow `.github/workflows/pages.yml` si avvia a ogni push su `main` che tocca `html/`, `pdf/` o il workflow stesso: copia i PDF dentro il sito (`html/pdf`, cartella ignorata da git) e pubblica la cartella `html/`. Per aggiornare il sito basta rigenerare PDF e HTML in locale, fare commit e push. Il PDF unico `pdf/guida-droni-completa.pdf` si rigenera con `python3 build/unisci-pdf.py` dopo aver rigenerato i PDF dei capitoli.
+
 ## Aggiornare la guida
 
 La normativa cambia spesso. Per un aggiornamento:
@@ -79,7 +83,7 @@ La normativa cambia spesso. Per un aggiornamento:
 1. Rileggere i fact sheet in `docs/ricerca/` e le sezioni "Cose da verificare" in fondo a ciascuno.
 2. Correggere i capitoli interessati (soprattutto 04, 05 e la scheda rapida) e aggiornare la riga "Fonti normative verificate il ..." in testa a ogni capitolo modificato.
 3. Rispettare `docs/guida-di-stile.md` e usare `docs/template-capitolo.html` per i nuovi contenuti.
-4. Rigenerare PDF e HTML.
+4. Rigenerare PDF (`node build/build.mjs pdf`, poi `python3 build/unisci-pdf.py`) e HTML (`node build/build.mjs html`), quindi commit e push per aggiornare il sito.
 
 ## Aggiungere un capitolo
 
