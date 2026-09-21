@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 506" role="img" aria-labelledby="rid-titolo">
-  <title id="rid-titolo">Remote ID: il drone in volo trasmette via radio i dati di identificazione, che uno smartphone con un'app può ricevere</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 528" role="img" aria-labelledby="rid-titolo">
+  <title id="rid-titolo">Remote ID: il drone in volo trasmette via radio i dati di identificazione, che un dispositivo compatibile con un'app può ricevere</title>
   <style>
     .rid-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
     .rid-h { font-size: 32px; font-weight: 600; fill: #1B4965; }
@@ -15,7 +15,7 @@
   </style>
 
   <g class="rid-w">
-    <rect x="0" y="0" width="1000" height="506" fill="#FFFFFF"/>
+    <rect x="0" y="0" width="1000" height="528" fill="#FFFFFF"/>
     <text class="rid-h" x="500" y="46" text-anchor="middle">Remote ID: la targa radio del drone</text>
     <line class="rid-arm" x1="170" y1="230" x2="110" y2="170"/>
     <line class="rid-arm" x1="170" y1="230" x2="230" y2="170"/>
@@ -67,6 +67,7 @@
     <circle cx="504" cy="380" r="4" fill="#5FA8D3"/>
     <text class="rid-row" x="520" y="387" text-anchor="start">Stato di emergenza</text>
     <rect x="672" y="418" width="80" height="6" rx="3" fill="#1B4965"/>
-    <text class="rid-cap" x="640" y="478" text-anchor="middle">Ricevibile da chiunque con un'app, via Bluetooth o Wi-Fi</text>
+    <text class="rid-cap" x="640" y="470" text-anchor="middle">Ricevibile da dispositivi compatibili con un'app, via Bluetooth o Wi-Fi.</text>
+    <text class="rid-cap" x="640" y="500" text-anchor="middle">Il codice identifica l'operatore, non il pilota: risalire ai dati del registro è un passaggio distinto.</text>
   </g>
 </svg>

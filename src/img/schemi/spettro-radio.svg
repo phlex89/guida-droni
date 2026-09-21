@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 486" role="img" aria-labelledby="spe-titolo">
-  <title id="spe-titolo">Le bande radio usate dai droni in Europa, dai 433 MHz ai 5,8 GHz, con uso tipico e limite di potenza</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 532" role="img" aria-labelledby="spe-titolo">
+  <title id="spe-titolo">Le bande radio usate dai droni in Europa, dai 433 MHz ai 5,8 GHz, con uso tipico e limite di potenza indicativo</title>
   <style>
     .spe-w text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
     .spe-h { font-size: 32px; font-weight: 600; fill: #1B4965; }
@@ -14,7 +14,7 @@
   </style>
 
   <g class="spe-w">
-    <rect x="0" y="0" width="1000" height="486" fill="#FFFFFF"/>
+    <rect x="0" y="0" width="1000" height="532" fill="#FFFFFF"/>
     <text class="spe-h" x="500" y="42" text-anchor="middle">Le bande usate dai droni in Europa</text>
     <text class="spe-sub" x="500" y="76" text-anchor="middle">(apparati a corto raggio)</text>
     <g id="spe-b433">
@@ -50,13 +50,14 @@
     </g>
     <g id="spe-b5">
       <rect x="600" y="100" width="186" height="210" rx="12" fill="#ECE8F4" stroke="#6B5B95" stroke-width="2.5"/>
-      <text class="spe-name" x="693" y="132" text-anchor="middle" fill="#2B2D31">5,15-5,35 e</text>
-      <text class="spe-name" x="693" y="158" text-anchor="middle" fill="#2B2D31">5,47-5,725 GHz</text>
-      <line x1="618" y1="168" x2="768" y2="168" stroke="#6B5B95" stroke-width="1.5"/>
-      <text class="spe-use" x="693" y="198" text-anchor="middle">video digitale</text>
-      <text class="spe-use" x="693" y="223" text-anchor="middle">su Wi-Fi 5</text>
-      <text class="spe-pw" x="693" y="255" text-anchor="middle">limiti e vincoli</text>
-      <text class="spe-pw" x="693" y="280" text-anchor="middle">variabili</text>
+      <text class="spe-name" x="693" y="132" text-anchor="middle" fill="#2B2D31">5,17-5,25 GHz</text>
+      <line x1="618" y1="144" x2="768" y2="144" stroke="#6B5B95" stroke-width="1.5"/>
+      <text class="spe-use" x="693" y="174" text-anchor="middle">video digitale</text>
+      <text class="spe-use" x="693" y="199" text-anchor="middle">consumer: è la</text>
+      <text class="spe-use" x="693" y="224" text-anchor="middle">porzione a 5 GHz</text>
+      <text class="spe-use" x="693" y="249" text-anchor="middle">in cui l'uso UAS</text>
+      <text class="spe-use" x="693" y="274" text-anchor="middle">è ammesso</text>
+      <text class="spe-pw" x="693" y="300" text-anchor="middle">200 mW e.i.r.p.</text>
       <path class="spe-lead" d="M693 310 L693 326 L907.6 344 L907.6 354" stroke="#6B5B95"/>
     </g>
     <g id="spe-b58">
@@ -88,7 +89,9 @@
     <rect x="890.4" y="351" width="12.4" height="14" rx="3" fill="#6B5B95"/>
     <rect x="909.9" y="351" width="14.8" height="14" rx="3" fill="#6B5B95"/>
     <rect x="924.8" y="351" width="8.4" height="14" rx="3" fill="#12354A"/>
-    <text class="spe-note" x="500" y="432" text-anchor="middle">Valori indicativi per uso senza licenza (norme ETSI). I 915 MHz e le potenze</text>
-    <text class="spe-note" x="500" y="458" text-anchor="middle">video sopra 25 mW comuni negli USA non sono ammessi in Europa.</text>
+    <text class="spe-note" x="500" y="426" text-anchor="middle">Valori indicativi. Le altre porzioni a 5 GHz del Wi-Fi, fra cui 5,47-5,725 GHz, non ammettono l'uso UAS:</text>
+    <text class="spe-note" x="500" y="452" text-anchor="middle">la selezione dinamica della frequenza non rimuove il divieto. La configurazione statunitense 902-928 MHz</text>
+    <text class="spe-note" x="500" y="478" text-anchor="middle">e le potenze video sopra i 25 mW non vanno usate presumendo che siano compatibili con le regole europee.</text>
+    <text class="spe-note" x="500" y="504" text-anchor="middle">Verifica sempre la dichiarazione di conformità del prodotto e le condizioni nazionali.</text>
   </g>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 790" role="img" aria-labelledby="cat-titolo" class="cat-svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 850" role="img" aria-labelledby="cat-titolo" class="cat-svg">
   <title id="cat-titolo">In quale sottocategoria Open voli?</title>
   <style>
     .cat-svg text { font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; }
@@ -26,7 +26,7 @@
     <marker id="cat-fr-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#B23A3A"/></marker>
   </defs>
 
-  <rect x="0" y="0" width="1000" height="790" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1000" height="850" fill="#FFFFFF"/>
   <text class="cat-titolo" x="24" y="46">In quale sottocategoria Open voli?</text>
 
   <rect class="cat-boxb" x="20" y="300" width="230" height="64" rx="10"/>
@@ -71,7 +71,7 @@
     <rect class="cat-box" x="280" y="348" width="280" height="58" rx="8"/>
     <rect x="294" y="361" width="54" height="32" rx="6" fill="#6B5B95"/>
     <text class="cat-chip" x="321" y="384" text-anchor="middle">C3</text>
-    <text class="cat-lab" x="362" y="385">sotto 25 kg</text>
+    <text class="cat-lab" x="362" y="385">meno di 25 kg</text>
   </g>
 
   <g id="cat-c4">
@@ -79,21 +79,23 @@
     <rect class="cat-box" x="280" y="416" width="280" height="72" rx="8"/>
     <rect x="294" y="436" width="54" height="32" rx="6" fill="#7A7F87"/>
     <text class="cat-chip" x="321" y="459" text-anchor="middle">C4</text>
-    <text class="cat-lab" x="362" y="445">sotto 25 kg,</text>
+    <text class="cat-lab" x="362" y="445">meno di 25 kg,</text>
     <text class="cat-lab" x="362" y="471">senza automatismi</text>
   </g>
 
   <g id="cat-senza">
 
     <rect x="280" y="502" width="280" height="64" rx="8" fill="#7A7F87"/>
-    <text class="cat-head" x="296" y="530">No: senza marcatura</text>
-    <text class="cat-head" x="296" y="556">o autocostruito</text>
+    <text class="cat-head" x="296" y="530">No: articolo 20</text>
+    <text class="cat-head" x="296" y="556">o costruito privatamente</text>
 
-    <rect class="cat-box" x="280" y="576" width="280" height="58" rx="8"/>
-    <text class="cat-lab" x="296" y="613">sotto 250 g</text>
+    <rect class="cat-box" x="280" y="576" width="280" height="72" rx="8"/>
+    <text class="cat-lab" x="296" y="604">sotto 250 g, e sotto</text>
+    <text class="cat-lab" x="296" y="630">19 m/s se costruito</text>
 
-    <rect class="cat-box" x="280" y="644" width="280" height="58" rx="8"/>
-    <text class="cat-lab" x="296" y="681">250 g o più</text>
+    <rect class="cat-box" x="280" y="658" width="280" height="72" rx="8"/>
+    <text class="cat-lab" x="296" y="686">250 g o più,</text>
+    <text class="cat-lab" x="296" y="712">meno di 25 kg</text>
   </g>
 
   <path class="cat-l cat-lg" d="M560,173 H582 V150 H664" marker-end="url(#cat-fr-g)"/>
@@ -101,8 +103,8 @@
   <path class="cat-l cat-lo" d="M560,309 H628 V400 H664" marker-end="url(#cat-fr-o)"/>
   <path class="cat-l cat-lr" d="M560,377 H616 V580 H664" marker-end="url(#cat-fr-r)"/>
   <path class="cat-l cat-lr" d="M560,452 H604 V620 H664" marker-end="url(#cat-fr-r)"/>
-  <path class="cat-l cat-lg" d="M560,605 H572 V250 H664" marker-end="url(#cat-fr-g)"/>
-  <path class="cat-l cat-lr" d="M560,673 H640 V660 H664" marker-end="url(#cat-fr-r)"/>
+  <path class="cat-l cat-lg" d="M560,612 H572 V250 H664" marker-end="url(#cat-fr-g)"/>
+  <path class="cat-l cat-lr" d="M560,694 H640 V660 H664" marker-end="url(#cat-fr-r)"/>
 
   <g id="cat-a1">
 
@@ -123,9 +125,9 @@
     <text class="cat-chip" x="713" y="338" text-anchor="middle">A2</text>
     <text class="cat-esito" x="686" y="383">Almeno 30 m dalle</text>
     <text class="cat-esito" x="686" y="409">persone non coinvolte</text>
-    <text class="cat-esito" x="686" y="435">(5 m in modalità a bassa</text>
-    <text class="cat-esito" x="686" y="461">velocità). Serve il</text>
-    <text class="cat-esito" x="686" y="487">certificato A2</text>
+    <text class="cat-esito" x="686" y="435">(5 m con modalità a bassa</text>
+    <text class="cat-esito" x="686" y="461">velocità attiva). Serve</text>
+    <text class="cat-esito" x="686" y="487">il certificato A2</text>
     <text class="cat-tenue" x="686" y="513">Con C2 anche in A3.</text>
   </g>
 
@@ -140,6 +142,7 @@
     <text class="cat-esito" x="686" y="694">industriali o ricreative</text>
   </g>
 
-  <text class="cat-tenue" x="24" y="738">In tutti i casi: massimo 120 m dal suolo, sempre in vista (VLOS),</text>
-  <text class="cat-tenue" x="24" y="766">operatore registrato, attestato A1/A3 (salvo C0 senza camera).</text>
+  <text class="cat-tenue" x="24" y="770">In tutti i casi: massimo 120 m dal punto più vicino del suolo, sempre in vista (VLOS).</text>
+  <text class="cat-tenue" x="24" y="798">Registrazione dell'operatore e formazione dipendono dal drone e dall'operazione.</text>
+  <text class="cat-tenue" x="24" y="826">Per un C0 la camera incide sulla registrazione, non sulla formazione.</text>
 </svg>

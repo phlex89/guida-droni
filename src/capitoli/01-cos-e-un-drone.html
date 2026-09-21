@@ -25,17 +25,17 @@
       <li>In sintesi</li>
     </ol>
   </div>
-  <p class="verifica">Fonti normative verificate il 20 settembre 2026.</p>
+  <p class="verifica">Edizione del 20 settembre 2026. I riferimenti normativi di questo capitolo sono verificati sulle versioni consolidate del Regolamento (UE) 2019/947 (1º maggio 2025) e del Regolamento (UE) 2019/945 (24 giugno 2025). Le descrizioni tecniche non dipendono da quella revisione.</p>
 </header>
 
 <h2><span class="numero">1.1</span> Una definizione che regge</h2>
 
-<p>Un drone è un aeromobile senza pilota a bordo, comandato da remoto oppure capace di eseguire da solo una parte della missione. La definizione è larga di proposito: ci stanno dentro un quadricottero pieghevole da poche centinaia di grammi e un velivolo ad ala fissa da 25&nbsp;kg. Quello che li accomuna non è la forma né il livello di automazione: è il fatto che il posto di pilotaggio sia altrove.</p>
+<p>Un drone è un aeromobile senza pilota a bordo, comandato da remoto oppure capace di eseguire da solo una parte della missione. La definizione è larga di proposito: ci stanno dentro un quadricottero pieghevole da poche centinaia di grammi e un velivolo ad ala fissa che sfiora i 25&nbsp;kg. Quello che li accomuna non è la forma né il livello di automazione: è il fatto che il posto di pilotaggio sia altrove.</p>
 
-<p>La parola “drone” però indica solo l'oggetto che vola. La normativa e la letteratura tecnica ragionano in termini di sistema, perché senza le parti a terra quell'oggetto non è governabile: la macchina, il dispositivo con cui la comandi e il collegamento radio che tiene insieme i due.</p>
+<p>La parola “drone” però indica solo l'oggetto che vola. Normativa e letteratura tecnica ragionano invece in termini di sistema, perché senza le parti a terra quell'oggetto non è governabile.</p>
 
 <aside class="box definizione">
-  <p><abbr title="Unmanned Aircraft System">UAS</abbr>, sistema aeromobile senza equipaggio: l'insieme formato dall'aeromobile (<abbr title="Unmanned Aircraft">UA</abbr>), dalla stazione di controllo a terra e dal collegamento radio di comando e controllo che li unisce. Le regole europee si applicano al sistema, non al solo oggetto volante.</p>
+  <p><abbr title="Unmanned Aircraft System">UAS</abbr>, sistema aeromobile senza equipaggio: l'insieme formato dall'aeromobile (<abbr title="Unmanned Aircraft">UA</abbr>), dalle apparecchiature per comandarlo a distanza e dal collegamento di comando e controllo che li unisce. Lo schema con radiocomando, stazione a terra e ritorno di telemetria e video è quello tipico, non l'unico possibile: le regole europee si applicano comunque al sistema, non al solo oggetto volante.</p>
 </aside>
 
 <figure class="schema">
@@ -43,28 +43,28 @@
   <figcaption><strong>Figura 1.1</strong> Le tre parti del sistema. Il collegamento è bidirezionale e asimmetrico: in salita viaggiano pochi byte di comandi, in discesa telemetria e video.</figcaption>
 </figure>
 
-<p>Le sigle cambiano da un documento all'altro e conviene saperle leggere. <em>Drone</em> è il termine dell'uso comune e non compare nei testi normativi. <abbr title="Unmanned Aircraft">UA</abbr> e <abbr title="Unmanned Aircraft System">UAS</abbr> sono i termini del regolamento europeo: è il vocabolario che useremo per tutta la guida. <abbr title="Remotely Piloted Aircraft System">RPAS</abbr>, sistema aeromobile a pilotaggio remoto, è la forma preferita nei documenti dell'aviazione civile internazionale: insiste sul fatto che un pilota remoto ci sia e sia responsabile, ed esclude quindi i mezzi completamente autonomi.</p>
+<p>Le sigle cambiano da un documento all'altro e conviene saperle leggere. <em>Drone</em> è il termine dell'uso comune; i regolamenti europei usano invece <abbr title="Unmanned Aircraft">UA</abbr> per l'aeromobile e <abbr title="Unmanned Aircraft System">UAS</abbr> per il sistema, ed è il vocabolario che useremo per tutta la guida. <abbr title="Remotely Piloted Aircraft System">RPAS</abbr>, sistema aeromobile a pilotaggio remoto, è la forma preferita nei documenti dell'aviazione civile internazionale: insiste sul fatto che un pilota remoto ci sia e sia responsabile, ed esclude quindi i mezzi completamente autonomi.</p>
 
-<p>In Italia sentirai ancora <abbr title="Sistema Aeromobile a Pilotaggio Remoto">SAPR</abbr> e <abbr title="Aeromobile a Pilotaggio Remoto">APR</abbr>, insieme all'espressione «mezzo aereo a pilotaggio remoto»: sono i termini dei regolamenti nazionali in vigore prima del 2021. Non sono errori, ma appartengono a un impianto superato. Se un documento usa quel lessico, controlla la data prima di fidarti del contenuto.</p>
+<p>In Italia sentirai ancora <abbr title="Sistema Aeromobile a Pilotaggio Remoto">SAPR</abbr> e <abbr title="Aeromobile a Pilotaggio Remoto">APR</abbr>, insieme all'espressione «mezzo aereo a pilotaggio remoto»: sono i termini dei regolamenti nazionali in vigore prima del 2021 e appartengono a un impianto superato. Se un documento usa quel lessico, controlla la data prima di fidarti del contenuto.</p>
 
 <aside class="box tlc">
-  <p>Un UAS è anche un sistema di telecomunicazione: un canale di comando e controllo bidirezionale che deve restare a bassa latenza mentre il mezzo si muove, un flusso video in tempo reale che tollera perdite ma non ritardi, una telemetria che torna a terra in continuo.</p>
-  <p>La differenza rispetto a una rete dati normale sta nel guasto. Se il collegamento cade non c'è una ritrasmissione che salva la situazione: c'è un aeromobile in aria che deve decidere da solo cosa fare. Per questo il capitolo 3 è tra i più densi della guida.</p>
+  <p>Un UAS è anche un sistema di telecomunicazione: un canale di comando e controllo bidirezionale che deve restare a bassa latenza mentre il mezzo si muove, un flusso video in tempo reale che tollera perdite ma non ritardi, una telemetria continua.</p>
+  <p>La differenza rispetto a una rete dati normale sta nel guasto. Se il collegamento cade non c'è una ritrasmissione che salva la situazione: c'è un aeromobile in aria che deve decidere da solo cosa fare.</p>
 </aside>
 
-<p>Un'ultima distinzione, che tornerà spesso. L'<strong>operatore UAS</strong> è la persona fisica o giuridica responsabile dell'impiego del sistema: si registra, tiene le procedure, risponde di quello che succede. Il <strong>pilota remoto</strong> è chi materialmente comanda il volo. Se voli per conto tuo le due figure coincidono; dentro un'azienda o un'associazione no, e sapere chi è chi cambia molte risposte. Nel capitolo 4 vedremo quali obblighi ricadono su ciascuno.</p>
+<p>Un'ultima distinzione, che tornerà spesso. L'<strong>operatore UAS</strong> è la persona fisica o giuridica responsabile dell'impiego del sistema: si registra, tiene le procedure, risponde di quello che succede. Il <strong>pilota remoto</strong> è chi materialmente comanda il volo. Se voli per conto tuo le due figure coincidono; dentro un'azienda o un'associazione no. Nel capitolo 4 vedremo quali obblighi ricadono su ciascuno.</p>
 
 <h2><span class="numero">1.2</span> Da dove vengono</h2>
 
 <p>L'idea di far volare un aeromobile senza nessuno a bordo è vecchia quanto la radio. Per buona parte del Novecento è rimasta in ambito militare: prima bersagli radiocomandati per addestrare l'artiglieria contraerea, poi velivoli da ricognizione. Erano macchine grandi e costose, senza alcun rapporto con quello che oggi tieni in una borsa.</p>
 
-<p>Il mondo civile restava fermo al modellismo, e non per mancanza di idee. Un multirotore è instabile per costruzione: non ha superfici mobili e l'assetto si mantiene variando in continuo la spinta dei singoli rotori, con correzioni da calcolare centinaia di volte al secondo che nessuna mano umana può fare. Finché quel calcolo non è diventato economico, il multirotore è rimasto una curiosità da laboratorio.</p>
+<p>Il mondo civile restava fermo al modellismo, e non per mancanza di idee. Un multirotore è instabile per costruzione: l'assetto si mantiene variando in continuo la spinta dei rotori, con correzioni da calcolare centinaia di volte al secondo. Finché quel calcolo non è diventato economico, il multirotore è rimasto una curiosità da laboratorio.</p>
 
-<p>La svolta arriva negli anni Duemila e non nasce nell'aeronautica: nasce nella filiera dei telefoni cellulari. I sensori inerziali <abbr title="Micro Electro-Mechanical Systems">MEMS</abbr>, accelerometri e giroscopi in pochi millimetri quadrati, diventano componenti da pochi euro. Le batterie ai polimeri di litio offrono densità di energia e correnti di scarica prima impensabili, i motori brushless danno spinta regolabile con precisione e senza parti che si consumano, i ricevitori <abbr title="Global Navigation Satellite System">GNSS</abbr> e i microcontrollori completano il quadro. Messi insieme rendono possibile una macchina che si stabilizza da sola e costa quanto un elettrodomestico.</p>
+<p>La svolta arriva negli anni Duemila e non nasce nell'aeronautica: nasce nella filiera dei telefoni cellulari. I sensori inerziali <abbr title="Micro Electro-Mechanical Systems">MEMS</abbr> diventano componenti da pochi euro; le batterie ai polimeri di litio offrono densità di energia e correnti di scarica prima impensabili; i motori brushless danno spinta regolabile senza spazzole soggette a usura; ricevitori <abbr title="Global Navigation Satellite System">GNSS</abbr> e microcontrollori completano il quadro. Messi insieme rendono possibile una macchina che si stabilizza da sola e costa quanto un elettrodomestico.</p>
 
-<p>Negli anni Dieci l'uso esplode, prima tra gli appassionati e quasi subito nel lavoro. Le regole arrivano dopo e in ordine sparso: ogni Stato scrive le proprie, con soglie diverse, e volare oltre confine diventa un problema. In Italia l'ENAC pubblica nel 2013 il regolamento «Mezzi aerei a pilotaggio remoto», riferimento nazionale per anni.</p>
+<p>Negli anni Dieci l'uso si diffonde, prima tra gli appassionati e quasi subito nel lavoro. Le regole arrivano dopo e in ordine sparso: ogni Stato scrive le proprie, con soglie diverse. In Italia l'ENAC pubblica nel 2013 il regolamento «Mezzi aerei a pilotaggio remoto», riferimento nazionale per anni.</p>
 
-<p>Tra il 2019 e il 2021 il quadro viene riscritto a livello europeo. Due regolamenti, uno sulle operazioni e uno sui requisiti dei prodotti, sostituiscono le normative nazionali con un impianto unico, applicabile dal 31 dicembre 2020. Da quel momento le regole di base sono le stesse in tutta l'Unione, e agli Stati restano la gestione dello spazio aereo e poco altro. È il quadro dentro cui ti muovi oggi, ed è il tema dei capitoli 4 e 5.</p>
+<p>Tra il 2019 e il 2021 il quadro viene riscritto a livello europeo. Due regolamenti, uno sulle operazioni e uno sui requisiti dei prodotti, sostituiscono le normative nazionali con un impianto unico, applicabile dal 31 dicembre 2020. Da quel momento le regole di base sono le stesse in tutta l'Unione, mentre agli Stati restano competenze proprie, fra cui la designazione delle zone geografiche e la gestione dello spazio aereo. È il quadro dentro cui ti muovi oggi, ed è il tema dei capitoli 4 e 5.</p>
 
 <aside class="box norma">
   <p>Il quadro di riferimento sono il Regolamento di esecuzione (UE) 2019/947, sulle norme e procedure per l'esercizio degli aeromobili senza equipaggio, e il Regolamento delegato (UE) 2019/945, sui requisiti dei sistemi e dei loro fabbricanti. Applicabili dal 31 dicembre 2020.</p>
@@ -74,37 +74,37 @@
 
 <p>Il modo in cui un mezzo si tiene in aria determina quasi tutto il resto: autonomia, area coperta, spazio necessario per partire, tipo di missione. Le famiglie principali sono poche e si distinguono a colpo d'occhio.</p>
 
-<p>Il <strong>multirotore</strong> è quello che quasi tutti chiamano drone. Genera portanza con eliche a passo fisso rivolte verso l'alto e controlla l'assetto variando la velocità dei motori, senza alcun comando meccanico. Si chiama tricottero, quadricottero, esacottero o ottocottero a seconda del numero di rotori: quattro sono il compromesso più diffuso, sei o otto servono a portare più carico e a sopravvivere alla perdita di un motore. I pregi sono il volo stazionario e la semplicità meccanica. Il difetto è l'efficienza, perché tutta l'energia serve a restare in aria: l'autonomia tipica sta tra i 20 e i 40&nbsp;minuti, e scende con vento, carico e freddo.</p>
+<p>Il <strong>multirotore</strong> è quello che nell'uso comune si chiama drone. Genera portanza con eliche a passo fisso rivolte verso l'alto e controlla l'assetto variando la velocità dei motori, senza alcun comando meccanico. Si chiama tricottero, quadricottero, esacottero o ottocottero a seconda del numero di rotori: quattro sono il compromesso più diffuso, sei o otto servono a portare più carico e a sopravvivere alla perdita di un motore. Il limite è l'efficienza, perché tutta l'energia serve a restare in aria: l'autonomia tipica sta tra i 20 e i 40&nbsp;minuti, e scende con vento, carico e freddo.</p>
 
 <div class="griglia-2">
   <figure class="foto">
     <img src="../img/foto/01-quadricottero-consumer-in-volo.jpg" alt="Quadricottero bianco in volo sopra il mare, con le quattro eliche in rotazione e la camera su sospensione cardanica sotto la fusoliera">
     <figcaption><strong>Figura 1.2</strong> Nel multirotore non c'è nessun comando meccanico di volo: l'assetto nasce dalla differenza di spinta tra i rotori, ricalcolata in continuo.
-      <span class="credito">Foto: Josh Sorenson, CC0, via Wikimedia Commons</span></figcaption>
+      <span class="credito">Foto: Josh Sorenson, <a href="https://commons.wikimedia.org/wiki/File:Quadcopter_camera_drone_in_flight.jpg">opera originale</a>, licenza <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via Wikimedia Commons</span></figcaption>
   </figure>
   <figure class="foto">
     <img src="../img/foto/02-drone-ala-fissa-decollo.jpg" alt="Persona che lancia a mano un piccolo drone ad ala fissa in un prato, con un fienile e un bosco di conifere sullo sfondo">
     <figcaption><strong>Figura 1.3</strong> L'ala fissa va lanciata e deve restare in movimento. In cambio copre in un volo aree per cui un multirotore richiederebbe più batterie.
-      <span class="credito">Foto: Bureau of Land Management Oregon and Washington, Pubblico dominio, via Wikimedia Commons</span></figcaption>
+      <span class="credito">Foto: Bureau of Land Management Oregon and Washington, <a href="https://commons.wikimedia.org/wiki/File:USGS_Team_Flies_Drones_for_Oregon_BLM_Forestry_Research_(14778619794).jpg">opera originale</a>, licenza <a href="https://commons.wikimedia.org/wiki/Commons:Public_domain">pubblico dominio</a>, via Wikimedia Commons</span></figcaption>
   </figure>
 </div>
 
-<p>L'<strong>ala fissa</strong> funziona come un aliante motorizzato: la portanza viene dall'ala e richiede velocità di avanzamento. Il motore serve solo a vincere la resistenza, non a sostenere il peso, e questo cambia completamente i numeri. L'autonomia si misura in ore invece che in minuti e una singola missione copre aree molto estese, il che la rende la scelta naturale per mappatura e sorveglianza. Il prezzo è la rigidità operativa: serve spazio libero, un lancio a mano o una catapulta, un atterraggio planato, e il mezzo non può fermarsi a guardare un dettaglio.</p>
+<p>L'<strong>ala fissa</strong> funziona come un aliante motorizzato: la portanza viene dall'ala e richiede velocità di avanzamento. Il motore serve solo a vincere la resistenza, non a sostenere il peso, e questo cambia completamente i numeri. L'autonomia si misura in ore invece che in minuti, il che la rende la scelta naturale per mappatura e sorveglianza. Il prezzo è la rigidità operativa: serve spazio libero, un lancio a mano o una catapulta, un atterraggio planato, e il mezzo non può fermarsi a guardare un dettaglio.</p>
 
-<p>I <strong>VTOL ibridi</strong> prendono il meglio delle due soluzioni. Decollano in verticale con rotori dedicati, poi ruotano i motori o ne accendono altri e proseguono in crociera sull'ala. Non hanno bisogno di pista e conservano gran parte dell'efficienza dell'ala fissa, ma pagano in peso e complessità: ci sono due modalità di volo e una transizione tra le due, il momento più delicato della missione.</p>
+<p>I <strong>VTOL ibridi</strong> prendono il meglio delle due soluzioni. Decollano in verticale con rotori dedicati, poi ruotano i motori o ne accendono altri e proseguono in crociera sull'ala. Non hanno bisogno di pista e conservano gran parte dell'efficienza dell'ala fissa, ma pagano in peso e complessità: due modalità di volo e una transizione, il momento più delicato della missione.</p>
 
-<p>Gli <strong>elicotteri radiocomandati</strong> hanno un rotore principale a passo variabile e un rotore di coda, come i loro equivalenti con pilota a bordo. A parità di massa offrono volo stazionario ed efficienza migliore di un multirotore, ma la meccanica va regolata e manutenuta e il pilotaggio richiede molta più pratica. Restano una nicchia, soprattutto in agricoltura. Esistono poi forme meno comuni, come i dirigibili per riprese al chiuso, che seguono le stesse logiche di base.</p>
+<p>Gli <strong>elicotteri radiocomandati</strong> hanno un rotore principale a passo variabile e un rotore di coda, come i loro equivalenti con pilota a bordo. A parità di massa offrono volo stazionario ed efficienza migliore di un multirotore, ma la meccanica va regolata e manutenuta e il pilotaggio richiede molta più pratica. Restano una nicchia, soprattutto in agricoltura.</p>
 
 <div class="griglia-2">
   <figure class="foto">
     <img src="../img/foto/03-quadricottero-fpv-racing.jpg" alt="Quadricottero FPV appoggiato su un tavolo di legno: telaio in fibra di carbonio, eliche arancioni a tre pale, batteria fissata con una fascia e camera d'azione montata davanti">
     <figcaption><strong>Figura 1.4</strong> I mezzi <abbr title="First Person View">FPV</abbr> sono costruiti attorno a potenza e reattività. Il pilota non guarda il drone: guarda l'immagine che il drone gli manda.
-      <span class="credito">Foto: Commanderbryce, CC BY-SA 4.0, via Wikimedia Commons</span></figcaption>
+      <span class="credito">Foto: Commanderbryce, <a href="https://commons.wikimedia.org/wiki/File:Racing_Drone.jpg">opera originale</a>, licenza <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons</span></figcaption>
   </figure>
   <figure class="foto">
     <img src="../img/foto/10-esacottero-professionale.jpg" alt="Esacottero professionale sospeso a cavi in un padiglione espositivo, con sei bracci in fibra di carbonio, antenna satellitare sulla sommità e un contenitore bianco come carico utile sotto la fusoliera">
     <figcaption><strong>Figura 1.5</strong> Sei rotori e un carico utile agganciato sotto. Salendo di massa cresce quello che il mezzo può portare, e con esso il peso degli obblighi.
-      <span class="credito">Foto: Matti Blume, CC BY-SA 4.0, via Wikimedia Commons (ritagliata)</span></figcaption>
+      <span class="credito">Foto: Matti Blume, <a href="https://commons.wikimedia.org/wiki/File:Tarot,_AERO_2025,_Friedrichshafen_(P1046556).jpg">opera originale</a>, licenza <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons (ritagliata)</span></figcaption>
   </figure>
 </div>
 
@@ -123,30 +123,34 @@
 
 <h2><span class="numero">1.4</span> A cosa servono</h2>
 
-<p>Il motivo per cui la maggior parte delle persone compra un drone è fotografare e riprendere dall'alto: un punto di vista che prima richiedeva un elicottero. Le macchine pensate per questo hanno una camera su sospensione cardanica, modalità di volo assistite e un'autonomia sufficiente a costruire qualche inquadratura, non missioni lunghe.</p>
+<p>Molti comprano un drone per fotografare e riprendere dall'alto: un punto di vista che prima richiedeva un elicottero. Le macchine pensate per questo hanno una videocamera su sospensione cardanica, modalità di volo assistite e un'autonomia sufficiente a costruire qualche inquadratura, non missioni lunghe.</p>
 
 <p>Il volo FPV è una disciplina a parte, con una comunità e una cultura tecnica proprie. Il pilota indossa degli occhiali e vede in tempo reale l'immagine della camera di bordo: non osserva il mezzo dall'esterno, ci sta dentro. Da qui nascono il freestyle, il volo acrobatico intorno a strutture e paesaggi, e il racing su circuiti delimitati da porte. Sono mezzi costruiti per la reattività, spesso assemblati dal pilota, e con vincoli operativi particolari proprio perché chi vola non guarda il cielo.</p>
 
-<p>Sul fronte professionale l'elenco è lungo. L'ispezione di infrastrutture, dalle linee elettriche ai ponti alle coperture industriali, evita ponteggi e lavori in quota. L'agricoltura di precisione usa camere multispettrali per capire dove intervenire invece di trattare tutto. Il rilievo fotogrammetrico produce modelli tridimensionali e ortofoto da centinaia di scatti sovrapposti. Ricerca e soccorso, protezione civile e forze dell'ordine usano sensori termici per trovare persone e seguire eventi in corso. Il cinema ha sostituito molte riprese da gru ed elicottero. Consegne e trasporto, invece, in Europa sono ancora in gran parte sperimentali.</p>
+<aside class="box nota">
+  <p>Da qui in avanti la guida usa due esempi di riferimento e li nomina ogni volta che una spiegazione vale solo per uno dei due: un <strong>multirotore integrato per riprese</strong>, venduto pronto al volo con videocamera stabilizzata e batteria dedicata, e un <strong>quadricottero FPV assemblato</strong>, fatto di parti scelte e configurate dal pilota. Quasi tutte le differenze di componenti, comandi e procedure nascono da questa distinzione.</p>
+</aside>
+
+<p>Sul fronte professionale l'elenco è lungo. L'ispezione di infrastrutture, dalle linee elettriche ai ponti alle coperture industriali, evita ponteggi e lavori in quota. L'agricoltura di precisione usa camere multispettrali per capire dove intervenire invece di trattare tutto. Il rilievo fotogrammetrico produce modelli tridimensionali e ortofoto da centinaia di scatti sovrapposti. Ricerca e soccorso, protezione civile e forze dell'ordine usano sensori termici per trovare persone. Consegne e trasporto, in Europa, sono ancora in gran parte sperimentali.</p>
 
 <figure class="foto">
   <img src="../img/foto/13-drone-agricoltura.jpg" alt="Esacottero agricolo in volo basso sopra una risaia, con il serbatoio bianco sotto la fusoliera e i getti nebulizzati visibili agli ugelli dei bracci">
-  <figcaption><strong>Figura 1.6</strong> Nebulizzazione su una risaia. In agricoltura il drone è uno strumento di processo: conta la ripetibilità della passata, non la singola immagine.
-    <span class="credito">Foto: Christopher Hedreyd / Philippine Information Agency, Pubblico dominio, via Wikimedia Commons</span></figcaption>
+  <figcaption><strong>Figura 1.6</strong> Nebulizzazione su una risaia: in agricoltura il drone è uno strumento di processo, e conta la ripetibilità della passata. È un impiego specialistico, non un'attività che il normale percorso della categoria Open consenta: irrorare significa rilasciare materiale in volo.
+    <span class="credito">Foto: Christopher Hedreyd (PIA 4A CALABARZON), <a href="https://commons.wikimedia.org/wiki/File:IRRI_BBM_rice_drone_demo_2.jpg">opera originale</a>, licenza <a href="https://commons.wikimedia.org/wiki/Commons:Public_domain">pubblico dominio</a>, via Wikimedia Commons</span></figcaption>
 </figure>
 
-<p>Un punto da fissare subito: la stessa identica macchina può ricadere in situazioni normative molto diverse a seconda di dove e come la usi. A determinare le regole non è il drone da solo, ma la combinazione tra le sue caratteristiche, il luogo del volo e il tipo di operazione. Lo stesso quadricottero può essere legittimo sopra un campo disabitato e non ammissibile sopra una folla o vicino a un aeroporto. I capitoli 4 e 6 spiegano come si legge questa combinazione.</p>
+<p>Un punto da fissare subito: la stessa macchina ricade in situazioni normative molto diverse a seconda di dove e come la usi. A determinare le regole non è il drone da solo, ma la combinazione fra le sue caratteristiche, il luogo del volo e il tipo di operazione. I capitoli 4 e 6 spiegano come si legge questa combinazione.</p>
 
 <h2><span class="numero">1.5</span> Perché il peso conta così tanto</h2>
 
-<p>Aprendo un qualsiasi documento normativo la prima cosa che troverai sono soglie di massa. Il parametro si chiama <abbr title="Maximum Take-Off Mass">MTOM</abbr>, massa massima al decollo, ed è il valore del mezzo pronto a volare. La ragione sta nella fisica elementare: quello che un aeromobile può fare a persone e cose in caduta o in urto dipende dall'energia che porta con sé.</p>
+<p>Aprendo un qualsiasi documento normativo la prima cosa che troverai sono soglie di massa. Il parametro si chiama <abbr title="Maximum Take-Off Mass">MTOM</abbr>, massa massima al decollo: è il limite stabilito dal fabbricante, o da chi lo costruisce se il mezzo è costruito privatamente, carico utile compreso. È un valore dichiarato, non una misura. La <strong>massa effettiva</strong> è invece quella che pesi nella configurazione con cui voli, e va confrontata anch'essa con i limiti applicabili. La ragione per cui le regole partono da qui sta nella fisica elementare: quello che un aeromobile può fare a persone e cose in caduta o in urto dipende dall'energia che porta con sé.</p>
 
 <p>L'energia cinetica vale <span class="codice">E = ½·m·v²</span>. Un mezzo da 249&nbsp;g che impatta a 15&nbsp;m/s trasporta circa 28&nbsp;J; uno da 900&nbsp;g alla stessa velocità ne trasporta circa 101&nbsp;J, tre volte e mezza tanto. Poiché la velocità entra al quadrato, raddoppiarla quadruplica l'energia. Un mezzo pesante che scende veloce non è un po' più pericoloso di uno leggero: è un altro ordine di problema.</p>
 
-<p>Le soglie che incontrerai più spesso sono quattro: 250&nbsp;g, 900&nbsp;g, 4&nbsp;kg e 25&nbsp;kg. Segnano i confini tra livelli di rischio e quindi tra insiemi di regole diverse su quanto puoi avvicinarti alle persone, su cosa devi avere e su cosa devi saper fare. Vale la pena memorizzarle: sono il primo filtro con cui guarderai qualsiasi mezzo. Il capitolo 4 dice cosa comporta stare da una parte o dall'altra.</p>
+<p>Le soglie che incontrerai più spesso sono quattro: 250&nbsp;g, 900&nbsp;g, 4&nbsp;kg e 25&nbsp;kg. Segnano i confini tra livelli di rischio, e quindi tra regole diverse su quanto puoi avvicinarti alle persone, su cosa devi avere e su cosa devi saper fare. Vale la pena memorizzarle. Il capitolo 4 dice cosa comporta stare da una parte o dall'altra.</p>
 
 <aside class="box attenzione">
-  <p>La massa che conta è quella al decollo, con tutto ciò che è a bordo: batteria installata, eliche, protezioni, filtri, schede di memoria, accessori aggiunti dopo l'acquisto. Un mezzo dichiarato appena sotto una soglia può superarla con un paio di aggiunte innocue, e da quel momento valgono le regole della fascia superiore anche se sul manuale c'è scritto un altro numero. Se sei vicino al limite, pesalo davvero.</p>
+  <p>Pesa la configurazione con cui voli davvero: batteria installata, eliche, protezioni, filtri, schede di memoria, accessori aggiunti dopo l'acquisto. Confronta il risultato con la MTOM dichiarata e con gli accessori che il fabbricante ammette. Se un accessorio porta il mezzo fuori dalla configurazione ammessa, il drone non passa a un'altra classe né diventa un drone «legacy» utilizzabile in A3: semplicemente non è più conforme alla propria classe. I droni senza marcatura ammessi dall'articolo 20 del Regolamento 2019/947 sono un percorso distinto, che vedrai nel capitolo 4.</p>
 </aside>
 
 <aside class="box nota">
@@ -155,9 +159,9 @@
 
 <h2><span class="numero">1.6</span> Cosa serve per cominciare</h2>
 
-<p>L'idea che basti comprare il mezzo, caricare la batteria e volare è la premessa della maggior parte dei problemi. Non perché le regole siano proibitive, ma perché stai mettendo in aria un oggetto motorizzato in uno spazio condiviso, e la responsabilità è tua dal primo decollo.</p>
+<p>È facile comprare un drone, caricare la batteria e volare prima di sapere quali limiti si applicano. Non perché le regole siano proibitive, ma perché stai mettendo in aria un oggetto motorizzato in uno spazio condiviso, e la responsabilità è tua dal primo decollo.</p>
 
-<p>Servono quattro cose, in quest'ordine. Capire come funziona il sistema che stai comandando, argomento dei capitoli 2 e 3. Conoscere le regole che si applicano a te e al tuo mezzo, nei capitoli 4 e 5. Formarti, cosa che per la fascia di ingresso significa un percorso online con un attestato finale. Assicurarti per la responsabilità civile e scegliere un mezzo adatto a quello che vuoi fare davvero. Il capitolo 8 mette questi passaggi in sequenza.</p>
+<p>Servono quattro cose, in quest'ordine. Capire come funziona il sistema che stai comandando, argomento dei capitoli 2 e 3. Conoscere le regole che si applicano a te e al tuo mezzo, nei capitoli 4 e 5. Formarti: per la fascia di ingresso è un percorso online con un attestato finale. Assicurarti per la responsabilità civile e scegliere un mezzo adatto a quello che vuoi fare. Il capitolo 8 mette questi passaggi in sequenza.</p>
 
 <section class="sintesi">
   <h2>In sintesi</h2>
@@ -165,10 +169,10 @@
     <li>Un drone è un aeromobile senza pilota a bordo. Quello che conta per le regole non è la macchina ma il sistema: aeromobile, stazione di controllo e link di comando e controllo.</li>
     <li>UA e UAS sono i termini europei. RPAS viene dai documenti internazionali, SAPR e APR dai regolamenti italiani precedenti al 2021: se li leggi, verifica la data.</li>
     <li>L'operatore UAS è chi ha la responsabilità, il pilota remoto è chi comanda. Possono essere la stessa persona, ma non sono lo stesso ruolo.</li>
-    <li>I droni civili nascono quando sensori MEMS, batterie al litio, motori brushless e ricevitori GNSS diventano economici grazie alla filiera degli smartphone. Le regole nazionali frammentate sono poi state sostituite da un impianto europeo unico, applicabile dal 31 dicembre 2020.</li>
+    <li>I droni civili nascono quando sensori MEMS, batterie al litio, motori brushless e ricevitori GNSS diventano economici. Le regole nazionali frammentate sono poi state sostituite da un impianto europeo unico, applicabile dal 31 dicembre 2020.</li>
     <li>Multirotore per fermarsi in aria e partire da spazi piccoli, ala fissa per coprire molta area, VTOL ibrido per avere entrambe le cose pagandole in complessità.</li>
     <li>La stessa macchina cambia inquadramento a seconda di dove e come la usi: il mezzo da solo non basta a dire se un volo è ammesso.</li>
-    <li>La massa al decollo decide quasi tutto, perché l'energia in gioco cresce con la massa e con il quadrato della velocità. Le soglie da ricordare sono 250&nbsp;g, 900&nbsp;g, 4&nbsp;kg e 25&nbsp;kg.</li>
+    <li>La MTOM è il limite dichiarato dal fabbricante, carico utile compreso; la massa effettiva è quella che pesi nella configurazione con cui voli. Confronta entrambe con le soglie: 250&nbsp;g, 900&nbsp;g, 4&nbsp;kg e 25&nbsp;kg. L'energia in gioco cresce con la massa e con il quadrato della velocità.</li>
   </ul>
 </section>
 

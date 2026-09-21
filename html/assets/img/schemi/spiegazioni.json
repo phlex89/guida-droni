@@ -10,12 +10,12 @@
       {
         "id": "anq-motore",
         "etichetta": "Motore brushless",
-        "testo": "È un motore sincrono a magneti permanenti di tipo outrunner: lo statore avvolto sta fermo al centro, la campana esterna con i magneti gira e porta direttamente l'elica. La costante KV dice quanti giri al minuto si ottengono per ogni volt, e va nella direzione opposta alla coppia: KV alto significa molti giri e poca coppia per ampere."
+        "testo": "È un motore sincrono a magneti permanenti di tipo outrunner: lo statore avvolto sta fermo al centro, la campana esterna con i magneti gira e porta direttamente l'elica. La costante KV dice quanti giri al minuto si ottengono per ogni volt, e va nella direzione opposta alla coppia: KV alto significa molti giri e poca coppia per ampere. Non ha spazzole soggette a usura, ma cuscinetti e parti meccaniche si consumano comunque."
       },
       {
         "id": "anq-rotazione",
         "etichetta": "Verso di rotazione",
-        "testo": "Due eliche girano in senso orario e due in senso antiorario, e quelle uguali stanno in diagonale fra loro. Così le coppie di reazione si annullano e la macchina non ruota su sé stessa. L'imbardata si ottiene sbilanciando di proposito questo equilibrio, accelerando una coppia e rallentando l'altra."
+        "testo": "Due eliche girano in senso orario e due in senso antiorario, e quelle uguali stanno in diagonale fra loro. Così le coppie di reazione si annullano e la macchina non ruota su sé stessa. L'imbardata si ottiene sbilanciando di proposito questo equilibrio, accelerando una coppia e rallentando l'altra. È uno schema qualitativo: poiché la spinta cresce circa con il quadrato dei giri, variazioni uguali di rpm non danno una somma di spinte identica, e il controllo compensa."
       },
       {
         "id": "anq-braccio",
@@ -35,22 +35,22 @@
       {
         "id": "anq-camera",
         "etichetta": "Camera e gimbal",
-        "testo": "Il gimbal è una sospensione motorizzata che tiene la camera puntata mentre il drone si inclina: senza, ogni correzione d'assetto finirebbe dentro l'immagine. La camera pesa anche sul piano normativo, perché un drone capace di raccogliere dati personali obbliga l'operatore a registrarsi anche sotto i 250 grammi."
+        "testo": "Il gimbal è una sospensione motorizzata che tiene la videocamera puntata mentre il drone si inclina: senza, ogni correzione d'assetto finirebbe dentro l'immagine. La camera pesa anche sul piano normativo, perché un sensore capace di rilevare dati personali obbliga l'operatore a registrarsi anche sotto i 250 grammi, salvo che il drone sia conforme alla direttiva sui giocattoli."
       },
       {
         "id": "anq-gnss",
         "etichetta": "Modulo GNSS",
-        "testo": "Il ricevitore satellitare dà al drone posizione e velocità. Si monta fuori dalle piastre perché la fibra di carbonio lo scherma e l'elettronica di potenza lo disturba. Senza satelliti il drone vola ancora, ma non tiene la posizione da solo e non torna a casa automaticamente."
+        "testo": "Il ricevitore satellitare dà al drone posizione e velocità. Si monta fuori dalle piastre perché la fibra di carbonio lo scherma e l'elettronica di potenza lo disturba. Senza fix il drone vola ancora: quanto bene tenga la posizione dipende dagli altri sensori disponibili, come l'optical flow, e dalla logica del firmware. Il punto home di solito resta memorizzato; a mancare è la navigazione che serve per raggiungerlo."
       },
       {
         "id": "anq-fc",
         "etichetta": "Flight controller con IMU",
-        "testo": "È il microcontrollore che stabilizza la macchina, di solito un ARM Cortex-M a 32 bit. Non gli serve potenza di calcolo, gli serve determinismo: qualche centinaio di microsecondi di ritardo conta più di qualche megahertz. L'unità inerziale, giroscopio e accelerometro MEMS a tre assi, gli dice come è messo nello spazio migliaia di volte al secondo."
+        "testo": "È il controllore di volo (flight controller), il microcontrollore che stabilizza la macchina: nel mondo FPV di solito un ARM Cortex-M a 32 bit su una scheda piccola, ma formati e architetture variano parecchio. Non conta la potenza di calcolo in sé, contano risorse sufficienti e rispetto dei tempi: qualche centinaio di microsecondi di ritardo pesa più di qualche megahertz. L'unità inerziale, giroscopio e accelerometro MEMS a tre assi, gli dice come è messo nello spazio migliaia di volte al secondo."
       },
       {
         "id": "anq-batteria",
         "etichetta": "Batteria LiPo",
-        "testo": "Le celle ai polimeri di litio hanno resistenza interna bassissima e reggono correnti enormi rispetto alla loro capacità: servono perché il decollo chiede potenza istantanea. Le celle agli ioni di litio immagazzinano circa il doppio di energia per chilogrammo, ma non erogano la stessa corrente."
+        "testo": "Le celle ai polimeri di litio hanno resistenza interna bassa e reggono correnti elevate rispetto alla loro capacità: servono perché il decollo chiede potenza istantanea. Il confronto con le celle cilindriche agli ioni di litio non è fra due chimiche contrapposte: cambiano formato e ottimizzazione della cella. Alcune cilindriche privilegiano l'energia per chilogrammo, altre sono progettate per l'alta potenza e arrivano a decine di ampere di scarica continua. Confronta i dati della cella specifica, non la famiglia."
       },
       {
         "id": "anq-ricevitore",
@@ -60,7 +60,7 @@
       {
         "id": "anq-led",
         "etichetta": "LED di navigazione",
-        "testo": "Servono a capire come è orientata la macchina quando è lontana. I droni di classe C1, C2 e C3 devono avere anche una luce verde lampeggiante, che li distingue dagli aeromobili con equipaggio. Di notte vedere il drone significa vederne le luci, e la distanza utile si riduce parecchio."
+        "testo": "Servono a capire come è orientata la macchina quando è lontana. Di notte, in categoria Open, il pilota deve assicurarsi che sia attiva una luce verde lampeggiante: è un obbligo dell'operazione e vale anche per un drone senza marcatura di classe. Per i droni C1, C2 e C3 quella luce è anche un requisito di prodotto. Di notte vedere il drone significa vederne le luci, e la distanza utile si riduce parecchio."
       }
     ]
   },
@@ -70,12 +70,12 @@
       {
         "id": "spe-b433",
         "etichetta": "433 MHz",
-        "testo": "La banda della telemetria a lungo raggio. In Europa il limite è 10 mW e.r.p. con un ciclo di trasmissione non superiore al 10 per cento del tempo, oppure 1 mW senza quel vincolo. Poca potenza, ma a questa frequenza il segnale aggira gli ostacoli molto meglio che nelle bande alte."
+        "testo": "La banda della telemetria a lungo raggio, nel segmento 433,05-434,79 MHz degli apparati a corto raggio. Il limite di potenza e il vincolo di occupazione del canale per questo segmento non sono stati verificati sul testo della raccomandazione ERC 70-03: prima di configurare un modulo leggi la dichiarazione di conformità del prodotto e le condizioni nazionali. Resta vero il motivo per cui la banda si usa: a questa frequenza il segnale aggira gli ostacoli molto meglio che nelle bande alte."
       },
       {
         "id": "spe-b868",
         "etichetta": "863-870 MHz",
-        "testo": "La banda del comando a lungo raggio con modulazioni LoRa. Il limite è 25 mW e.r.p. nelle sottobande principali, con un ciclo di trasmissione fra lo 0,1 e l'1 per cento: puoi occupare il canale solo per una frazione del tempo. Negli Stati Uniti l'equivalente sta sui 900 MHz e arriva a 1 W, e in Europa quella banda semplicemente non è disponibile."
+        "testo": "La banda del comando a lungo raggio con modulazioni LoRa. Nelle sottobande principali il limite è 25 mW e.r.p. con un ciclo di trasmissione fra lo 0,1 e l'1 per cento: puoi occupare il canale solo per una frazione del tempo, e in alcune sottobande l'alternativa è l'ascolto prima di trasmettere. Negli Stati Uniti l'equivalente sta sui 902-928 MHz e arriva a 1 W. In Europa esistono assegnazioni in parte sovrapposte, ma con destinazioni e condizioni diverse: non configurare una radio sul dominio statunitense presumendo che vada bene qui."
       },
       {
         "id": "spe-b24",
@@ -85,7 +85,7 @@
       {
         "id": "spe-b5",
         "etichetta": "5,15-5,35 e 5,47-5,725 GHz",
-        "testo": "Le bande del Wi-Fi a 5 GHz, usate dal video digitale dei droni consumer. I vincoli cambiano da sottobanda a sottobanda, fra uso consentito solo al chiuso e obbligo di selezione dinamica della frequenza. Dal 2022 esiste anche una porzione dedicata ai droni fra 5,17 e 5,25 GHz, con 200 mW e.i.r.p."
+        "testo": "La porzione 5,17-5,25 GHz è quella in cui, alle condizioni previste dalla decisione (UE) 2022/179, è ammesso anche l'uso a bordo di UAS, con 200 mW e.i.r.p. Non è una banda «dedicata ai droni»: è una porzione condivisa in cui quell'impiego rientra. Le altre porzioni del Wi-Fi a 5 GHz seguono regole diverse e in 5,47-5,725 GHz l'uso UAS non è ammesso; la selezione dinamica della frequenza serve a proteggere i radar, non a rimuovere quel divieto."
       },
       {
         "id": "spe-b58",
@@ -100,17 +100,17 @@
       {
         "id": "cat-c0",
         "etichetta": "Classe C0",
-        "testo": "Droni sotto i 250 grammi. È la classe più permissiva: in A1 puoi sorvolare anche persone non coinvolte, mai però un assembramento. La logica è quella dell'energia cinetica, perché sotto questa massa il danno in caso di caduta è considerato trascurabile. Se il drone ha una camera, l'operatore deve comunque registrarsi."
+        "testo": "Droni sotto i 250 grammi. È la classe più permissiva: in A1 puoi sorvolare anche persone non coinvolte, mai però un assembramento. Sotto questa massa il rischio è generalmente inferiore, e questo giustifica requisiti meno onerosi; non significa che una caduta sia innocua. Se il drone ha una videocamera l'operatore deve comunque registrarsi, salvo che si tratti di un UAS conforme alla direttiva sui giocattoli. La presenza della camera non fa invece scattare l'obbligo di attestato."
       },
       {
         "id": "cat-c1",
         "etichetta": "Classe C1",
-        "testo": "Droni sotto i 900 grammi, sempre in A1, ma con un obbligo in più rispetto al C0: non devi sorvolare intenzionalmente persone non coinvolte, e se capita devi ridurre al minimo il tempo di sorvolo."
+        "testo": "Droni sotto i 900 grammi, oppure con energia d'impatto sotto gli 80 joule: il regolamento ammette entrambi i criteri. Volano in A1, ma con un obbligo in più rispetto al C0: non devi sorvolare intenzionalmente persone non coinvolte, e se capita devi ridurre al minimo il tempo di sorvolo."
       },
       {
         "id": "cat-c2",
         "etichetta": "Classe C2",
-        "testo": "Droni sotto i 4 chilogrammi. È l'unica classe ammessa in A2, che richiede al pilota un certificato di competenza aggiuntivo. Un C2 può sempre volare anche in A3, accettando le regole più restrittive di quella sottocategoria."
+        "testo": "Droni sotto i 4 chilogrammi. È l'unica classe ammessa in A2, che richiede al pilota un certificato di competenza aggiuntivo. Un C2 può sempre volare anche in A3, accettando le regole più restrittive di quella sottocategoria. La classe dice cosa il prodotto deve garantire, non quali prestazioni o quali impieghi avrà: autonomia, qualità della camera e destinazione d'uso dipendono dal modello, non dalla lettera."
       },
       {
         "id": "cat-c3",
@@ -120,12 +120,12 @@
       {
         "id": "cat-c4",
         "etichetta": "Classe C4",
-        "testo": "Droni sotto i 25 chilogrammi e privi di modalità di volo automatiche: è la classe pensata per gli aeromodelli tradizionali, pilotati a mano. Anche questi volano in A3."
+        "testo": "Droni sotto i 25 chilogrammi e privi di modalità di volo automatiche oltre alla stabilizzazione e all'assistenza in caso di perdita del collegamento: è la classe pensata per gli aeromodelli tradizionali, pilotati a mano. Volano in A3 e, a differenza di C1, C2 e C3, non devono avere Remote ID né geo-awareness."
       },
       {
         "id": "cat-senza",
-        "etichetta": "Senza marcatura o autocostruito",
-        "testo": "I droni privi di marcatura di classe e quelli costruiti in proprio seguono un ramo a sé. Sotto i 250 grammi rientrano in A1; da 250 grammi in su vanno in A3. Dal 1º gennaio 2024 non hanno più accesso alla A2."
+        "etichetta": "Articolo 20 o costruito privatamente",
+        "testo": "Qui i rami sono due e non vanno confusi. L'articolo 20 riguarda gli UAS senza marcatura immessi sul mercato prima del 1º gennaio 2024: sotto i 250 grammi volano in A1, da 250 grammi a meno di 25 chilogrammi solo in A3. Gli UAS costruiti privatamente seguono la propria regola: A1 solo sotto i 250 grammi e sotto i 19 metri al secondo di velocità massima, altrimenti A3. Nessuno dei due ha accesso alla A2, e montare un kit venduto come unico prodotto pronto da assemblare non basta a rientrare nella costruzione privata."
       },
       {
         "id": "cat-a1",
@@ -135,7 +135,7 @@
       {
         "id": "cat-a2",
         "etichetta": "Sottocategoria A2, a distanza controllata",
-        "testo": "Almeno 30 metri in orizzontale dalle persone non coinvolte, che scendono a 5 metri se il drone ha la modalità a bassa velocità, quella che limita la velocità al suolo a 3 metri al secondo. Serve il certificato di competenza A2, che si ottiene con un esame aggiuntivo. In pratica un C2 in A2 lavora in una piazza poco frequentata o in un cantiere, non sopra la testa della gente."
+        "testo": "Almeno 30 metri in orizzontale dalle persone non coinvolte. Scendono fino a 5 metri solo quando la modalità a bassa velocità, che limita la velocità al suolo a 3 metri al secondo, è attiva, e dopo che il pilota ha valutato meteo, prestazioni del drone e situazione a terra: non basta che il drone preveda quella modalità. Serve il certificato di competenza A2, che si ottiene con un esame aggiuntivo. In pratica un C2 in A2 lavora in una piazza poco frequentata o in un cantiere, non sopra la testa della gente."
       },
       {
         "id": "cat-a3",

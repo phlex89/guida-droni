@@ -960,6 +960,10 @@ th, td {
   margin: 0.4em auto 0.8em;
 }
 
+figure.schema.sr-flusso svg, figure.schema.sr-flusso img {
+  max-height: 112mm;
+}
+
 .sr-flusso figcaption {
   text-align: center;
 }

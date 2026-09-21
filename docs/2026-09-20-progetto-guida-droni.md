@@ -17,20 +17,28 @@ Una guida introduttiva al mondo dei droni per una persona inesperta del settore 
 
 ## Indice e budget pagine
 
-| File | Titolo | Pagine |
-|---|---|---|
-| 00 | Introduzione e mappa della guida | 3 |
-| 01 | Cos'è un drone | 6 |
-| 02 | Anatomia e funzionamento | 8 |
-| 03 | Radio, video e telemetria | 8 |
-| 04 | Il quadro normativo europeo | 11 |
-| 05 | Volare in Italia | 11 |
-| 06 | Categoria Specific e prospettive | 4 |
-| 07 | Volare in pratica | 7 |
-| 08 | Percorso del neofita e appendici | 7 |
-| SR | Scheda rapida | 2 |
+| File | Titolo | Budget iniziale | Pagine al 21 settembre 2026 |
+|---|---|---|---|
+| 00 | Introduzione e mappa della guida | 3 | 5 |
+| 01 | Cos'è un drone | 6 | 8 |
+| 02 | Anatomia e funzionamento | 8 | 11 |
+| 03 | Radio, video e telemetria | 8 | 9 |
+| 04 | Il quadro normativo europeo | 11 | 14 |
+| 05 | Volare in Italia | 11 | 13 |
+| 06 | Categoria Specific e prospettive | 4 | 6 |
+| 07 | Volare in pratica | 7 | 10 |
+| 08 | Percorso del neofita e appendici | 7 | 10 |
+| SR | Scheda rapida | 2 | 2 |
 
-Totale indicativo: 67 pagine.
+Totale indicativo iniziale: 67 pagine. Totale effettivo dopo la revisione di
+validazione del 21 settembre 2026: **88 pagine**, contro il massimo di 90.
+
+La crescita rispetto al budget iniziale viene dalle condizioni che la revisione
+ha chiesto di reintrodurre: la data dell'articolo 20 per i droni senza
+marcatura, il limite di velocità della costruzione privata, la luce verde
+notturna, i due canali di segnalazione ENAC e ANSV, le soglie IATA per le
+batterie e la distinzione fra colore della zona e scheda della zona. Il margine
+residuo è di due pagine: ogni aggiunta futura va compensata con un taglio.
 
 ## Convenzioni dei sorgenti
 

@@ -102,6 +102,14 @@ python3 build/applica-crediti.py
 
 sostituisce nome file e credito leggendo `src/img/foto/crediti.json`. È idempotente: si può rilanciare dopo ogni modifica.
 
+Il campo `didascalia_credito` del file dei crediti contiene i collegamenti all'opera originale e alla licenza, perché le licenze Creative Commons con obbligo di attribuzione li richiedono. Quando quel campo cambia, i segnaposto `[[credito:NN]]` nei capitoli sono già stati sostituiti e il comando sopra non ha più nulla su cui intervenire: per riallineare le didascalie già scritte si usa
+
+```
+python3 build/aggiorna-crediti-didascalie.py
+```
+
+che abbina ogni `<span class="credito">` alla foto della stessa `<figure>` e ne riscrive il contenuto. Con `--prova` elenca i file che cambierebbero senza scriverli. Anche questo è idempotente. La sezione «Crediti delle fotografie» del capitolo 08 ripete gli stessi riferimenti con gli URL per esteso, perché sulla carta i collegamenti non sono cliccabili.
+
 ## Pubblicazione online
 
 La versione HTML è pubblicata con GitHub Pages all'indirizzo <https://phlex89.github.io/guida-droni/>. Il workflow `.github/workflows/pages.yml` si avvia a ogni push su `main` che tocca `html/`, `pdf/` o il workflow stesso: copia i PDF dentro il sito (`html/pdf`, cartella ignorata da git) e pubblica la cartella `html/`. Per aggiornare il sito basta rigenerare PDF e HTML in locale, fare commit e push. Il PDF unico `pdf/guida-droni-completa.pdf` si rigenera con `python3 build/unisci-pdf.py` dopo aver rigenerato i PDF dei capitoli.
