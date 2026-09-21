@@ -121,6 +121,30 @@ async function leggiSpiegazioniSchemi() {
   }
 }
 
+function testoCella(html) {
+  return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function estraiAcronimi(contenuto) {
+  const tabella = contenuto.match(/<table[^>]*class="[^"]*\bacronimi\b[^"]*"[\s\S]*?<\/table>/i);
+  if (!tabella) return [];
+  const corpo = tabella[0].match(/<tbody\b[\s\S]*?<\/tbody>/i);
+  const voci = [];
+  for (const riga of (corpo || tabella)[0].match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi) || []) {
+    const celle = [...riga.matchAll(/<t([hd])\b[^>]*>([\s\S]*?)<\/t\1>/gi)];
+    if (celle.length < 4) continue;
+    if (celle[0][1].toLowerCase() !== "h" || celle[1][1].toLowerCase() !== "d") continue;
+    const voce = {
+      sigla: testoCella(celle[0][2]),
+      esteso: testoCella(celle[1][2]),
+      traduzione: testoCella(celle[2][2]),
+      spiegazione: testoCella(celle[3][2]),
+    };
+    if (voce.sigla && (voce.esteso || voce.spiegazione)) voci.push(voce);
+  }
+  return voci;
+}
+
 async function elencaPdf(cartella) {
   try {
     const voci = await fs.readdir(cartella);
@@ -174,6 +198,7 @@ export async function buildHtml({ src, out }) {
   const sidebarVoci = [];
   const sezioni = [];
   const pdfVoci = [];
+  let acronimi = [];
   if (pdfDisponibili.includes("guida-droni-completa.pdf")) {
     pdfVoci.push(`    <li><a href="pdf/guida-droni-completa.pdf">Guida completa, tutti i capitoli</a></li>`);
   }
@@ -184,6 +209,8 @@ export async function buildHtml({ src, out }) {
     const titolo = estraiAttributoBody(html, "data-titolo") || numero;
     const mainConSvgInline = await inlineSvgSchemi(estraiContenutoMain(html), path.dirname(filePath));
     const contenuto = avvolgiTabelle(riscriviPercorsi(mainConSvgInline));
+    const acronimiCapitolo = estraiAcronimi(contenuto);
+    if (acronimiCapitolo.length > 0) acronimi = acronimiCapitolo;
     const nomePdf = `${path.basename(filePath, ".html")}.pdf`;
     const pdfPresente = pdfDisponibili.includes(nomePdf);
     sidebarVoci.push(voceSidebar(numero, titolo));
@@ -237,7 +264,7 @@ ${bloccoPdf}
 <main class="contenuto">
 ${sezioni.join("\n\n")}
 </main>
-${bloccoDati({ schemi: spiegazioni })}
+${bloccoDati({ schemi: spiegazioni, acronimi })}
 <script src="assets/js/pagina.js"></script>
 </body>
 </html>
@@ -249,4 +276,5 @@ ${bloccoDati({ schemi: spiegazioni })}
   const puntiTotali = Object.values(spiegazioni).reduce((somma, scheda) => somma + (scheda.punti || []).length, 0);
   console.log(`html/index.html generato con ${file.length} capitoli in ${outDir}`);
   console.log(`Schemi esplorabili: ${Object.keys(spiegazioni).length}, punti definiti: ${puntiTotali}, avvisi: ${mancanti.length}`);
+  console.log(`Acronimi mappati: ${acronimi.length}`);
 }

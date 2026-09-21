@@ -54,11 +54,19 @@ node build/build.mjs html
 
 Unisce tutti i capitoli in `html/index.html`, con barra di navigazione laterale e stile per la lettura a schermo. Il file si apre direttamente in un browser, senza bisogno di un server. Sotto i 900 px di larghezza (tablet e smartphone) la barra laterale diventa un menu a scomparsa: una barra fissa in alto mostra il capitolo in lettura e il pulsante che apre l'indice; il menu si chiude toccando fuori, con Esc o scegliendo un capitolo. Sotto i 640 px le griglie passano a una colonna e le tabelle larghe e gli schemi si scorrono in orizzontale.
 
-A schermo il corpo del testo usa il font Literata a 20 px con interlinea 1,65, pensato per la lettura prolungata; nella barra laterale tre pulsanti «A» cambiano la dimensione del testo (17, 20 o 23 px; su smartphone 15,5, 17 o 19 px) e la scelta viene ricordata dal browser. I PDF mantengono Source Serif 4 a 10,75 pt per restare entro le 90 pagine.
+A schermo il corpo del testo usa il font Literata a 20 px con interlinea 1,65, pensato per la lettura prolungata; nella barra laterale tre pulsanti «A» cambiano la dimensione del testo (17, 20 o 23 px; su smartphone 15,5, 17 o 19 px) e la scelta viene ricordata dal browser. I PDF mantengono Source Serif 4 a 10,75 pt per contenere il numero di pagine.
 
-#### Glossario attivo
+#### Glossario attivo e acronimi cliccabili
 
-Nel sito ogni `<abbr>` dei capitoli diventa toccabile e apre un riquadro con la definizione. Il testo viene cercato prima fra le voci dei `dl.glossario` presenti nella guida, confrontando la sigla e il termine; se non c'è corrispondenza si usa l'attributo `title` dell'`<abbr>` stesso. Non serve marcare altro nei capitoli: basta che la sigla sia dentro un `<abbr>` con il suo `title`. Sopra ogni glossario con almeno dieci voci compare anche un campo che filtra le voci mentre si scrive. Tutto questo esiste solo a schermo: i PDF restano identici.
+Nel sito ogni `<abbr>` dei capitoli diventa toccabile e apre un riquadro con la definizione. Il testo viene cercato prima fra le voci dei `dl.glossario` presenti nella guida, confrontando la sigla e il termine; se non c'è corrispondenza si usa l'attributo `title` dell'`<abbr>` stesso. Non serve marcare altro nei capitoli: basta che la sigla sia dentro un `<abbr>` con il suo `title`. Sopra ogni glossario con almeno dieci voci compare anche un campo che filtra le voci mentre si scrive.
+
+Gli acronimi hanno un trattamento più ricco. La tabella «Acronimi e sigle» del capitolo 8 (quattro colonne: sigla, acronimo esteso, traduzione, spiegazione) è la fonte dati unica: durante la generazione della pagina HTML lo script la estrae e la incorpora nella pagina come JSON. Da lì:
+
+- ogni acronimo nel testo diventa cliccabile e apre una scheda con i quattro campi (sigla, esteso, traduzione, spiegazione);
+- le occorrenze non marcate nei capitoli vengono avvolte automaticamente in un `<abbr>` a runtime, con corrispondenza esatta e confini di parola, così resta cliccabile anche una sigla scritta senza tag (salvo un piccolo elenco di esclusioni, come «CE», per non toccare i numeri dei regolamenti);
+- nei PDF la tabella resta una pagina di riferimento separata, identica ai quattro campi.
+
+Schemi e acronimi restano interattivi solo a schermo: i PDF non caricano alcuno script.
 
 #### Schemi esplorabili
 

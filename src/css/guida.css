@@ -431,6 +431,18 @@ table.lunga {
   page-break-inside: auto;
 }
 
+table.acronimi tbody th {
+  width: 11%;
+}
+
+table.acronimi td:nth-of-type(1) {
+  width: 25%;
+}
+
+table.acronimi td:nth-of-type(2) {
+  width: 19%;
+}
+
 caption {
   font-family: var(--sans);
   font-size: 0.85rem;

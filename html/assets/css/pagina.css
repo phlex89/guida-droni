@@ -99,6 +99,21 @@ body { margin: 0; display: flex; min-height: 100vh; background: #fff; }
   color: #5C6370; font-size: 19px; line-height: 1; cursor: pointer;
 }
 .definizione-sigla .chiudi:hover, .definizione-sigla .chiudi:focus-visible { background: #F2F4F7; color: #1B4965; }
+.definizione-sigla.acronimo {
+  width: min(400px, calc(100vw - 32px));
+}
+.definizione-sigla.acronimo .termine {
+  margin-bottom: 4px;
+}
+.definizione-sigla .traduzione {
+  display: block;
+  font-style: italic;
+  color: #4B5563;
+  margin-bottom: 5px;
+}
+.definizione-sigla .spiegazione {
+  display: block;
+}
 
 .cerca-glossario {
   font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;

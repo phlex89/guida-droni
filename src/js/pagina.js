@@ -173,6 +173,92 @@
   var riquadro = null;
   var sigliaAperta = null;
 
+  var acronimi = Array.isArray(dati.acronimi) ? dati.acronimi : [];
+  var indiceAcronimi = {};
+  acronimi.forEach(function (voce) {
+    [voce.sigla, voce.esteso, voce.traduzione].forEach(function (chiave) {
+      var n = normalizza(chiave);
+      if (n && n.indexOf("sigla italiana") === -1 && !indiceAcronimi[n]) indiceAcronimi[n] = voce;
+    });
+  });
+
+  function cercaAcronimo(elemento) {
+    var termine = normalizza(elemento.textContent);
+    var titolo = normalizza(elemento.getAttribute("title"));
+    return indiceAcronimi[termine] || (titolo ? indiceAcronimi[titolo] : null);
+  }
+
+  var NO_AUTO = { CE: true };
+
+  function escapiRegex(testo) {
+    return testo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function avvolgiAcronimiNelTesto() {
+    if (acronimi.length === 0) return;
+    var sigle = acronimi
+      .map(function (voce) { return voce.sigla; })
+      .filter(function (sigla, posizione, tutte) { return sigla && tutte.indexOf(sigla) === posizione; })
+      .filter(function (sigla) { return !NO_AUTO[sigla]; });
+    if (sigle.length === 0) return;
+    sigle.sort(function (a, b) { return b.length - a.length; });
+    var fonte = "(^|[^A-Za-z0-9])(" + sigle.map(escapiRegex).join("|") + ")(?![A-Za-z0-9])";
+    var rx = new RegExp(fonte, "g");
+    var rxTesto = new RegExp(fonte);
+    var radice = document.querySelector("main.contenuto") || document.querySelector("main");
+    if (!radice) return;
+
+    var camminatore = document.createTreeWalker(radice, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (nodo) {
+        var p = nodo.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        var tag = p.tagName;
+        if (tag === "ABBR" || tag === "A" || tag === "CODE" || tag === "BUTTON" ||
+            tag === "SCRIPT" || tag === "STYLE" || tag === "TITLE" || tag === "TEXTAREA") {
+          return NodeFilter.FILTER_REJECT;
+        }
+        if (p.closest("svg")) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    var nodi = [];
+    while (camminatore.nextNode()) nodi.push(camminatore.currentNode);
+
+    nodi.forEach(function (nodo) {
+      var testo = nodo.nodeValue;
+      if (!testo || !rxTesto.test(testo)) return;
+      rx.lastIndex = 0;
+      var intervalli = [];
+      var match;
+      while ((match = rx.exec(testo)) !== null) {
+        var inizio = match.index + match[1].length;
+        if (intervalli.length && inizio < intervalli[intervalli.length - 1].fine) continue;
+        intervalli.push({ inizio: inizio, fine: inizio + match[2].length });
+      }
+      if (intervalli.length === 0) return;
+      var frammento = document.createDocumentFragment();
+      var cursore = 0;
+      intervalli.forEach(function (intervallo) {
+        if (intervallo.inizio > cursore) {
+          frammento.appendChild(document.createTextNode(testo.slice(cursore, intervallo.inizio)));
+        }
+        var testoSigla = testo.slice(intervallo.inizio, intervallo.fine);
+        var voce = indiceAcronimi[normalizza(testoSigla)];
+        var sigla = document.createElement("abbr");
+        sigla.className = "sigla-auto";
+        sigla.textContent = testoSigla;
+        if (voce && voce.esteso) sigla.setAttribute("title", voce.esteso);
+        frammento.appendChild(sigla);
+        cursore = intervallo.fine;
+      });
+      if (cursore < testo.length) {
+        frammento.appendChild(document.createTextNode(testo.slice(cursore)));
+      }
+      nodo.parentNode.replaceChild(frammento, nodo);
+    });
+  }
+
   function chiudiDefinizione() {
     if (!riquadro) return;
     riquadro.remove();
@@ -201,25 +287,49 @@
   function mostraDefinizione(elemento) {
     var termine = elemento.textContent.replace(/\s+/g, " ").trim();
     var espansione = (elemento.getAttribute("title") || "").trim();
+    var voce = cercaAcronimo(elemento);
     var definizione = glossario[normalizza(termine)] || "";
-    if (!definizione && !espansione) return;
+    if (!voce && !definizione && !espansione) return;
 
     chiudiDefinizione();
     riquadro = document.createElement("div");
-    riquadro.className = "definizione-sigla";
+    riquadro.className = "definizione-sigla" + (voce ? " acronimo" : "");
     riquadro.setAttribute("role", "dialog");
-    riquadro.setAttribute("aria-label", "Definizione di " + termine);
+    riquadro.setAttribute("aria-label", "Definizione di " + (voce ? voce.sigla : termine));
 
-    var titolo = document.createElement("span");
-    titolo.className = "termine";
-    titolo.textContent = definizione && espansione && normalizza(espansione) !== normalizza(termine)
-      ? termine + ", " + espansione
-      : termine;
-    riquadro.appendChild(titolo);
+    if (voce) {
+      var titolo = document.createElement("span");
+      titolo.className = "termine";
+      titolo.textContent = voce.sigla + " · " + voce.esteso;
+      riquadro.appendChild(titolo);
 
-    var corpo = document.createElement("span");
-    corpo.textContent = definizione || espansione;
-    riquadro.appendChild(corpo);
+      if (voce.traduzione) {
+        var traduzione = document.createElement("span");
+        traduzione.className = "traduzione";
+        traduzione.textContent = voce.traduzione.indexOf("Sigla italiana") === 0
+          ? voce.traduzione
+          : "In italiano: " + voce.traduzione;
+        riquadro.appendChild(traduzione);
+      }
+
+      if (voce.spiegazione) {
+        var corpo = document.createElement("span");
+        corpo.className = "spiegazione";
+        corpo.textContent = voce.spiegazione;
+        riquadro.appendChild(corpo);
+      }
+    } else {
+      var titoloSemplice = document.createElement("span");
+      titoloSemplice.className = "termine";
+      titoloSemplice.textContent = definizione && espansione && normalizza(espansione) !== normalizza(termine)
+        ? termine + ", " + espansione
+        : termine;
+      riquadro.appendChild(titoloSemplice);
+
+      var corpoSemplice = document.createElement("span");
+      corpoSemplice.textContent = definizione || espansione;
+      riquadro.appendChild(corpoSemplice);
+    }
 
     var bottone = document.createElement("button");
     bottone.type = "button";
@@ -239,9 +349,11 @@
     sigliaAperta = elemento;
   }
 
+  avvolgiAcronimiNelTesto();
+
   Array.prototype.slice.call(document.querySelectorAll("main abbr")).forEach(function (sigla) {
     var termine = sigla.textContent.replace(/\s+/g, " ").trim();
-    if (!glossario[normalizza(termine)] && !(sigla.getAttribute("title") || "").trim()) return;
+    if (!cercaAcronimo(sigla) && !glossario[normalizza(termine)] && !(sigla.getAttribute("title") || "").trim()) return;
     sigla.classList.add("sigla-attiva");
     sigla.setAttribute("tabindex", "0");
     sigla.setAttribute("aria-expanded", "false");
